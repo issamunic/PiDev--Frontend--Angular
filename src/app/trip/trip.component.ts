@@ -1,3 +1,5 @@
+import { TripService } from './../services/trip/trip.service';
+import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,19 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripComponent implements OnInit {
 
-  constructor() { }
+  constructor( private tripService : TripService,private auth : AuthService) { }
 
- 
+  ngOnInit(): void {
+    this.auth.auth().subscribe(res =>{
+         console.log(res);
+         localStorage.setItem('token', res['jwtToken']);
+         console.log(localStorage.getItem('token'));
 
-  options: any;
+         console.log("--------------------------------");
 
-  overlays: any[];
+        
+         
+    });
+  }
 
-  ngOnInit() {
-      this.options = {
-          center: {lat: 36.890257, lng: 30.707417},
-          zoom: 12
-      };
+  loadTrips(){
+    this.tripService.getTrips().subscribe( res => {
+      console.log(res);
+    })
   }
 
 }
