@@ -15,13 +15,13 @@ export class TripService {
     console.log("appel trip");
     
    
-      const headers = new HttpHeaders({
+      const headers = new HttpHeaders({ 
         'Content-Type': 'application/json',
         'Authorization': "Bearer "+localStorage.getItem('token')
       })
-      console.log(headers);
+      console.log(headers.get("authorization"));
       
-    return this.http.get(this.url+"/SpringMVC/trip/getAll", { headers: headers });
+    return this.http.get(this.url+"/SpringMVC/trip/getAll", { headers:headers });
   }
 
 

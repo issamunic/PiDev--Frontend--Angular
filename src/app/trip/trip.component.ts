@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripComponent implements OnInit {
 
-  constructor(private auth : AuthService, private tripService : TripService) { }
+  constructor( private tripService : TripService,private auth : AuthService) { }
 
   ngOnInit(): void {
     this.auth.auth().subscribe(res =>{
@@ -19,18 +19,15 @@ export class TripComponent implements OnInit {
 
          console.log("--------------------------------");
 
-         this.tripService.getTrips().subscribe( res => {
-           console.log(res);
-           
         
-           
-          
-
-         })
          
     });
   }
 
-  
+  loadTrips(){
+    this.tripService.getTrips().subscribe( res => {
+      console.log(res);
+    })
+  }
 
 }
