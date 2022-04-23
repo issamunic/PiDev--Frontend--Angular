@@ -140,6 +140,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { TripComponent } from './trip/trip.component';
+
 
 @NgModule({
     imports: [
@@ -230,8 +232,12 @@ import { AccessComponent } from './components/access/access.component';
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
+        
+        
+
     ],
     declarations: [
+        AppMainComponent,
         AppComponent,
         AppMainComponent,
         AppTopBarComponent,
@@ -273,11 +279,12 @@ import { AccessComponent } from './components/access/access.component';
         ErrorComponent,
         NotfoundComponent,
         AccessComponent,
+        TripComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService
+        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent
     ],
     bootstrap: [AppComponent]
 })
