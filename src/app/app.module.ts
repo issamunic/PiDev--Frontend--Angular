@@ -142,6 +142,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -231,8 +232,12 @@ import { TripComponent } from './trip/trip.component';
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
+        
+        
+
     ],
     declarations: [
+        AppMainComponent,
         AppComponent,
         AppMainComponent,
         AppTopBarComponent,
@@ -279,7 +284,7 @@ import { TripComponent } from './trip/trip.component';
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService
+        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent
     ],
     bootstrap: [AppComponent]
 })

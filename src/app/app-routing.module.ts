@@ -1,3 +1,4 @@
+import { TripComponent } from './trip/trip.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -31,6 +32,7 @@ import { AccessComponent } from './components/access/access.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {path: 'trip', component: TripComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
