@@ -1,3 +1,5 @@
+import { PostComponent } from './post/post/post.component';
+import { ForumComponent } from './forum/forum/forum.component';
 import { TripComponent } from './trip/trip.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -33,6 +35,8 @@ import { AccessComponent } from './components/access/access.component';
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
+            {path: 'forum', component: ForumComponent},
+            {path : 'post/:id', component : PostComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -141,6 +141,13 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
+import { PostComponent } from './post/post/post.component';
+import { ForumComponent } from './forum/forum/forum.component';
+import { ForumSideBarComponent } from './forumSideBar/forum-side-bar/forum-side-bar.component';
+import { CommentComponent } from './comment/comment/comment.component';
+import {EditorModule} from 'primeng/editor'
+import { QuillModule } from 'ngx-quill';
+
 
 
 @NgModule({
@@ -232,6 +239,10 @@ import { TripComponent } from './trip/trip.component';
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
+        ReactiveFormsModule,
+        CardModule,
+        EditorModule,
+        QuillModule
         
         
 
@@ -280,6 +291,10 @@ import { TripComponent } from './trip/trip.component';
         NotfoundComponent,
         AccessComponent,
         TripComponent,
+        PostComponent,
+        ForumComponent,
+        ForumSideBarComponent,
+        CommentComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
