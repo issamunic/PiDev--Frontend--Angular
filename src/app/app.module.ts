@@ -141,6 +141,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
+import { MiniProfilComponent } from './mini-profil/mini-profil.component';
 
 
 @NgModule({
@@ -280,6 +281,7 @@ import { TripComponent } from './trip/trip.component';
         NotfoundComponent,
         AccessComponent,
         TripComponent,
+        MiniProfilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

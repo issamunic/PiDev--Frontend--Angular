@@ -8,8 +8,8 @@ export class AuthService {
 
   url="http://localhost:8087";
   creds:{
-    user: object,
-    jwtToken:string
+    userName:string,
+    userPassword:string
   }
 
   constructor(private http : HttpClient) { }
