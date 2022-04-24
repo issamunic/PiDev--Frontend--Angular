@@ -9,23 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripComponent implements OnInit {
 
-  constructor( private tripService : TripService,private auth : AuthService) { }
+  constructor(private tripService: TripService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.auth().subscribe(res =>{
-         console.log(res);
-         localStorage.setItem('token', res['jwtToken']);
-         console.log(localStorage.getItem('token'));
 
-         console.log("--------------------------------");
+  }
 
-        
-         
+  login() {
+    console.log("loging method invoked");
+
+    this.auth.auth().subscribe(res => {
+      localStorage.setItem('token', res['jwtToken']);
+      console.log("JwtToekn:    "+localStorage.getItem('token'));
+
+
+
+
     });
   }
 
-  loadTrips(){
-    this.tripService.getTrips().subscribe( res => {
+  loadTrips() {
+    this.tripService.getTrips().subscribe(res => {
       console.log(res);
     })
   }
