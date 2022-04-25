@@ -1,3 +1,4 @@
+import { MiniProfilComponent } from './mini-profil/mini-profil.component';
 import { TripComponent } from './trip/trip.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -33,6 +34,8 @@ import { AccessComponent } from './components/access/access.component';
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
+            {path: 'profil', component: MiniProfilComponent},
+
             {
                 path: '', component: AppMainComponent,
                 children: [
