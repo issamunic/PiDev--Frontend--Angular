@@ -88,7 +88,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { BlockViewer } from './components/blockviewer/blockviewer.component';
- 
+
 import { AppCodeModule } from './components/app-code/app.code.component';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
@@ -141,6 +141,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
+import { GetAllInvitationsComponent } from './get-all-invitations/get-all-invitations.component';
 
 
 @NgModule({
@@ -232,8 +233,8 @@ import { TripComponent } from './trip/trip.component';
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
-        
-        
+
+
 
     ],
     declarations: [
@@ -280,6 +281,7 @@ import { TripComponent } from './trip/trip.component';
         NotfoundComponent,
         AccessComponent,
         TripComponent,
+        GetAllInvitationsComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

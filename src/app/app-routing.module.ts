@@ -29,10 +29,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import {GetAllInvitationsComponent} from "./get-all-invitations/get-all-invitations.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
+            {path: 'AllInvitations' , component:GetAllInvitationsComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
