@@ -1,0 +1,20 @@
+<div class="col-12">
+    <div class="card">
+        <h5>Add Or Modify Code Invitation</h5>
+        <div class="formgroup-inline">
+            <div class="field">
+                <label htmlFor="firstname1" class="p-sr-only">Code Invitation</label>
+                <div class="flex align-items-center">
+                    <p-inputNumber  [(ngModel)]="code.CodeInvitation" id="CodeInvitation" mode="decimal" [showButtons]="true" [min]="0">
+                    </p-inputNumber>
+                    <p-button pRipple label="Ok" (click)="AddOrModify()"></p-button>
+                </div>
+            <br><br><br>
+        </div>
+
+        <button label="Delete Code" pButton></button>
+        <h3>Your Code is:</h3>
+        <h4>{{codetext}}</h4>
+    </div>
+</div>
+

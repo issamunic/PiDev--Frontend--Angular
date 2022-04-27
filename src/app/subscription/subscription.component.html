@@ -1,0 +1,142 @@
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+    <div class="text-900 font-bold text-6xl mb-4 text-center">Subscription</div>
+    <p>code-invitation works!</p>
+    <div class="col-12">
+        <div class="card">
+            <h3>Nbr of Employees : {{nbremployee}}</h3>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-12 lg:col-4">
+
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">Basic</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">$1000</span>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>100 Employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>upgrade account with 100 employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>10 employees for free</span>
+                        </li>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 lg:col-4">
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 h-full flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">Premium</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">$2500</span>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>250 Employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>upgrade account with 250 employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>50 employees for free</span>
+                        </li>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 lg:col-4">
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">Gold</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">$5000</span>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>500 Employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>upgrade account with 500 employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>150 employees for free</span>
+                        </li>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto"></button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="p-3 h-full">
+                <div class="shadow-2 p-3 flex flex-column surface-card" style="border-radius: 6px">
+                    <div class="text-900 font-medium text-xl mb-2">custom subscrption</div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <div class="flex align-items-center">
+                        <span class="font-bold text-2xl text-900">$10 per employe</span>
+                    </div>
+                    <br>
+                    <div class="flex align-items-center">
+                    <h5>Enter the number of employees :  </h5>
+                    </div>
+                    <div class="flex align-items-center">
+                    <p-inputNumber  [(ngModel)]="custom" id="custom" mode="decimal" [showButtons]="true" [min]="0">
+                    </p-inputNumber>
+                    <p-button pRipple label="Ok" (click)="sub()"></p-button>
+                    </div>
+                    <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
+                    <ul class="list-none p-0 m-0 flex-grow-1">
+                        <div class="flex align-items-center">
+                            <span class="font-bold text-2xl text-900">${{price}}</span>
+                        </div>
+                        <br>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>{{custom}} Employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>upgrade account with {{custom}}  employees</span>
+                        </li>
+                        <li class="flex align-items-center mb-3">
+                            <i class="pi pi-check-circle text-green-500 mr-2"></i>
+                            <span>{{nbr}} employees for free</span>
+                        </li>
+                    </ul>
+                    <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full p-button-outlined"></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

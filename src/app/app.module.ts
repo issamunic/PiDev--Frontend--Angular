@@ -142,6 +142,14 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
 import { GetAllInvitationsComponent } from './get-all-invitations/get-all-invitations.component';
+import { GetInvitationsCompanyComponent } from './get-invitations-company/get-invitations-company.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { HistorySubscriptionCompanyComponent } from './history-subscription-company/history-subscription-company.component';
+import { SubAdminComponent } from './sub-admin/sub-admin.component';
+import { ListCompanyEmployeeAdminComponent } from './list-company-employee-admin/list-company-employee-admin.component';
+import { CodeInvitationComponent } from './code-invitation/code-invitation.component';
+import { CodeInvitationAdminComponent } from './code-invitation-admin/code-invitation-admin.component';
+import { ListCompanyEmployeeComponent } from './list-company-employee/list-company-employee.component';
 
 
 @NgModule({
@@ -236,6 +244,7 @@ import { GetAllInvitationsComponent } from './get-all-invitations/get-all-invita
 
 
 
+
     ],
     declarations: [
         AppMainComponent,
@@ -282,6 +291,14 @@ import { GetAllInvitationsComponent } from './get-all-invitations/get-all-invita
         AccessComponent,
         TripComponent,
         GetAllInvitationsComponent,
+        GetInvitationsCompanyComponent,
+        SubscriptionComponent,
+        HistorySubscriptionCompanyComponent,
+        SubAdminComponent,
+        ListCompanyEmployeeAdminComponent,
+        CodeInvitationComponent,
+        CodeInvitationAdminComponent,
+        ListCompanyEmployeeComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

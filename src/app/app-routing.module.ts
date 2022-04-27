@@ -30,11 +30,25 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import {GetAllInvitationsComponent} from "./get-all-invitations/get-all-invitations.component";
+import {GetInvitationsCompanyComponent} from "./get-invitations-company/get-invitations-company.component";
+import {SubscriptionComponent} from "./subscription/subscription.component";
+import {HistorySubscriptionCompanyComponent} from "./history-subscription-company/history-subscription-company.component";
+import {SubAdminComponent} from "./sub-admin/sub-admin.component";
+import {ListCompanyEmployeeAdminComponent} from "./list-company-employee-admin/list-company-employee-admin.component";
+import {CodeInvitationComponent} from "./code-invitation/code-invitation.component";
+import {CodeInvitationAdminComponent} from "./code-invitation-admin/code-invitation-admin.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
             {path: 'AllInvitations' , component:GetAllInvitationsComponent},
+            {path: 'invitations',component:GetInvitationsCompanyComponent},
+            {path: 'sub', component:SubscriptionComponent},
+            {path: 'historysub',component:HistorySubscriptionCompanyComponent},
+            {path: 'codeinvitation',component:CodeInvitationComponent},
+            {path: 'admin/sub',component:SubAdminComponent},
+            {path: 'admin/listecompanyemployee',component:ListCompanyEmployeeAdminComponent},
+            {path: 'admin/codeinvitation',component:CodeInvitationAdminComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -59,7 +73,7 @@ import {GetAllInvitationsComponent} from "./get-all-invitations/get-all-invitati
                     {path: 'pages/timeline', component: TimelineComponent},
                     {path: 'pages/empty', component: EmptyComponent},
                     {path: 'icons', component: IconsComponent},
-                    {path: 'blocks', component: BlocksComponent},
+                    {path: 'pages/access', component: BlocksComponent},
                     {path: 'documentation', component: DocumentationComponent}
                 ],
             },

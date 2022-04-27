@@ -1,18 +1,15 @@
-import {Invitation} from "../entity/invitation";
-import {InvitationService} from "../services/houssem/invitation.service";
-import {ConfirmationService, MessageService} from "primeng/api";
 import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ConfirmationService, MessageService} from "primeng/api";
 import {Customer, Representative} from "../api/customer";
 import {Product} from "../api/product";
 import {Table} from "primeng/table";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
 
-
 @Component({
-  selector: 'app-get-all-invitations',
-  templateUrl: './get-all-invitations.component.html',
-  styleUrls: ['./get-all-invitations.component.scss'],
+  selector: 'app-code-invitation-admin',
+  templateUrl: './code-invitation-admin.component.html',
+  styleUrls: ['./code-invitation-admin.component.scss'],
     providers: [MessageService, ConfirmationService],
     styles: [`
         :host ::ng-deep  .p-frozen-column {
@@ -28,9 +25,7 @@ import {ProductService} from "../service/productservice";
         }
     `]
 })
-export class GetAllInvitationsComponent implements OnInit {
-  AllInvitations : any;
-  invitation! : Invitation;
+export class CodeInvitationAdminComponent implements OnInit {
 
     customers1: Customer[];
 
@@ -64,7 +59,7 @@ export class GetAllInvitationsComponent implements OnInit {
 
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private serviceInvitation:InvitationService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.customerService.getCustomersLarge().then(customers => {
@@ -147,12 +142,5 @@ export class GetAllInvitationsComponent implements OnInit {
     clear(table: Table) {
         table.clear();
         this.filter.nativeElement.value = '';
-    }
-
-
-    GetAllInvitations() {
-      this.serviceInvitation.GetAllInvitationsService().subscribe(res => {
-        console.log(res);
-      })
     }
 }
