@@ -1,7 +1,7 @@
 import { CommentService } from './../../services/comment/comment.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { PostService } from './../../services/post/post.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +15,7 @@ import { Comment } from 'src/app/models/comment';
 })
 export class PostComponent implements OnInit {
   postId: number;
-  post: Post;
+  @Input() post: Post;
   commentForm: FormGroup;
   commentPayload: Comment;
   comments: Comment[];
@@ -36,14 +36,10 @@ export class PostComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.auth.auth().subscribe(res =>{
-      console.log(res);
-      localStorage.setItem('token', res['jwtToken']);
-    });
-    this.PostService.getAllPosts().subscribe(res => {
-      console.log(res);
-    })
-    this.getPostById();
+   
+    console.log(this.post);
+    
+    
     
   }
   postComment() {
@@ -63,7 +59,7 @@ export class PostComponent implements OnInit {
     });
   }
   private getPostById() {
-    this.PostService.getPost(56).subscribe(data => {
+    this.PostService.getPost(this.postId).subscribe(data => {
       this.post = data;
       console.log(this.post)
       this.getCommentsForPost();  

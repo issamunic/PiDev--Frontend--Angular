@@ -9,5 +9,10 @@
 @import "assets/sass/layout/_variables";
 @import "assets/sass/layout/_layout";
 @import "assets/sass/overrides/_overrides";
-@import '~quill/dist/quill.bubble.css';
-@import '../node_modules/quill/dist/quill.snow.css';
+@import '~quill/dist/quill.snow.css';
+.ql-snow .ql-editor img{
+    max-width: 25% !important;
+}
+.ql-snow  {
+  max-width: 700px;
+}

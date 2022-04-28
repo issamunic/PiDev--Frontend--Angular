@@ -145,7 +145,7 @@ import { PostComponent } from './post/post/post.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { ForumSideBarComponent } from './forumSideBar/forum-side-bar/forum-side-bar.component';
 import { CommentComponent } from './comment/comment/comment.component';
-import {EditorModule} from 'primeng/editor'
+import {EditorModule} from 'primeng/editor';
 import { QuillModule } from 'ngx-quill';
 
 
@@ -242,7 +242,8 @@ import { QuillModule } from 'ngx-quill';
         ReactiveFormsModule,
         CardModule,
         EditorModule,
-        QuillModule
+        QuillModule,
+        
         
         
 

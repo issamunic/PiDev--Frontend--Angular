@@ -26,6 +26,14 @@ export class CommentService {
       'Content-Type': 'application/json',
       'Authorization': "Bearer "+localStorage.getItem('token')
     })
-    return this.httpClient.get<Comment[]>(this.url +'SpringMVC/comment/retrieve-comment/' + postId,{ headers:headers });
+    return this.httpClient.get<Comment[]>(this.url +'/SpringMVC/comment/retrieve-comment/' + postId,{ headers:headers });
+  }
+  getCommentsPourcentage() {
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    console.log('pourcentages');
+    return this.httpClient.get<[]>(this.url+"/SpringMVC/comment/retrieve-pourcentages",{headers:headers});
   }
 }
