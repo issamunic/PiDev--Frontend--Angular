@@ -30,11 +30,29 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { EmployeComponent } from './employe/employe.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            { path: "", redirectTo:"home", pathMatch:"full" },//full,prefix
             {path: 'trip', component: TripComponent},
-            {path: 'profil', component: MiniProfilComponent},
+            {path: 'miniProfil', component: MiniProfilComponent},
+            
+            {path: 'profile', component: ProfileComponent},
+            { path: 'home', component: HomeComponent },
+            { path: 'admin', component: AdminComponent},
+            { path: 'user', component: UserComponent},
+            { path: 'employe', component: EmployeComponent},
+            { path: 'authenticate', component: AuthenticateComponent},
+            { path: 'forbidden', component: ForbiddenComponent},
+            { path: 'header', component: HeaderComponent},
 
             {
                 path: '', component: AppMainComponent,

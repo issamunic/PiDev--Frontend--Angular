@@ -18,15 +18,17 @@ export class MiniProfilComponent implements OnInit {
   ngOnInit(): void {
       this.profileService.getUserInfo(this.id).subscribe( res => 
         {
-          this.user = res;
-          this.name = this.user['firstNameEmploye']+" "
-          this.name += this.user['lastNameEmploye']
-
-
-
-          console.log("user ba3ed ma stanna: "+this.name);
           
-          console.log(this.user['image']['name']);
+          this.user = res;
+          console.log(this.user);
+          //this.name = this.user['firstNameEmploye']+" "
+          //this.name += this.user['lastNameEmploye']
+
+
+
+          //console.log("user ba3ed ma stanna: "+this.name);
+          
+          /*console.log(this.user['image']['name']);
           
           
 
@@ -35,7 +37,7 @@ export class MiniProfilComponent implements OnInit {
             let objectURL = URL.createObjectURL(blob);       
             this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
 
-          });
+          });*/
           
         })
 

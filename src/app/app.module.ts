@@ -142,6 +142,15 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
 import { MiniProfilComponent } from './mini-profil/mini-profil.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
+import { EmployeComponent } from './employe/employe.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -233,7 +242,7 @@ import { MiniProfilComponent } from './mini-profil/mini-profil.component';
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
-        
+        RouterModule
         
 
     ],
@@ -282,6 +291,14 @@ import { MiniProfilComponent } from './mini-profil/mini-profil.component';
         AccessComponent,
         TripComponent,
         MiniProfilComponent,
+        ProfileComponent,
+        HomeComponent,
+        AdminComponent,
+        UserComponent,
+        EmployeComponent,
+        ForbiddenComponent,
+        HeaderComponent,
+        AuthenticateComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

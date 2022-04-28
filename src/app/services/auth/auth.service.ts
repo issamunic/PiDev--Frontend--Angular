@@ -19,8 +19,8 @@ export class AuthService {
     
    return  this.http.post(this.url+"/SpringMVC/authenticate",
    {
-      "userName":"issam22ba@gmail.com",
-      "userPassword":"123456"
+      "userName":"mohamed@gmail.com",
+      "userPassword":"0000"
     }
     );
   }
