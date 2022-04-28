@@ -1,0 +1,98 @@
+<!--<div class="grid p-fluid">
+    <div class="col-12 lg:col-6">
+        <div class="card">
+            <h5>Claim number by last-week : {{this.numberClaimbyweek}} Claims</h5>
+            <p-chart type="line" [data]="lineData" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+        </div>
+        <div class="card">
+            <h5>Claim number by last- : {{this.numberClaimbyMounth}} Claims</h5>
+            <p-chart type="line" [data]="lineData1" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+            
+        </div>
+
+        <div class="card">
+            <h5>Claim number by last-year : {{this.numberClaimbyYear}} Claims</h5>
+            <p-chart type="line" [data]="lineData2" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6">
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">Doughnut Chart</h5>
+            <p-chart type="doughnut" [data]="pieData" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+        </div>
+
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">Doughnut Chart</h5>
+            <p-chart type="doughnut" [data]="pieData1" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+        </div>
+        <div class="card flex flex-column align-items-center">
+            <h5 class="text-left w-full">Doughnut Chart</h5>
+            <p-chart type="doughnut" [data]="pieData2" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+        </div>
+    </div>
+
+    <div>
+        
+    </div>
+</div>
+-->
+<p-tabView>
+    <p-tabPanel header="Week">
+        <div class="grid p-fluid">
+            <div class="col-12 lg:col-6">
+                <div class="card">
+                    <h5>Claim number by last-week : {{this.numberClaimbyweek}} Claims</h5>
+                    <p-chart type="line" [data]="lineData" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>  
+            </div>
+            <div class="col-12 lg:col-6">
+                <div class="card flex flex-column align-items-center">
+                    <h5 class="text-left w-full">Doughnut Chart</h5>
+                    <p-chart type="doughnut" [data]="pieData" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>
+
+            </div>
+
+            </div>
+  
+    </p-tabPanel>
+    <p-tabPanel header="Month">
+        <div class="grid p-fluid">
+            <div class="col-12 lg:col-6">
+                <div class="card">
+                    <h5>Claim number by last- : {{this.numberClaimbyMounth}} Claims</h5>
+                    <p-chart type="line" [data]="lineData1" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+                    
+                </div>
+            </div>
+            <div class="col-12 lg:col-6">
+                <div class="card flex flex-column align-items-center">
+                    <h5 class="text-left w-full">Doughnut Chart</h5>
+                    <p-chart type="doughnut" [data]="pieData1" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>
+
+            </div>
+
+            </div>
+
+    </p-tabPanel>
+    <p-tabPanel header="Year">
+        <div class="grid p-fluid">
+            <div class="col-12 lg:col-6">
+                <div class="card">
+                    <h5>Claim number by last-year : {{this.numberClaimbyYear}} Claims</h5>
+                    <p-chart type="line" [data]="lineData2" [options]="lineOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>
+            </div>
+            <div class="col-12 lg:col-6">
+                <div class="card flex flex-column align-items-center">
+                    <h5 class="text-left w-full">Doughnut Chart</h5>
+                    <p-chart type="doughnut" [data]="pieData2" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>
+            </div>
+
+            </div>
+
+    </p-tabPanel>
+</p-tabView>
+

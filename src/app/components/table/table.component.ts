@@ -7,6 +7,7 @@ import { Table } from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api'
 
 @Component({
+    selector : 'table1',
     templateUrl: './table.component.html',
     providers: [MessageService, ConfirmationService],
     styleUrls: ['../../../assets/demo/badges.scss'],

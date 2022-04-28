@@ -1,0 +1,88 @@
+<p-messages [(value)]="msgs"></p-messages>
+
+<div class="card">
+    <h1>Add claim</h1>
+    <br>
+<div class="card">
+    <h5>Claim Type</h5>
+<br>
+    <div class="grid">
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton mb-0">
+                <p-radioButton name="city" value="A" [(ngModel)]="valRadio" id="city1"></p-radioButton>
+                <label for="city1">Problème logistique </label>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton">
+                <p-radioButton name="city" value="B" [(ngModel)]="valRadio"
+                               id="city2"></p-radioButton>
+                <label for="city2">Problème d'organisation</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton">
+                <p-radioButton name="city" value="C" [(ngModel)]="valRadio" id="city3"></p-radioButton>
+                <label for="city3">Hotel inconfortable</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton mb-0">
+                <p-radioButton name="city" value="D" [(ngModel)]="valRadio" id="city1"></p-radioButton>
+                <label for="city1">Rythme acceleré</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton">
+                <p-radioButton name="city" value="E" [(ngModel)]="valRadio"
+                               id="city2"></p-radioButton>
+                <label for="city2">Problème personnel</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="field-radiobutton">
+                <p-radioButton name="city" value="F" [(ngModel)]="valRadio" id="city3"></p-radioButton>
+                <label for="city3">manque de sécurité</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="col-12">
+		<div class="card">
+			<div class="grid p-fluid">
+				<div class="col-12 md:col-6">
+                    <h5>Autre</h5>
+                    <textarea pInputTextarea placeholder="Your Message" autoResize rows="3" cols="70" [(ngModel)]="valTextArea"></textarea>
+				</div>
+	
+				
+				<div class="col-12 md:col-6">
+                    <div class="col-12">
+                        <h5>Severity</h5>
+                        <input type="text" pInputText [(ngModel)]="valSlider" readonly/>
+                        <p-slider [(ngModel)]="valSlider"></p-slider>
+                    </div>
+				</div>
+				
+				<div class="col-12 md:col-6">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <button pButton type="button" label="Add claim" class="p-button-secondary" (click)="addClaim()" class="p-button-rounded p-button-success mr-2"></button>
+  <button pButton type="button" class="p-button-secondary"  (click)="showDialog()"  label="Show"></button>
+  <div *ngIf="">  <p-message severity="success" text={{msgs}}></p-message> </div>
+ <p-dialog header="Title" [(visible)]="display">
+    <app-list-claim></app-list-claim>
+
+</p-dialog>
+
+
+</div>
+

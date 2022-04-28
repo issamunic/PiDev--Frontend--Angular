@@ -45,7 +45,7 @@ export class CrudComponent implements OnInit {
         ];
 
         this.statuses = [
-            {label: 'INSTOCK', value: 'instock'},
+            {label: 'INSTOCK', value: 'instock'},  
             {label: 'LOWSTOCK', value: 'lowstock'},
             {label: 'OUTOFSTOCK', value: 'outofstock'}
         ];

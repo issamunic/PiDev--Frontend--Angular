@@ -1,0 +1,89 @@
+
+<p-messages ></p-messages>
+
+<div class="card" >
+    <h1>Add claim</h1>
+    <br>
+<div class="col-12">
+<div class="card">
+    <div class="col-12 md:col-12">
+        <h5>Activity Description</h5>
+        <textarea pInputTextarea placeholder="Your Message" autoResize rows="5" cols="160" [(ngModel)]="description" ></textarea>
+    </div>
+</div>
+</div>
+
+    <div class="col-12">
+		<div class="card">
+			<div class="grid p-fluid">
+				<div class="col-12 md:col-6">
+                    <h5>Activity title</h5>
+                    <input type="text" pInputText [(ngModel)]="title"/>
+				</div>
+	
+				<div class="col-12 md:col-6">
+                    <h5>Activity period</h5>
+                    <input type="text" pInputText [(ngModel)]="period" />
+				</div>
+                <div class="col-12 md:col-6">
+                    <h5>Progress</h5>
+                    <input type="text" pInputText [(ngModel)]="progress"/>
+				</div>
+                <div class="col-12 md:col-6">
+                    <h5>Numero TripPlan</h5>
+                    <input type="text" pInputText [(ngModel)]="tripPlanNum"/>
+				</div>
+				
+				<div class="col-12 md:col-6">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="card">
+
+  <button pButton type="button" label="Add Activity" class="p-button-secondary" (click)="addActivity()" class="p-button-rounded p-button-success mr-2"></button>
+  <button pButton type="button" label="Add Activities" class="p-button-secondary" (click)="addActivities()" class="p-button-rounded p-button-success mr-2"></button>
+  <button pButton type="button" class="p-button-secondary"  (click)="showDialog()"  label="Show"></button>
+
+</div>
+
+</div>
+
+<p-dialog header="Title" [(visible)]="display">
+    <p-pickList
+  [source]="sourceActivities"
+  [target]="targetActivities"
+  sourceHeader="Available"
+  targetHeader="Selected"
+  dragdrop="true"
+  [responsive]="true"
+  [sourceStyle]="{ height: '300px' }"
+  [targetStyle]="{ height: '300px' }"
+  filterBy="name"
+  sourceFilterPlaceholder="Search by name"
+  targetFilterPlaceholder="Search by name"
+>
+  <ng-template let-Activity pTemplate="item">
+    <div class="Activity-item">
+      <div class="Activity-list-detail">
+        <h5 class="p-mb-2">{{ Activity.acivity }}</h5>
+        <span class="product-category">Period : {{Activity.activityDescription }}</span>
+      </div>
+      <div class="Activity-list-action">
+        <h6 class="p-mb-2">Description : {{ Activity.period }}</h6>
+       
+      </div>
+    </div>
+  </ng-template>
+</p-pickList>
+<br>
+<button pButton type="button" label="Planificate" class="p-button-secondary" (click)="activitiesPlanification()" class="p-button-rounded p-button-success mr-2"></button>
+{{tripPlanNum}}
+</p-dialog>
+<full-calendar [options]="calendarOptions"></full-calendar>
+
+
+
+

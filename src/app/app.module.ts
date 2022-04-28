@@ -141,6 +141,20 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
+import { ClaimComponent } from './claim/claim.component';
+import { AddClaimComponent } from './add-claim/add-claim.component';
+import { ListClaimComponent } from './list-claim/list-claim.component';
+import { AddActivitiesComponent } from './add-activities/add-activities.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin
+]);
+
+
+
 
 
 @NgModule({
@@ -154,6 +168,7 @@ import { TripComponent } from './trip/trip.component';
         AutoCompleteModule,
         AvatarModule,
         AvatarGroupModule,
+        FullCalendarModule,
         BadgeModule,
         BreadcrumbModule,
         ButtonModule,
@@ -280,6 +295,10 @@ import { TripComponent } from './trip/trip.component';
         NotfoundComponent,
         AccessComponent,
         TripComponent,
+        ClaimComponent,
+        AddClaimComponent,
+        ListClaimComponent,
+        AddActivitiesComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

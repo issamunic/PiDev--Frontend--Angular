@@ -29,6 +29,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { ClaimComponent } from './claim/claim.component';
+import { AddClaimComponent } from './add-claim/add-claim.component';
+import { AddActivitiesComponent } from './add-activities/add-activities.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -39,6 +42,9 @@ import { AccessComponent } from './components/access/access.component';
                     {path: '', component: DashboardComponent},
                     {path: 'uikit/formlayout', component: FormLayoutComponent},
                     {path: 'uikit/input', component: InputComponent},
+                    {path: 'uikit/claim', component: ClaimComponent},
+                    {path: 'uikit/claim-add', component: AddClaimComponent},
+                    {path: 'uikit/actvity-add', component: AddActivitiesComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateComponent},
                     {path: 'uikit/button', component: ButtonComponent},
