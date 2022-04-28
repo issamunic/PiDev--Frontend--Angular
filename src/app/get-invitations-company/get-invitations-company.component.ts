@@ -33,6 +33,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
     AllInvitations : Invitation[];
     invitation :Invitation;
 
+    msg: any;
 
     productDialog: boolean;
 
@@ -53,6 +54,10 @@ export class GetInvitationsCompanyComponent implements OnInit {
     statuses: any[];
 
     rowsPerPageOptions = [5, 10, 20];
+    emailinput: any;
+
+    numberinput: any;
+
 
     constructor(private serviceInvitation:InvitationService,private productService: ProductService, private messageService: MessageService,
                 private confirmationService: ConfirmationService) {}
@@ -63,7 +68,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
 
         this.cols = [
             {field: 'Email', header: 'Email'},
-            {field: 'Number', header: 'Price'},
+            {field: 'Number', header: 'Number'},
             {field: 'dateInvitation', header: 'dateInvitation'},
             {field: 'dateAcceptInvitation', header: 'dateAcceptInvitation'},
             {field: 'statusInvitation', header: 'statusInvitation'}
@@ -71,7 +76,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
 
         this.statuses = [
             {label: 'accpeted', value: 'accpeted'},
-            {label: 'pending', value: 'lowstock'},
+            {label: 'pending', value: 'pending'},
         ];
     }
 
@@ -171,4 +176,15 @@ export class GetInvitationsCompanyComponent implements OnInit {
 
     }
 
+    deleleinvit(id :any) {
+        let resp= this.serviceInvitation.DeleteInvitationService(id);
+        resp.subscribe((data)=>this.msg=data);
+    }
+
+    addcode() {
+        // @ts-ignore
+        let resp= this.serviceInvitation.AddInvitationService({number: this.numberinput, mailEmployee: this.emailinput});
+        resp.subscribe((data)=>this.msg=data);
+        console.log(this.AllInvitations);
+    }
 }

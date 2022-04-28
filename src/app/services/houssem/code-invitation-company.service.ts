@@ -15,14 +15,14 @@ export class CodeInvitationCompanyService {
   GetAllCodeInvitationCompany():Observable<CodeInvitationCompany[]> {
     return this._http.get<CodeInvitationCompany[]>(`${this.API_URL}/getAll`);
   }
-  AddCodeInvitationCompany(code:any) {
+  AddCodeInvitationCompany(code:CodeInvitationCompany) {
     return this._http.post(`${this.API_URL}/add`,code,{responseType:'text' as 'json'});
   }
   DeleteCodeInvitationCompany(id:any){
     return this._http.delete(`${this.API_URL}/delete/${id}`);
   }
-  getById(id: any){
-    return this._http.get(`${this.API_URL}/getById/${id}`)
+  getById(id: any):Observable<CodeInvitationCompany>{
+    return this._http.get<CodeInvitationCompany>(`${this.API_URL}/getById/${id}`)
   }
   updateCodeInvitationCompany(CodeInvitationCompany: any){
     return this._http.get(`${this.API_URL}/update`,CodeInvitationCompany)

@@ -29,8 +29,8 @@ import {ProductService} from "../service/productservice";
     `]
 })
 export class GetAllInvitationsComponent implements OnInit {
-  AllInvitations : any;
-  invitation! : Invitation;
+  AllInvitations : Invitation[];
+  invitation : Invitation;
 
     customers1: Customer[];
 

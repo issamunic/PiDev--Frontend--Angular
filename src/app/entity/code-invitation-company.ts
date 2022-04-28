@@ -1,11 +1,11 @@
 export class CodeInvitationCompany {
     idCodeInvitationCompany:Number
-    CodeInvitation:String
-    DateCreationCodeInvitationCompany:Date
+    codeInvitation:String
+    dateCreationCodeInvitationCompany:Date
   constructor(
     idCodeInvitationCompany:Number,
-    CodeInvitation:String,
-    DateCreationCodeInvitationCompany:Date,
+    codeInvitation:String,
+    dateCreationCodeInvitationCompany:Date,
 
     User:bigint
     ){}

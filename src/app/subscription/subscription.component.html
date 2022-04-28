@@ -1,6 +1,5 @@
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
     <div class="text-900 font-bold text-6xl mb-4 text-center">Subscription</div>
-    <p>code-invitation works!</p>
     <div class="col-12">
         <div class="card">
             <h3>Nbr of Employees : {{nbremployee}}</h3>
@@ -28,11 +27,11 @@
                         </li>
                         <li class="flex align-items-center mb-3">
                             <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                            <span>10 employees for free</span>
+                            <span>+ 10 employees for free</span>
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border mt-auto" />
-                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto"></button>
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto" (click)="buy100()"></button>
                 </div>
             </div>
         </div>
@@ -57,11 +56,11 @@
                         </li>
                         <li class="flex align-items-center mb-3">
                             <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                            <span>50 employees for free</span>
+                            <span>+ 50 employees for free</span>
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
-                    <button pButton pRipple label="Buy Now" class="p-3 w-full"></button>
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full"(click)="buy250()"></button>
                 </div>
             </div>
         </div>
@@ -86,11 +85,11 @@
                         </li>
                         <li class="flex align-items-center mb-3">
                             <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                            <span>150 employees for free</span>
+                            <span>+ 150 employees for free</span>
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
-                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto"></button>
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full mt-auto" (click)="buy500()"></button>
 
                 </div>
             </div>
@@ -129,11 +128,11 @@
                         </li>
                         <li class="flex align-items-center mb-3">
                             <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                            <span>{{nbr}} employees for free</span>
+                            <span>+ {{nbr}} employees for free</span>
                         </li>
                     </ul>
                     <hr class="mb-3 mx-0 border-top-1 border-none surface-border" />
-                    <button pButton pRipple label="Buy Now" class="p-3 w-full p-button-outlined"></button>
+                    <button pButton pRipple label="Buy Now" class="p-3 w-full p-button-outlined"(click)="buycustom()"></button>
                 </div>
             </div>
         </div>

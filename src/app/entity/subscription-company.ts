@@ -1,7 +1,9 @@
 export class SubscriptionCompany {
+    idSubscriptionCompany:Number
+    nbrEmployeeMax:Number
   constructor(
-    idSubscriptionCompany:bigint,
-    NbrEmployeeMax:bigint,
+    idSubscriptionCompany:Number,
+    nbrEmployeeMax:Number,
 
     Company:bigint
   ) {

@@ -12,8 +12,8 @@ export class InvitationService {
   GetAllInvitationsService():Observable<Invitation[]> {
     return this._http.get<Invitation[]>(`${this.API_URL}/getAll`);
   }
-  AddInvitationService(Invitation: any) {
-    return this._http.post(`${this.API_URL}/add`, Invitation);
+  AddInvitationService(Invitation: Invitation) {
+    return this._http.post(`${this.API_URL}/add`, Invitation,{responseType:'text' as 'json'});
   }
   DeleteInvitationService(id: any){
     return this._http.delete(`${this.API_URL}/delete/${id}`);

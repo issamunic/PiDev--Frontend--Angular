@@ -41,7 +41,7 @@ import {CodeInvitationAdminComponent} from "./code-invitation-admin/code-invitat
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
-            {path: 'AllInvitations' , component:GetAllInvitationsComponent},
+            {path: 'admin/invitations' , component:GetAllInvitationsComponent},
             {path: 'invitations',component:GetInvitationsCompanyComponent},
             {path: 'sub', component:SubscriptionComponent},
             {path: 'historysub',component:HistorySubscriptionCompanyComponent},

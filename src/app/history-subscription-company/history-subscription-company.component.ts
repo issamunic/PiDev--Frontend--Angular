@@ -5,12 +5,14 @@ import {Product} from "../api/product";
 import {Table} from "primeng/table";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
+import {HistorySubcriptionCompany} from "../entity/history-subcription-company";
+import {HistorySubcriptionCompanyService} from "../services/houssem/history-subcription-company.service";
 
 @Component({
   selector: 'app-history-subscription-company',
   templateUrl: './history-subscription-company.component.html',
     providers: [MessageService, ConfirmationService],
-    styleUrls: ['../../../assets/demo/badges.scss'],
+    styleUrls: ['./history-subscription-company.component.scss'],
     styles: [`
         :host ::ng-deep  .p-frozen-column {
             font-weight: bold;
@@ -26,6 +28,8 @@ import {ProductService} from "../service/productservice";
     `]
 })
 export class HistorySubscriptionCompanyComponent implements OnInit {
+    AllHistory :HistorySubcriptionCompany[];
+    historySubcriptionCompany : HistorySubcriptionCompany;
 
     customers1: Customer[];
 
@@ -59,9 +63,16 @@ export class HistorySubscriptionCompanyComponent implements OnInit {
 
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private historyservice:HistorySubcriptionCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
+        this.historyservice.GetAllHistorySubcriptionCompany().subscribe(res=>this.AllHistory=res);
+        this.historyservice.GetAllHistorySubcriptionCompany().subscribe(res => {
+            console.log(res);
+        })
+
+
+
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;

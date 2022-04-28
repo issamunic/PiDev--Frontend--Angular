@@ -5,6 +5,8 @@ import {Product} from "../api/product";
 import {Table} from "primeng/table";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
+import {CodeInvitationCompanyService} from "../services/houssem/code-invitation-company.service";
+import {CodeInvitationCompany} from "../entity/code-invitation-company";
 
 @Component({
   selector: 'app-code-invitation-admin',
@@ -26,6 +28,9 @@ import {ProductService} from "../service/productservice";
     `]
 })
 export class CodeInvitationAdminComponent implements OnInit {
+    Allcode: CodeInvitationCompany[];
+    codeinvitationcompany : CodeInvitationCompany;
+    code : CodeInvitationCompany;
 
     customers1: Customer[];
 
@@ -54,14 +59,18 @@ export class CodeInvitationAdminComponent implements OnInit {
     idFrozen: boolean = false;
 
     loading:boolean = true;
-
+    msg : any ;
     @ViewChild('dt') table: Table;
 
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private servicecodde:CodeInvitationCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
+        this.servicecodde.GetAllCodeInvitationCompany().subscribe(res=>this.Allcode=res);
+        this.servicecodde.GetAllCodeInvitationCompany().subscribe(res => {
+            console.log(res);
+        })
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;
@@ -142,5 +151,14 @@ export class CodeInvitationAdminComponent implements OnInit {
     clear(table: Table) {
         table.clear();
         this.filter.nativeElement.value = '';
+    }
+
+    deleleCode(id :any) {
+            let resp= this.servicecodde.DeleteCodeInvitationCompany(id);
+            resp.subscribe((data)=>this.msg=data);
+    }
+
+    EditCode(codeinvitationcompany: any) {
+
     }
 }

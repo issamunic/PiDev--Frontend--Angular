@@ -25,7 +25,7 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload mode="basic" accept="csv/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
+                    <p-fileUpload mode="basic" accept=".csv" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
                     <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
@@ -42,38 +42,37 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="Email">Email <p-sortIcon field="Email"></p-sortIcon></th>
-                        <th pSortableColumn="Number">Number <p-sortIcon field="Number"></p-sortIcon></th>
-                        <th pSortableColumn="dateInvitation">dateInvitation <p-sortIcon field="dateInvitation"></p-sortIcon></th>
+                        <th pSortableColumn="mailEmployee">Email <p-sortIcon field="mailEmployee"></p-sortIcon></th>
+                        <th pSortableColumn="number">Number <p-sortIcon field="number"></p-sortIcon></th>
+                        <th pSortableColumn="dateCreationInvitation">dateInvitation <p-sortIcon field="dateCreationInvitation"></p-sortIcon></th>
                         <th pSortableColumn="dateAcceptInvitation">dateAcceptInvitation <p-sortIcon field="dateAcceptInvitation"></p-sortIcon></th>
                         <th pSortableColumn="statusInvitation">statusInvitation <p-sortIcon field="statusInvitation"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-invitation>
                     <tr>
                         <td style="width:14%; min-width:10rem;">
                             <span class="p-column-title">Number</span>
-                            {{product.name}}
+                            {{invitation.mailEmployee}}
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                        <span class="p-column-title">Number</span>
-                        {{product.name}}
+                            {{invitation.number}}
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">Number</span>
-                            {{product.name}}
+                            {{invitation.dateCreationInvitation}}
+
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">Number</span>
-                            {{product.name}}
+                            {{invitation.dateAcceptInvitation}}
                         </td>
-                        <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Status</span>
-                            <span [class]="'product-badge status-' + (product.inventoryStatus ? product.inventoryStatus.toLowerCase() : '')">{{product.inventoryStatus}}</span>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{invitation.statusInvitation}}
                         </td>
                         <td>
                             <div class="flex">
-                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                        (click)="deleleinvit(invitation.idInvitation)"></button>
                             </div>
                         </td>
                     </tr>
@@ -84,19 +83,21 @@
         <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="new invitation" [modal]="true" class="p-fluid">
             <ng-template pTemplate="content">
                 <div class="field">
-                    <label for="name">Email</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.name">Name is required.</small>
+                    <label for="Email">Email</label>
+                    <input type="text" pInputText id="Email" [(ngModel)]="emailinput" required autofocus
+                           [ngClass]="{'ng-invalid ng-dirty' : submitted && !emailinput}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && emailinput">Name is required.</small>
                 </div>
                 <div class="field">
                     <label for="number">Number</label>
-                    <input type="number" pInputText id="number" [(ngModel)]="product.code" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.code}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.code">Number is required.</small>
+                    <input type="number" pInputText id="number" [(ngModel)]="numberinput" required autofocus
+                           [ngClass]="{'ng-invalid ng-dirty' : submitted && !numberinput}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !numberinput">Number is required.</small>
                 </div>
             </ng-template>
             <ng-template pTemplate="footer">
                 <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-                <button pButton pRipple label="Send" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+                <button pButton pRipple label="Send" icon="pi pi-check" class="p-button-text" (click)="addcode()"></button>
             </ng-template>
         </p-dialog>
 
