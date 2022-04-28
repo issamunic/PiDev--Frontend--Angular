@@ -149,7 +149,7 @@ export class ClaimComponent implements OnInit {
           }
         );
       }
-
+//aaaa
       public fetchClaimByLastyear(){
         this.claimServices.fetchClaimByLastYear().subscribe(
           data => {
