@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -151,6 +151,10 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RouterModule } from '@angular/router';
+import { CompanyComponent } from './company/company.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './services/user/user.service';
 
 
 @NgModule({
@@ -298,12 +302,21 @@ import { RouterModule } from '@angular/router';
         EmployeComponent,
         ForbiddenComponent,
         HeaderComponent,
-        AuthenticateComponent
+        AuthenticateComponent,
+        CompanyComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent
+        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent,
+
+        AuthGuard,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        UserService
     ],
     bootstrap: [AppComponent]
 })

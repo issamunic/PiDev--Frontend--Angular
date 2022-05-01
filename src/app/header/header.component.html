@@ -13,17 +13,20 @@
             <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin">Admin Dashboard</a>
+            <a class="nav-link active" aria-current="page" routerLink="/admin"
+              *ngIf="userService.roleMatch(['admin'])">Admin Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/user">User Dashboard</a>
+            <a class="nav-link active" aria-current="page" routerLink="/company"
+              *ngIf="userService.roleMatch(['company'])">Company Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/employe">Employe Dashboard</a>
+            <a class="nav-link active" aria-current="page" routerLink="/employe"
+              *ngIf="userService.roleMatch(['employe'])">Employe Dashboard</a>
           </li>
         </ul>
-        <button type="button" class="btn btn-success" routerLink="/authenticate">authenticate</button>
-        <button type="button" class="btn btn-danger">Logout</button>
+        <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/authenticate">authenticate</button>
+        <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logOut()">Logout</button>
       </div>
     </div>
   </nav>

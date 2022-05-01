@@ -38,6 +38,8 @@ import { EmployeComponent } from './employe/employe.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { CompanyComponent } from './company/company.component';
+import { AuthGuard } from './auth/auth.guard';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -47,9 +49,10 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
             
             {path: 'profile', component: ProfileComponent},
             { path: 'home', component: HomeComponent },
-            { path: 'admin', component: AdminComponent},
+            { path: 'admin', component: AdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
             { path: 'user', component: UserComponent},
-            { path: 'employe', component: EmployeComponent},
+            { path: 'employe', component: EmployeComponent, canActivate:[AuthGuard],data:{role:['employe']} },
+            { path: 'company', component: CompanyComponent, canActivate:[AuthGuard],data:{role:['company']} },
             { path: 'authenticate', component: AuthenticateComponent},
             { path: 'forbidden', component: ForbiddenComponent},
             { path: 'header', component: HeaderComponent},
