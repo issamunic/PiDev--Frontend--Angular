@@ -1,0 +1,156 @@
+#container{
+    display: flex;
+    width:auto;
+    height: 62%;
+    flex-direction: column;
+}
+#header{
+    flex-basis: 80px;
+    background-color: #121116;
+    padding: 20px;
+    display: flex;
+    .detailGroup h5{
+        font-family: "roboto medium";
+        text-transform: uppercase;
+        justify-content: flex-start;
+        color:white;
+    }
+    h5 span{
+        color:gray;
+        font-family: "roboto regular";
+    }
+    h5{
+        color:gray
+    }
+
+}
+.avatarGroup{
+    display: flex;
+    justify-content: end;
+}
+#body{
+    background-color: #141318;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 20px; 
+    
+    .message{
+        
+        margin-top:10px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        .messageContent{
+
+            margin-left: 50px;            
+            padding: 10px;
+            border-radius: 0px 100px 100px 100px;
+            background-color: #292a33;
+            color: white;
+            
+        }
+        &.action{
+            text-align: center;
+            color: #292a33;
+            background-color: transparent;
+        }
+        &.me{
+            align-items: flex-end;  
+            .messageContent{
+                border-radius: 100px 100px 0px 100px;
+                background-color: #2295ff;
+            }
+        
+            
+        }
+       
+        .userChatData{
+            display: flex;
+            align-items:center;
+
+            h5{
+                padding-left: 10px;
+                color:white;
+                font-family: "roboto regular";
+                font-size: 16px;
+                text-transform: capitalize;
+                .timeMessage{
+                    font-size: 14px;
+                    color: #707070;
+                }
+            }
+            .img-fluid{
+            border: 2px solid white;
+            width: 40px;
+            border-radius: 50px;
+            position: relative;
+            }
+        
+        }
+    }
+}
+
+.sendMessageInput{
+    height: 55px;
+    width: 100%;
+    border-radius: 100px;
+    border:none;
+    background-color:#181A1E;
+    color: #adadae;
+    font-family: "roboto Medium";
+    padding: 15px;
+    padding-left: 70px;
+    
+}
+
+#footer{
+    .img-fluid{
+        border: 2px solid white;
+        width: 40px;
+        border-radius: 50px;
+        position: relative;
+        top: -47px;
+        left: 10px;
+    }
+
+    .bi-mic-fill{
+        color:#5a5a6a;
+        position: relative;
+        float: right;
+        top: -35px;
+        color: #5a5a6a;
+        right: 85px;
+    
+    }
+
+    .bi-paperclip{
+        color:#5a5a6a;
+        position: relative;
+        float: right;
+        top: -35px;
+        right: 40px;
+    
+    }
+
+    .bi-send-fill{
+        color:#2295ff;
+        position: relative;
+        float: right;
+        top: -35px;
+        left: 20px;
+        transform: rotate(45deg);
+    
+    }
+    
+    .bi-dash-lg{
+        color: #5a5a6a;
+        position: relative;
+        float: right;
+        top: -35px;
+        left: 20px;
+        transform: rotate(90deg);
+    }
+}

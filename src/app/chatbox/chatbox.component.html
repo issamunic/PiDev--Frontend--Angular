@@ -1,0 +1,63 @@
+<div id="container" style="height:100%">
+    <div id="header">
+        
+        <diV class="col-md-6 detailGroup">
+            <h5 *ngIf="!groupNameUpdaet">{{conversation[1]}} <span>{{conversation[0]}}{{id}}</span></h5>
+            <h5 *ngIf="groupNameUpdaet">{{groupNameUpdaet}} <span>{{conversation[0]}}</span></h5>
+        </diV>
+
+        <diV class="col-md-6 userGroupHeader">
+            <div class="col-md-3 icon">
+
+            </div>
+            <p-avatarGroup class="avatarGroup" label="P">
+                <p-avatar image="../../assets/public/Capture.PNG" shape="circle"></p-avatar>
+                <p-avatar image="../../assets/public/Capture.PNG" shape="circle"></p-avatar>
+                <p-avatar image="../../assets/public/Capture.PNG" shape="circle"></p-avatar>
+                <p-avatar label="+2" shape="circle"
+                [style]="{'background-color':'#292929', 'color': '#ffffff'}" ></p-avatar>
+             </p-avatarGroup>
+        </diV>
+
+    </div>
+
+    <div id="body" >
+        <div class="message" [ngClass]="{me:message.me}" *ngFor="let message of chatMessageons ">
+            <div class="col-md-6 userChatData" *ngIf="!message.me">
+                <img class="img-fluid" src="../../assets/public/Capture.PNG" *ngIf="message.me==false">
+                <h5>{{message[0]}}</h5>
+            </div>
+            
+           <div class="messageContent">
+                {{message[1]}}}
+                <!-- <p-speedDial [model]="items" [type]="quarter-circle" [direction]="up-right" 
+                [style]="{'width':'50%'}" ></p-speedDial>
+-->
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <input (keyup.enter)="submitMessage($event)" class="col-md-12 form-control sendMessageInput" row="1" placeholder="Type your Message !..." style="flex-grow: 1;resize:none">
+
+        <img class="img-fluid" src="../../assets/public/Capture.PNG">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+            <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+            <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+            <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+          </svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+          </svg>
+
+    </div>
+</div>

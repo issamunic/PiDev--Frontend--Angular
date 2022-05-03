@@ -1,0 +1,155 @@
+.container{
+    position: relative;
+    overflow: scroll;
+    padding:30px;
+    height: 65%;
+}
+.DetailRightGroup{
+    align-items: center;
+
+    .imageChat{
+        width:380px;
+        display: flex;
+        justify-content: center;
+    }
+    img{
+        border-radius: 100%;
+        width: 75px;
+    }
+    h5{
+        padding-top: 10px ;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "roboto medium";
+
+    }
+}
+
+.filesBox{
+    border: none;
+    padding: 20px;
+    background-color: #292a33;
+    width:40%;
+    border-radius: 10px;
+    h5{
+        color: gray;
+        font-family: "roboto thin";
+        text-align: center;
+    }
+}
+.OutputfilesBox{
+    border: none;
+    display: flex;
+    justify-content: center;
+    h4{
+        color: white;
+        font-family: "roboto medium";
+        position: relative;
+        right:-5px;
+        top:-4px;
+    }
+    svg{
+        color: #b721ff;
+        box-shadow: 0px 0px 20px #b721ff;
+
+    }
+}
+.linksBox{
+    border: none;
+    padding: 20px;
+    background-color: #292a33;
+    width:40%;
+    border-radius: 10px;
+    h5{
+        color: gray;
+        font-family: "roboto thin";
+        text-align: center;
+    }
+        
+    .OutputfilesBox{
+        display: flex;
+            justify-content: center;
+            h4{
+                font-family: "roboto medium";
+                position: relative;right:-5px;
+                top:-4px;
+                
+            }
+                .bi-paperclip{
+                    color: #292a33;
+                    background-color: #face2d;
+                    box-shadow: 0px 0px 20px #face2d;
+                    height: 20px;
+                    width: 15px;
+                    border-radius: 3px;
+                    transform: rotate(90deg);
+
+    }
+}
+}
+.detailFiles{padding: 20px;}
+.membersBox{
+    svg{
+        color:#414951;
+    }
+    .members{
+        font-family: "roboto regular";
+        color:#414951;
+    }
+    
+    
+}
+.trashMembers{
+    .bi-trash-fill{
+        color:#414951;
+        position: relative;
+        top: -3px;
+    }
+    button{
+        border: none;
+        background-color: transparent;
+    }
+}
+.customizeChat{
+    padding-top: 20px;
+    
+    .titreCustomize {
+        h5{
+            position: relative;
+            top: -3px;
+            right: -10px;
+        }
+        color:#313640;
+        svg{
+            color:#313640
+        }
+    }
+    h6{
+        color:#313640;
+        position: relative;
+        right: -10px;
+    }
+    .editGroupsName{
+        
+        svg{
+            color:#e83b55
+        }
+        
+    }
+    .editEtatGroups{
+        svg{
+            color:#22d804;
+        }
+    }
+
+    .form-control{
+        border: none;
+    border-radius: 100px;
+    background-color: #313640;
+    color: white;
+    }
+}
+.btnFileDownload{
+    border:none;
+    background-color: transparent;
+}

@@ -1,0 +1,23 @@
+<div class="container-fluid" id="background_chat"><!-- vh-100-->
+    <div class="row">
+        <div class="col-md-3 chatSidebarHeader vh-100">
+            <app-sidebarchat (conversationClicket)="onConversationSelected($event)"></app-sidebarchat> 
+        </div>
+
+        <div class="col-md-9 chatBox vh-100"  *ngIf="!conversation">
+            <img class="col-md-8 imgChatBoxBg img-fluid"  src="../../assets/public/Texting-bro.png">
+        </div>
+
+        <div class="col-md-6 chatBox">
+            <app-chatbox [conversation]="conversation"></app-chatbox>
+        </div>
+        <div class="col-md-3 sidebarRight vh-100" *ngIf="conversation">
+            <app-sidebarrightchat style="color: white;" [conversation]="conversation">
+            </app-sidebarrightchat>
+        </div>
+
+       
+
+    </div>
+</div>
+

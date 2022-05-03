@@ -1,0 +1,119 @@
+
+.userSessionChat{
+    padding-left: 0px;;
+    color:white;
+    h6{
+        margin-top:-5px;
+        color:#4A5059;
+    }
+    .icon{
+        float:right;
+        color:#313640
+    }
+}
+
+.searchBox{
+    padding-top:30px ;
+
+    .form-control{
+        border: none;
+        background-color: #141318;
+        color: #adadae;
+        font-family: "roboto Medium";
+        border-radius: 100px;
+        padding: 15px;
+        padding-left: 50px;
+    }
+    .pi-search{
+        position: relative;
+        top: -35px;
+        left: 20px;
+        color: #afafaf;
+    }
+}
+
+#emptyInbox{
+    font-family: "roboto regular";
+    color:#adadae;
+}
+.sidebarConversation{
+    position: relative;
+    overflow-y: auto;
+    grid-row: 1;
+    height: 70%;
+}
+.convesationsActive{
+    padding: 10px;
+    background-color: #141318;
+    border-radius: 15px;
+    a{
+        border: none;
+        display: flex;
+        text-decoration: none;
+    
+    }
+}
+.convesations{
+    padding: 10px;
+    border-radius: 15px;
+    a{
+        border: none;
+        display: flex;
+        text-decoration: none;
+    
+    }
+}
+
+
+.convesations:hover{
+    padding: 10px;
+    background-color: #141318;
+    border-radius: 15px;
+}
+.LastMessage{
+       h5{
+           color:white;
+           text-transform: capitalize;
+        }
+
+        h6{
+            color:#484b53;
+        }
+
+        h6.seen{
+            color:#e63b55;
+            font-family: "roboto black";
+        }
+
+}
+.TimeMessage
+{
+    display: flex;
+    
+    justify-content: end;
+    align-items: center;
+    h6{
+    
+    float: right;
+    color:#484b53;
+    }
+
+    .bi-dot{
+        color:#e63b55;
+    }
+    
+}
+
+.chatBox{
+    padding-top: 25px;
+    background-color: #141318;    
+}
+
+.imgChatBoxBg{
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    
