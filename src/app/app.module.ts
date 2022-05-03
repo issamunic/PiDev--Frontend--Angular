@@ -155,6 +155,7 @@ import { CompanyComponent } from './company/company.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './services/user/user.service';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -303,7 +304,8 @@ import { UserService } from './services/user/user.service';
         ForbiddenComponent,
         HeaderComponent,
         AuthenticateComponent,
-        CompanyComponent
+        CompanyComponent,
+        RegisterComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

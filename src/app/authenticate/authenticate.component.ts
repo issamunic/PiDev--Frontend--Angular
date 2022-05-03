@@ -12,6 +12,8 @@ import { UserService } from '../services/user/user.service';
 export class AuthenticateComponent implements OnInit {
 
   authUser!:Authenticate;
+  messageError:string='aaa';
+  hiddenMessageError:boolean=true;
 
   constructor(private userService:UserService,private userAuthService:UserAuthService,private router:Router) { }
 
@@ -36,6 +38,8 @@ export class AuthenticateComponent implements OnInit {
         }
       },
       (error)=>{
+        this.hiddenMessageError=false;
+        this.messageError="please check your email and password";
         console.log(error);
       }
     );

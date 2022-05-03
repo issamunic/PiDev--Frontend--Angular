@@ -40,6 +40,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { CompanyComponent } from './company/company.component';
 import { AuthGuard } from './auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -56,6 +57,7 @@ import { AuthGuard } from './auth/auth.guard';
             { path: 'authenticate', component: AuthenticateComponent},
             { path: 'forbidden', component: ForbiddenComponent},
             { path: 'header', component: HeaderComponent},
+            { path: 'register', component: RegisterComponent},
 
             {
                 path: '', component: AppMainComponent,
