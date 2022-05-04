@@ -8,12 +8,14 @@
             <th>type</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-claim>
         <tr>
-            <td>{{rcvData.other}}</td>
-            <td>{{rcvData.staus}}</td>
-            <td>{{rcvData.severity}}</td>
-            <td>{{rcvData.type}}</td>
+            <td>{{claim.other}}</td>
+            <td>{{claim.staus}}</td>
+            <td><p-rating [ngModel]="claim.severity" [readonly]="true" [cancel]="false"></p-rating></td>
+            
+
+            <td>{{claim.type}}</td>
         </tr>
     </ng-template>
 </p-table>

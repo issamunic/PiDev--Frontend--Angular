@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, Subscriber } from 'rxjs';
 import { Claim } from '../api/claim';
 import { Activity } from '../api/Activity';
 
@@ -68,6 +68,7 @@ export class ClaimServiceService {
     this.http.post<any>("http://localhost:8087/SpringMVC/Activity/addbyResp/"+tripPlan, activities).subscribe(response =>{
       console.log(response);
 
+
     }); 
 
   }
@@ -97,6 +98,16 @@ export class ClaimServiceService {
     
 
  }
+
+ public listTripPlan(): Observable<any> {
+  return this.http.get("http://localhost:8087/SpringMVC/TripPlan/getAll");
+  
+
+}
+
+
+ 
+
   
   
 }

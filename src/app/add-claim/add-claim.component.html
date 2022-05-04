@@ -64,7 +64,7 @@
                     <div class="col-12">
                         <h5>Severity</h5>
                         <input type="text" pInputText [(ngModel)]="valSlider" readonly/>
-                        <p-slider [(ngModel)]="valSlider"></p-slider>
+                        <p-slider [(ngModel)]="valSlider" [min]="1" [max]="5"></p-slider>
                     </div>
 				</div>
 				
@@ -76,9 +76,9 @@
 	</div>
 
   <button pButton type="button" label="Add claim" class="p-button-secondary" (click)="addClaim()" class="p-button-rounded p-button-success mr-2"></button>
-  <button pButton type="button" class="p-button-secondary"  (click)="showDialog()"  label="Show"></button>
+  <button pButton type="button" class="p-button-secondary"  (click)="showDialog()"  label="Claims"></button>
   <div *ngIf="">  <p-message severity="success" text={{msgs}}></p-message> </div>
- <p-dialog header="Title" [(visible)]="display">
+ <p-dialog header="My claims" [(visible)]="display">
     <app-list-claim></app-list-claim>
 
 </p-dialog>

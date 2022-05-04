@@ -147,6 +147,9 @@ import { ListClaimComponent } from './list-claim/list-claim.component';
 import { AddActivitiesComponent } from './add-activities/add-activities.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import { MessageService} from 'primeng/api';
+
+
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins

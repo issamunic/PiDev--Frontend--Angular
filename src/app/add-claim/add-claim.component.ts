@@ -13,6 +13,8 @@ import {DialogModule} from 'primeng/dialog';
   templateUrl: './add-claim.component.html',
   styleUrls: ['./add-claim.component.scss']
 })
+
+
 export class AddClaimComponent implements OnInit {
 
   valRadio:any;
@@ -22,6 +24,7 @@ export class AddClaimComponent implements OnInit {
   msgs : any;
   severity : any;
   display: boolean = false;
+
 
 
   
@@ -35,8 +38,8 @@ export class AddClaimComponent implements OnInit {
     this.claim.type = this.valRadio;
     console.log(this.claim);
     this.claimServices.postclaim(this.claim);
-    this.severity ="success";
-    this.msgs = "Claim added";
+    //this.severity ="success";
+    //this.msgs = "Claim added";
     console.log(this.claim);
 
   }

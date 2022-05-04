@@ -14,7 +14,8 @@ import { Claim } from '../api/claim';
 })
 export class ListClaimComponent implements OnInit {
 
-  rcvData : Array<Claim>;
+  //rcvData : Array<Claim>;
+  rcvData: Claim[];
   actualValue : Claim;
   
 
