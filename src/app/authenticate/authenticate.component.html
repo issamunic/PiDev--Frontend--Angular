@@ -34,7 +34,7 @@
 
                         <label for="userPassword" class="block text-900 font-medium text-xl mb-2">Password</label>
                         <p-password ngModel id="userPassword" name="userPassword" placeholder="Password"
-                            [toggleMask]="true" styleClass="w-full mb-3" required pattern="[0-9]{4,}"
+                            [toggleMask]="true" styleClass="w-full mb-3" required pattern="[0-9a-zA-Z]{4,}"
                             [(ngModel)]="authUser.userPassword" #password="ngModel">
                         </p-password>
                         <div class="alert alert-danger" *ngIf="password.invalid && password.touched">

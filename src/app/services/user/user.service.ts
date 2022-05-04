@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Authenticate } from 'src/app/model/authenticate';
+import { Registration } from 'src/app/model/registration';
 import { UserAuthService } from '../user-auth/user-auth.service';
 
 @Injectable({
@@ -16,6 +17,10 @@ export class UserService {
 
   authenticate(userAuth:Authenticate){
     return this.httpClient.post(this.PATH_API+"/authenticate", userAuth, {headers:this.requestHeader});
+  }
+
+  register(userRegistration:Registration){
+    return this.httpClient.post(this.PATH_API+"/user/process_register", userRegistration, {headers:this.requestHeader,responseType:'text'});
   }
 
   /*roleMatch(allowedRoles):boolean{
