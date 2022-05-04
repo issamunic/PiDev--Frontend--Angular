@@ -7,22 +7,21 @@ import {Observable} from "rxjs";
 })
 export class UploadFileService {
     private req ;
-    private baseUrl = 'http://localhost:8087';
+    private baseUrl = 'http://localhost:8087/SpringMVC';
     constructor(private http: HttpClient) { }
-    _headers = new HttpHeaders({
+    headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': "Bearer "+localStorage.getItem('token')
-    });
+    })
 
-    upload(file: File): Observable<HttpEvent<any>> {
+
+    upload(file: File):Observable<HttpEvent<any>> {
+        // @ts-ignore
         const formData: FormData = new FormData();
         formData.append('file', file);
-        this.req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
-            reportProgress: true,
-            responseType: 'json'
-        });
-       this.req.options = { headers:this._headers};
-        return this.http.request(this.req);
+
+        // @ts-ignore
+        return this.http.post(`http://localhost:8087/SpringMVC/upload`, formData,{headers:this.headers});
     }
 
 }

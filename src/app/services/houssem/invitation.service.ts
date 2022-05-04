@@ -40,8 +40,8 @@ export class InvitationService {
     return this._http.get(`${this.API_URL}/getById/${id}`,{ headers:this.headers });
   }
 
-    getByCompany(User: User):Observable<Invitation[]> {
-        return this._http.post<Invitation[]>(`${this.API_URL}/getByCompany`, User,{responseType:'text' as 'json',headers:this.headers}) ;
+    getByCompany(id: any):Observable<Invitation[]> {
+        return this._http.get<Invitation[]>(`${this.API_URL}/getByCompany/${id}`,{headers:this.headers}) ;
     }
 
 }

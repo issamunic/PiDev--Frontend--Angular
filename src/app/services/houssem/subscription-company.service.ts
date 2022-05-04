@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SubscriptionCompany} from "../../entity/subscription-company";
 import {CodeInvitationCompany} from "../../entity/code-invitation-company";
+import {User} from "../../entity/user";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,9 @@ export class SubscriptionCompanyService {
   AddSubscriptionCompany(SubscriptionCompany: any) {
     return this._http.post(`${this.API_URL}/add`, SubscriptionCompany,{ headers:this._headers});
   }
+    getByUser(User: any) {
+        return this._http.post(`${this.API_URL}/getByUser`, User,{ headers:this._headers});
+    }
 
   DeleteSubscriptionCompany(id: any) {
     return this._http.delete(`${this.API_URL}/delete/${id}`,{ headers:this._headers});
@@ -44,13 +48,5 @@ export class SubscriptionCompanyService {
 
   UpgradeSubscriptionCompany(SubscriptionCompany: any):Observable<SubscriptionCompany> {
     return this._http.put<SubscriptionCompany>(`${this.API_URL}/UpgradeSubscriptionCompany`, SubscriptionCompany,{responseType:'text' as 'json', headers:this._headers})
-  }
-  InitilainitializationOfSubscriptionCompany(SubscriptionCompany: any) {
-    // @ts-ignore
-      return this._http.get(`${this.API_URL}/InitilainitializationOfSubscriptionCompany`, SubscriptionCompany,{ headers:this._headers})
-  }
-  getByUser(User: any) {
-    // @ts-ignore
-      return this._http.get(`${this.API_URL}/InitilainitializationOfSubscriptionCompany`, User,{ headers:this._headers })
   }
 }

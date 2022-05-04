@@ -36,7 +36,10 @@ export class CodeInvitationCompanyService {
 
   }
   getByCode(id: any){
-    return this._http.get(`${this.API_URL}/getByCompany/${id}`,{ headers:this._headers})
+    return this._http.get(`${this.API_URL}/getByCode/${id}`,{ headers:this._headers})
   }
+    getByCompany(id: any):Observable<CodeInvitationCompany>{
+        return this._http.get<CodeInvitationCompany>(`${this.API_URL}/getByCompany/${id}`,{ headers:this._headers})
+    }
 }
 

@@ -9,6 +9,7 @@ import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
 import {Observable} from "rxjs";
 import {User} from "../entity/user";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-get-invitations-company',
@@ -58,14 +59,15 @@ export class GetInvitationsCompanyComponent implements OnInit {
     emailinput: any;
 
     numberinput: any;
+    private invitationadd: Invitation;
 
 
     constructor(private serviceInvitation:InvitationService,private productService: ProductService, private messageService: MessageService,
-                private confirmationService: ConfirmationService) {}
+                private confirmationService: ConfirmationService,private http: HttpClient) {}
 
     ngOnInit() {
         // @ts-ignore
-        this.serviceInvitation.GetAllInvitationsService().subscribe(res=>this.AllInvitations=res);
+        this.serviceInvitation.getByCompany(1).subscribe(res=>this.AllInvitations=res);
         this.productService.getProducts().then(data => this.products = data);
 
         this.cols = [
@@ -168,7 +170,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
     }
 
     GetAllInvitations() {
-        this.serviceInvitation.getByCompany({idUser:1}).subscribe(res => {
+        this.serviceInvitation.getByCompany(2).subscribe(res => {
             console.log(res);
         })
         this.serviceInvitation.GetAllInvitationsService().subscribe(res => {
@@ -179,13 +181,18 @@ export class GetInvitationsCompanyComponent implements OnInit {
     deleleinvit(id :any) {
         let resp= this.serviceInvitation.DeleteInvitationService(id);
         resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
     }
 
     addcode() {
         // @ts-ignore
-        let resp= this.serviceInvitation.AddInvitationService({number: this.numberinput, mailEmployee: this.emailinput});
+        this.user={idUser:1};
+        // @ts-ignore
+        this.invitationadd={number: this.numberinput, mailEmployee: this.emailinput,userSender:this.user};
+        let resp= this.serviceInvitation.AddInvitationService(this.invitationadd);
         resp.subscribe((data)=>this.msg=data);
         console.log(this.AllInvitations);
+        window.location.reload();
     }
 
     downloadFile(data: any) {
@@ -228,5 +235,24 @@ export class GetInvitationsCompanyComponent implements OnInit {
         hiddenElement.remove();
         // window.location.reload();
 
+    }
+    headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    upload(event: any) {
+        const file = event.target.files[0];
+
+        const formdata = new FormData();
+        formdata.append('file', file);
+
+        this.http.post('http://localhost:8087/SpringMVC/upload', formdata,{headers:this.headers}).subscribe(
+            (d) => {
+                console.log(d);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
     }
 }

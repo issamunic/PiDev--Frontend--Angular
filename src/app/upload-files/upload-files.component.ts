@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UploadFileService} from "../services/houssem/upload-file.service";
 import {Observable} from "rxjs";
-import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-upload-files',
@@ -14,29 +14,28 @@ export class UploadFilesComponent implements OnInit {
     progress = 0;
     message = '';
     fileInfos: Observable<any>;
-  constructor(private uploadService: UploadFileService) { }
+    constructor(private http: HttpClient) { }
+    headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+
 
   ngOnInit(): void {
   }
-    selectFile(event) {
-        this.selectedFiles = event.target.files;
-    }
-    upload() {
-        this.progress = 0;
-        this.currentFile = this.selectedFiles.item(0);
-        this.uploadService.upload(this.currentFile).subscribe(
-            event => {
-                if (event.type === HttpEventType.UploadProgress) {
-                    this.progress = Math.round(100 * event.loaded / event.total);
-                } else if (event instanceof HttpResponse) {
-                    this.message = event.body.message;
-                }
+    upload(event: any) {
+        const file = event.target.files[0];
+
+        const formdata = new FormData();
+        formdata.append('file', file);
+
+        this.http.post('http://localhost:8087/SpringMVC/upload', formdata,{headers:this.headers}).subscribe(
+            (d) => {
+                console.log(d);
             },
-            err => {
-                this.progress = 0;
-                this.message = 'Could not upload the file!';
-                this.currentFile = undefined;
-            });
-        this.selectedFiles = undefined;
+            (error) => {
+                console.error(error);
+            }
+        );
     }
 }

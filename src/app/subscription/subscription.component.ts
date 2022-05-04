@@ -23,7 +23,7 @@ export class SubscriptionComponent implements OnInit {
       this.servicesub.GetAllSubscriptionCompany().subscribe(res=>this.Allsub=res);
       this.nbremployee = "NuuuN";
       this.id = 1;
-      this.servicesub.getById(this.id).subscribe(res => {
+      this.servicesub.getByUser({idUser:1}).subscribe(res => {
           this.subobj=res
           // @ts-ignore
           if (res !=null){this.nbremployee = res.nbrEmployeeMax}
