@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppConfig} from "../api/appconfig";
 import {Subscription} from "rxjs";
 import {ConfigService} from "../service/app.config.service";
+import {SignUpEmployeeService} from "../services/houssem/sign-up-employee.service";
 
 @Component({
   selector: 'app-sign-up-employee',
@@ -34,8 +35,12 @@ export class SignUpEmployeeComponent implements OnInit {
     config: AppConfig;
 
     subscription: Subscription;
+    msg: any;
+    codeinput: any;
+    emailinput: any;
+    passwordinput: any;
 
-    constructor(public configService: ConfigService){ }
+    constructor(public configService: ConfigService,public servicesignup:SignUpEmployeeService){ }
 
     ngOnInit(): void {
         this.config = this.configService.config;
@@ -49,5 +54,10 @@ export class SignUpEmployeeComponent implements OnInit {
             this.subscription.unsubscribe();
         }
     }
+    signup() {
+        console.log("rzzzq*dlqsmflqmdfù");
+        // @ts-ignore
+       return  this.servicesignup.SignupEmplyee({login: this.emailinput,nameCompany: this.emailinput,password: this.passwordinput,username: this.emailinput},this.codeinput).subscribe(res=>console.log(res));
 
+    }
 }

@@ -66,7 +66,7 @@ export class HistorySubscriptionCompanyComponent implements OnInit {
     constructor(private historyservice:HistorySubcriptionCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        this.historyservice.GetAllHistorySubcriptionCompany().subscribe(res=>this.AllHistory=res);
+        this.historyservice.getByIdCompany(1).subscribe(res=>this.AllHistory=res);
         this.historyservice.GetAllHistorySubcriptionCompany().subscribe(res => {
             console.log(res);
         })

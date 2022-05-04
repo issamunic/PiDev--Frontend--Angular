@@ -7,6 +7,8 @@ import {Table} from "primeng/table";
 import {InvitationService} from "../services/houssem/invitation.service";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
+import {SubscriptionCompany} from "../entity/subscription-company";
+import {SubscriptionCompanyService} from "../services/houssem/subscription-company.service";
 
 @Component({
   selector: 'app-sub-admin',
@@ -30,6 +32,9 @@ import {ProductService} from "../service/productservice";
 export class SubAdminComponent implements OnInit {
 
     customers1: Customer[];
+
+    Allsub : SubscriptionCompany[];
+    sub : SubscriptionCompany;
 
     customers2: Customer[];
 
@@ -61,9 +66,12 @@ export class SubAdminComponent implements OnInit {
 
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private servicesub:SubscriptionCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
+
+        this.servicesub.GetAllSubscriptionCompany().subscribe(res=>this.Allsub=res);
+
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;

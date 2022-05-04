@@ -43,5 +43,7 @@ export class InvitationService {
     getByCompany(id: any):Observable<Invitation[]> {
         return this._http.get<Invitation[]>(`${this.API_URL}/getByCompany/${id}`,{headers:this.headers}) ;
     }
-
+    csv(user: User) {
+        return this._http.post(`http://localhost:8087/SpringMVC/load/csv`, user,{responseType:'text' as 'json',headers:this.headers});
+    }
 }

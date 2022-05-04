@@ -4,7 +4,7 @@
         <div class="card">
             <h5>Row Expand</h5>
             <p-toast></p-toast>
-            <p-table [value]="products" dataKey="name" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
+            <p-table [value]="Allsub" dataKey="name" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <button pButton icon="pi pi-fw {{isExpanded ? 'pi-minus' : 'pi-plus'}}" label="{{isExpanded ? 'Collapse All' : 'Expand All'}}" (click)="expandAll()"></button>
                     <div class="flex table-header">
@@ -13,19 +13,16 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem"></th>
-                        <th pSortableColumn="name">Name of Company <p-sortIcon field="name"></p-sortIcon></th>
-                        <th>Logo</th>
-                        <th pSortableColumn="Domain">Domain <p-sortIcon field="price"></p-sortIcon></th>
+                        <th pSortableColumn="nbrEmployeeMax">nbrEmployeeMax <p-sortIcon field="nbrEmployeeMax"></p-sortIcon></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product let-expanded="expanded">
+                <ng-template pTemplate="body" let-sub let-expanded="expanded">
                     <tr>
                         <td>
-                            <button type="button" pButton pRipple [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                            <button type="button" pButton pRipple [pRowToggler]="sub" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                         </td>
-                        <td style="min-width: 12rem;">{{product.name}}</td>
-                        <td><img [src]="'assets/demo/images/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
-                        <td style="min-width: 8rem;">{{product.price | currency:'USD'}}</td>
+                        <td style="min-width: 12rem;">{{sub.nbrEmployeeMax}}</td>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-product>

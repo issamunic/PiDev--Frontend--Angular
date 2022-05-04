@@ -58,28 +58,34 @@ export class SubscriptionComponent implements OnInit {
     }
 
     buy25() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:25});
+        // @ts-ignore
+        this.subobj.nbrEmployeeMax = 25
+        let resp= this.servicesub.UpgradeSubscriptionCompany(this.subobj);
         resp.subscribe((data)=>this.msg=data);
         window.location.reload();
     }
 
     buy50() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:50});
+        // @ts-ignore
+        this.subobj.nbrEmployeeMax = 50
+        let resp= this.servicesub.UpgradeSubscriptionCompany(this.subobj);
         resp.subscribe((data)=>this.msg=data);
         window.location.reload();
     }
 
     buy100() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:100});
-        resp.subscribe((data)=>this.msg=data);
+        // @ts-ignore
+        this.subobj.nbrEmployeeMax = 100
+        let resp= this.servicesub.UpgradeSubscriptionCompany(this.subobj);        resp.subscribe((data)=>this.msg=data);
         window.location.reload();
 
     }
 
     buycustom() {
         let nbrr = this.custom
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:nbrr});
-        resp.subscribe((data)=>this.msg=data);
+        // @ts-ignore
+        this.subobj.nbrEmployeeMax = nbrr
+        let resp= this.servicesub.UpgradeSubscriptionCompany(this.subobj);        resp.subscribe((data)=>this.msg=data);
         window.location.reload();
     }
 }

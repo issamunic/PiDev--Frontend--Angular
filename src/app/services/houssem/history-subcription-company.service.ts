@@ -25,8 +25,8 @@ export class HistorySubcriptionCompanyService {
   getById(id: any){
     return this._http.get(`${this.API_URL}/getById/${id}`,{ headers:this._headers})
   }
-  getByIdCompany(id: any){
-    return this._http.get(`${this.API_URL}/getByCompany/${id}`,{ headers:this._headers})
+  getByIdCompany(id: any):Observable<HistorySubcriptionCompany[]> {
+    return this._http.get<HistorySubcriptionCompany[]>(`${this.API_URL}/getByIdCompany/${id}`,{ headers:this._headers})
   }
 }
 

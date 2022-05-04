@@ -255,4 +255,10 @@ export class GetInvitationsCompanyComponent implements OnInit {
             }
         );
     }
+
+    csv() {
+        this.serviceInvitation.csv({idUser:1}).subscribe(res => {
+            console.log(res);
+        })
+    }
 }
