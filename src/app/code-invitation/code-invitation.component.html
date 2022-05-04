@@ -1,19 +1,22 @@
 <div class="col-12">
     <div class="card">
-        <h5>Add Or Modify Code Invitation</h5>
+        <h3>Add Or Modify Code Invitation</h3>
+        <br>
         <div class="formgroup-inline">
             <div class="field">
                 <label htmlFor="codeinput" class="p-sr-only">Code Invitation</label>
                 <div class="flex align-items-center">
-                    <input  [(ngModel)]="codeinput" id="codeinput">
-                    <p-button pRipple label="Ok" (click)="AddOrModify()"></p-button>
+                    <input class="p-inputtext p-component p-element"  [(ngModel)]="codeinput" id="codeinput">
+                    <p-button pRipple label="Set" (click)="AddOrModify()"></p-button>
                 </div>
-            <br><br><br>
-        </div>
-
+                <h6>{{msg}}</h6>
+                <br><br><br>
+            </div>
+            <div class="field">
         <button label="Delete Code" (click)="delete()" pButton></button>
-        <h3>Your Code is:</h3>
-        <h4>{{codetext}}</h4>
+        <h4>Your Code is:</h4>
+        <h5>{{codetext}}</h5>
+            </div>
     </div>
 </div>
 

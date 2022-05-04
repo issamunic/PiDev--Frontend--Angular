@@ -7,6 +7,7 @@ import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
 import {CodeInvitationCompanyService} from "../services/houssem/code-invitation-company.service";
 import {CodeInvitationCompany} from "../entity/code-invitation-company";
+import {User} from "../entity/user";
 
 @Component({
   selector: 'app-code-invitation-admin',
@@ -31,6 +32,7 @@ export class CodeInvitationAdminComponent implements OnInit {
     Allcode: CodeInvitationCompany[];
     codeinvitationcompany : CodeInvitationCompany;
     code : CodeInvitationCompany;
+    userCompany : User;
 
     customers1: Customer[];
 

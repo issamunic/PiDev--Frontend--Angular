@@ -1,4 +1,5 @@
 import {StatusInvitation} from "./status-invitation";
+import {User} from "./user";
 
 export class Invitation {
     idInvitation:number
@@ -7,6 +8,7 @@ export class Invitation {
     StatusInvitation:StatusInvitation
     MailEmployee:String
     Number:String
+    userSender:User
   constructor(
     idInvitation:number,
     DateCreationInvitation:Date,
@@ -14,8 +16,7 @@ export class Invitation {
     StatusInvitation:StatusInvitation,
     MailEmployee:String,
     Number:String,
-
-    User:bigint
+    userSender:User
 
   ) {
   }

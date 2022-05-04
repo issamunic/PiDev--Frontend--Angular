@@ -8,6 +8,7 @@ import {InvitationService} from "../services/houssem/invitation.service";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
 import {Observable} from "rxjs";
+import {User} from "../entity/user";
 
 @Component({
   selector: 'app-get-invitations-company',
@@ -32,7 +33,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
 
     AllInvitations : Invitation[];
     invitation :Invitation;
-
+    user : User;
     msg: any;
 
     productDialog: boolean;
@@ -63,6 +64,7 @@ export class GetInvitationsCompanyComponent implements OnInit {
                 private confirmationService: ConfirmationService) {}
 
     ngOnInit() {
+        // @ts-ignore
         this.serviceInvitation.GetAllInvitationsService().subscribe(res=>this.AllInvitations=res);
         this.productService.getProducts().then(data => this.products = data);
 
@@ -166,14 +168,12 @@ export class GetInvitationsCompanyComponent implements OnInit {
     }
 
     GetAllInvitations() {
-        this.AllInvitations.forEach(function (value){
-            console.log(value);
-        });
-
+        this.serviceInvitation.getByCompany({idUser:1}).subscribe(res => {
+            console.log(res);
+        })
         this.serviceInvitation.GetAllInvitationsService().subscribe(res => {
             console.log(res);
         })
-
     }
 
     deleleinvit(id :any) {
@@ -186,5 +186,47 @@ export class GetInvitationsCompanyComponent implements OnInit {
         let resp= this.serviceInvitation.AddInvitationService({number: this.numberinput, mailEmployee: this.emailinput});
         resp.subscribe((data)=>this.msg=data);
         console.log(this.AllInvitations);
+    }
+
+    downloadFile(data: any) {
+        const replacer = (key, value) => (value === null ? '' : value); // specify how you want to handle null values here
+        const header = Object.keys(data[0]);
+        const csv = data.map((row) =>
+            header
+                .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+                .join(',')
+        );
+        csv.unshift(header.join(','));
+        const csvArray = csv.join('\r\n');
+
+        const a = document.createElement('a');
+        const blob = new Blob([csvArray], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+
+        a.href = url;
+        a.download = 'ExportInvitation.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+    }
+
+//create a user-defined function to download CSV file
+     download_csv_file() {
+
+        //define the heading for each row of the data
+        var csv = 'name,email,number\n';
+
+
+        //display the created CSV data on the web browser
+
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+
+        //provide the name for the CSV file to be downloaded
+        hiddenElement.download = 'ExempleOfCSV.csv';
+        hiddenElement.click();
+        hiddenElement.remove();
+        // window.location.reload();
+
     }
 }

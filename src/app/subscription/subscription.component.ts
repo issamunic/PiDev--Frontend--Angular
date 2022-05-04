@@ -33,49 +33,53 @@ export class SubscriptionComponent implements OnInit {
 
 
     sub() {
-      if (this.custom<100){
+      if (this.custom<50){
 
           // @ts-ignore
-          this.nbr= Math.round( this.custom *0.1 );
+          this.nbr= Math.round( this.custom *0.2 );
 
           // @ts-ignore
           this.price = this.custom*10 ;
 
       }
-      if (this.custom<500 && this.custom>=100){
+      if (this.custom<100 && this.custom>=50){
 
           // @ts-ignore
-          this.nbr =Math.round( this.custom *0.2 );
+          this.nbr =Math.round( this.custom *0.1 );
           // @ts-ignore
           this.price = this.custom*10 ;
       }
-      if (this.custom>=500){
+      if (this.custom>=100){
           // @ts-ignore
-          this.nbr =Math.round( this.custom *0.3 ) ;
+          this.nbr =Math.round( this.custom *0.05 ) ;
           // @ts-ignore
           this.price = this.custom*10
       }
     }
 
+    buy25() {
+        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:25});
+        resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
+    }
+
+    buy50() {
+        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:50});
+        resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
+    }
+
     buy100() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:110});
+        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:100});
         resp.subscribe((data)=>this.msg=data);
-    }
-
-    buy250() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:300});
-        resp.subscribe((data)=>this.msg=data);
-    }
-
-    buy500() {
-        let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:650});
-        resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
 
     }
 
     buycustom() {
-        let nbrr = this.custom + this.nbr
+        let nbrr = this.custom
         let resp= this.servicesub.UpgradeSubscriptionCompany({idSubscriptionCompany:1,nbrEmployeeMax:nbrr});
         resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
     }
 }

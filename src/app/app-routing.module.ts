@@ -37,6 +37,7 @@ import {SubAdminComponent} from "./sub-admin/sub-admin.component";
 import {ListCompanyEmployeeAdminComponent} from "./list-company-employee-admin/list-company-employee-admin.component";
 import {CodeInvitationComponent} from "./code-invitation/code-invitation.component";
 import {CodeInvitationAdminComponent} from "./code-invitation-admin/code-invitation-admin.component";
+import {UploadFilesComponent} from "./upload-files/upload-files.component";
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -49,6 +50,7 @@ import {CodeInvitationAdminComponent} from "./code-invitation-admin/code-invitat
             {path: 'admin/sub',component:SubAdminComponent},
             {path: 'admin/listecompanyemployee',component:ListCompanyEmployeeAdminComponent},
             {path: 'admin/codeinvitation',component:CodeInvitationAdminComponent},
+            {path: 'upload',component:UploadFilesComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [

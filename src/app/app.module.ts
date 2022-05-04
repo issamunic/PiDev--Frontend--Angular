@@ -150,6 +150,7 @@ import { ListCompanyEmployeeAdminComponent } from './list-company-employee-admin
 import { CodeInvitationComponent } from './code-invitation/code-invitation.component';
 import { CodeInvitationAdminComponent } from './code-invitation-admin/code-invitation-admin.component';
 import { ListCompanyEmployeeComponent } from './list-company-employee/list-company-employee.component';
+import { UploadFilesComponent } from './upload-files/upload-files.component';
 
 
 @NgModule({
@@ -299,6 +300,7 @@ import { ListCompanyEmployeeComponent } from './list-company-employee/list-compa
         CodeInvitationComponent,
         CodeInvitationAdminComponent,
         ListCompanyEmployeeComponent,
+        UploadFilesComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -15,6 +15,9 @@ export class CodeInvitationComponent implements OnInit {
     codetext:string;
     codeinput: any;
     id : any;
+    truefalse: any;
+    msgarea: any;
+    Modifyoradd : boolean = false ;
 
 
   constructor(private servicecodde:CodeInvitationCompanyService) { }
@@ -22,21 +25,51 @@ export class CodeInvitationComponent implements OnInit {
   ngOnInit(): void {
       this.servicecodde.GetAllCodeInvitationCompany().subscribe(res=>this.Allcode=res);
           this.codetext = "NuuuN Please add a code";
-       this.id = 43;
+       this.id = 9;
       this.servicecodde.getById(this.id).subscribe(res => {
           this.code=res
           // @ts-ignore
-          if (res !=null){this.codetext = res.codeInvitation}
+          if (res !=null){this.codetext = res.codeInvitation;this.Modifyoradd = true;
+          }
           console.log(this.code);
+          console.log(this.Modifyoradd);
       });
   }
 
 
     AddOrModify() {
-      // @ts-ignore
+      if (this.Modifyoradd == false){
+          // @ts-ignore
+          let resp=this.servicecodde.AddCodeInvitationCompany({codeInvitation:this.codeinput});
+          resp.subscribe((data)=> {
+              console.log(data)
+              if (data== 'true'){
+                  this.msg = "Code Added"
+                  console.log(this.msg)
+                  window.location.reload();
+              }
+              else {
+                  this.msg = "Code used , Try an other code"
+              }
+          });
 
-        let resp=this.servicecodde.AddCodeInvitationCompany({codeInvitation:this.codeinput});
-        resp.subscribe((data)=>this.msg=data);
+      }
+        if (this.Modifyoradd == true){
+            // @ts-ignore
+            this.code.codeInvitation = this.codeinput;
+            let resp=this.servicecodde.updateCodeInvitationCompany(this.code);
+            resp.subscribe((data)=> {
+                console.log(data)
+                if (data== 'true'){
+                    this.msg = "Code Modified"
+                    console.log(this.msg)
+                    window.location.reload();
+                }
+                else {
+                    this.msg = "Code used , Try an other code"
+                }
+            });
+        }
 
         this.servicecodde.GetAllCodeInvitationCompany().subscribe(res1 => {
             console.log(res1);
@@ -49,7 +82,7 @@ export class CodeInvitationComponent implements OnInit {
 
 
     delete(){
-        let resp= this.servicecodde.DeleteCodeInvitationCompany(this.id);
+        let resp= this.servicecodde.DeleteCodeInvitationCompany(this.code.idCodeInvitationCompany);
         resp.subscribe((data)=>this.msg=data);
     }
 }

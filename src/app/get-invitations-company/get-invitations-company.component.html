@@ -26,7 +26,9 @@
 
                 <ng-template pTemplate="right">
                     <p-fileUpload mode="basic" accept=".csv" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
+                    <button pButton (click)="download_csv_file()"> Download CSV Exemple  </button>
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help" (click)="downloadFile(AllInvitations)"></button>
+
                 </ng-template>
             </p-toolbar>
 
@@ -42,9 +44,9 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="mailEmployee">Email <p-sortIcon field="mailEmployee"></p-sortIcon></th>
-                        <th pSortableColumn="number">Number <p-sortIcon field="number"></p-sortIcon></th>
-                        <th pSortableColumn="dateCreationInvitation">dateInvitation <p-sortIcon field="dateCreationInvitation"></p-sortIcon></th>
+                        <th pSortableColumn="mailEmployee">mailEmployee <p-sortIcon field="mailEmployee"></p-sortIcon></th>
+                        <th pSortableColumn="number">number <p-sortIcon field="number"></p-sortIcon></th>
+                        <th pSortableColumn="dateCreationInvitation">dateCreationInvitation <p-sortIcon field="dateCreationInvitation"></p-sortIcon></th>
                         <th pSortableColumn="dateAcceptInvitation">dateAcceptInvitation <p-sortIcon field="dateAcceptInvitation"></p-sortIcon></th>
                         <th pSortableColumn="statusInvitation">statusInvitation <p-sortIcon field="statusInvitation"></p-sortIcon></th>
                         <th></th>

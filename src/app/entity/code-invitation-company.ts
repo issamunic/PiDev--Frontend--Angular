@@ -1,3 +1,5 @@
+import {User} from "./user";
+
 export class CodeInvitationCompany {
     idCodeInvitationCompany:Number
     codeInvitation:String
@@ -7,7 +9,6 @@ export class CodeInvitationCompany {
     codeInvitation:String,
     dateCreationCodeInvitationCompany:Date,
 
-    User:bigint
     ){}
 
 
