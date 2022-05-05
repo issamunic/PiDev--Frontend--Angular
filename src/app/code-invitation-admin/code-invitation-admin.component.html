@@ -16,8 +16,8 @@
                 <tr>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            idCodeInvitationCompany
-                            <p-columnFilter type="text" field="idCodeInvitationCompany" display="menu" placeholder="Search by name"></p-columnFilter>
+                            name Company
+                            <p-columnFilter type="text" field="nameCompany" display="menu" placeholder="Search by name"></p-columnFilter>
                         </div>
                     </th>
                     <th>
@@ -43,7 +43,7 @@
             <ng-template pTemplate="body" let-codeinvitationcompany>
                 <tr>
                     <td style="min-width: 12rem;">
-                        {{codeinvitationcompany.idCodeInvitationCompany}}
+                        {{codeinvitationcompany.userCompany.nameCompany}}
                     </td>
                     <td style="min-width: 12rem;">
                         {{codeinvitationcompany.dateCreationCodeInvitationCompany}}

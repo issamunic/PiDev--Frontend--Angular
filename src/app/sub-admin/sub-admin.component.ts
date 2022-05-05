@@ -9,6 +9,8 @@ import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
 import {SubscriptionCompany} from "../entity/subscription-company";
 import {SubscriptionCompanyService} from "../services/houssem/subscription-company.service";
+import {HistorySubcriptionCompany} from "../entity/history-subcription-company";
+import {HistorySubcriptionCompanyService} from "../services/houssem/history-subcription-company.service";
 
 @Component({
   selector: 'app-sub-admin',
@@ -35,7 +37,8 @@ export class SubAdminComponent implements OnInit {
 
     Allsub : SubscriptionCompany[];
     sub : SubscriptionCompany;
-
+    Allhis : HistorySubcriptionCompany[];
+    his : HistorySubcriptionCompany;
     customers2: Customer[];
 
     customers3: Customer[];
@@ -66,12 +69,12 @@ export class SubAdminComponent implements OnInit {
 
     @ViewChild('filter') filter: ElementRef;
 
-    constructor(private servicesub:SubscriptionCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private servicehis:HistorySubcriptionCompanyService,private servicesub:SubscriptionCompanyService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
 
         this.servicesub.GetAllSubscriptionCompany().subscribe(res=>this.Allsub=res);
-
+        this.servicehis.GetAllHistorySubcriptionCompany().subscribe(res=>this.Allhis=res);
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;
@@ -137,12 +140,16 @@ export class SubAdminComponent implements OnInit {
 
     expandAll() {
         if(!this.isExpanded){
-            this.products.forEach(product => this.expandedRows[product.name] = true);
+            this.Allsub.forEach(sub => this.expandedRows[sub.company.idUser] = true);
 
         } else {
             this.expandedRows={};
         }
         this.isExpanded = !this.isExpanded;
+
+
+        console.log(this.Allhis)
+        console.log(this.Allsub)
     }
 
     formatCurrency(value) {

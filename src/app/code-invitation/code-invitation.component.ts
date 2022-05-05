@@ -46,7 +46,7 @@ export class CodeInvitationComponent implements OnInit {
             // @ts-ignore
             this.user={idUser:1};
             // @ts-ignore
-            this.codeadd={codeInvitation:this.codeinput,UserCompany:this.user};
+            this.codeadd={codeInvitation:this.codeinput,userCompany:this.user};
             // @ts-ignore
             let resp=this.servicecodde.AddCodeInvitationCompany( this.codeadd);
             resp.subscribe((data)=> {
@@ -92,5 +92,6 @@ export class CodeInvitationComponent implements OnInit {
     delete(){
         let resp= this.servicecodde.DeleteCodeInvitationCompany(this.code.idCodeInvitationCompany);
         resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
     }
 }

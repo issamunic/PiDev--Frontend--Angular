@@ -71,8 +71,13 @@ export class CodeInvitationAdminComponent implements OnInit {
     ngOnInit() {
         this.servicecodde.GetAllCodeInvitationCompany().subscribe(res=>this.Allcode=res);
         this.servicecodde.GetAllCodeInvitationCompany().subscribe(res => {
+            // @ts-ignore
             console.log(res);
         })
+
+        // @ts-ignore
+        this.servicecodde.GetAllCodeInvitationCompany().subscribe(res=>this.Allcode.forEach(code=>console.log(code.userCompany.trips)));
+
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;

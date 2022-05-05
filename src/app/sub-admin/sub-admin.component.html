@@ -1,9 +1,10 @@
-<p>sub-admin works!</p>
+<h3>List of sub and his</h3>
 <div class="grid">
     <div class="col-12">
         <div class="card">
             <h5>Row Expand</h5>
             <p-toast></p-toast>
+
             <p-table [value]="Allsub" dataKey="name" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <button pButton icon="pi pi-fw {{isExpanded ? 'pi-minus' : 'pi-plus'}}" label="{{isExpanded ? 'Collapse All' : 'Expand All'}}" (click)="expandAll()"></button>
@@ -13,6 +14,7 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem"></th>
+                        <th pSortableColumn="nameCompany">nameCompany <p-sortIcon field="nameCompany"></p-sortIcon></th>
                         <th pSortableColumn="nbrEmployeeMax">nbrEmployeeMax <p-sortIcon field="nbrEmployeeMax"></p-sortIcon></th>
                     </tr>
                 </ng-template>
@@ -21,33 +23,26 @@
                         <td>
                             <button type="button" pButton pRipple [pRowToggler]="sub" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                         </td>
+                        <td style="min-width: 12rem;">{{sub.company.nameCompany}}</td>
                         <td style="min-width: 12rem;">{{sub.nbrEmployeeMax}}</td>
-
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="rowexpansion" let-product>
+                <ng-template pTemplate="rowexpansion" let-sub>
                     <tr>
                         <td colspan="7">
                             <div class="p-3">
-                                <p-table [value]="product.orders" dataKey="id" responsiveLayout="scroll">
+                                <p-table [value]="Allhis" dataKey="id" responsiveLayout="scroll">
                                     <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="id">Email<p-sortIcon field="price"></p-sortIcon></th>
-                        <th pSortableColumn="customer">Number <p-sortIcon field="customer"></p-sortIcon></th>
-                        <th pSortableColumn="date">Date creation <p-sortIcon field="date"></p-sortIcon></th>
-                        <th pSortableColumn="amount">date aceept <p-sortIcon field="amount"></p-sortIcon></th>
-                        <th pSortableColumn="stats">Status <p-sortIcon field="status"></p-sortIcon></th>
+                        <th pSortableColumn="dateHistorySubcriptionCompany">dateHistorySubcriptionCompany<p-sortIcon field="dateHistorySubcriptionCompany"></p-sortIcon></th>
+                        <th pSortableColumn="nbrEmployeeAddedToMax">nbrEmployeeAddedToMax <p-sortIcon field="nbrEmployeeAddedToMax"></p-sortIcon></th>
                         <th style="width: 4rem"></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-order>
-                    <tr>
-                        <td>{{order.id}}</td>
-                        <td>{{order.customer}}</td>
-                        <td>{{order.date}}</td>
-                        <td>{{order.amount | currency:'USD'}}</td>
-                        <td><span [class]="'order-badge order-' + order.status.toLowerCase()">{{order.status}}</span></td>
-                    </tr>
+                <ng-template pTemplate="body" let-his>
+                    <tr *ngIf="his.userHistory.idUser == sub.company.idUser">
+                        <td>{{his.dateHistorySubcriptionCompany}}</td>
+                        <td>{{his.nbrEmployeeAddedToMax}}</td>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
                     <tr>
@@ -62,3 +57,4 @@
         </p-table>
     </div>
 </div>
+

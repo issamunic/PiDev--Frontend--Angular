@@ -43,13 +43,13 @@ import {SignUpEmployeeComponent} from "./sign-up-employee/sign-up-employee.compo
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
-            {path: 'admin/invitations' , component:GetAllInvitationsComponent},
+            {path: 'admin/invitations' , component:GetAllInvitationsComponent},////
             {path: 'invitations',component:GetInvitationsCompanyComponent},
             {path: 'sub', component:SubscriptionComponent},
             {path: 'historysub',component:HistorySubscriptionCompanyComponent},
             {path: 'codeinvitation',component:CodeInvitationComponent},
             {path: 'admin/sub',component:SubAdminComponent},
-            {path: 'admin/listecompanyemployee',component:ListCompanyEmployeeAdminComponent},
+            {path: 'admin/listecompanyemployee',component:ListCompanyEmployeeAdminComponent},///
             {path: 'admin/codeinvitation',component:CodeInvitationAdminComponent},
             {path: 'upload',component:UploadFilesComponent},
             {path:'signupemployee',component:SignUpEmployeeComponent},
