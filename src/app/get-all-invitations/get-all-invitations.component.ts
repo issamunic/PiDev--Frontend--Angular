@@ -7,7 +7,15 @@ import {Product} from "../api/product";
 import {Table} from "primeng/table";
 import {CustomerService} from "../service/customerservice";
 import {ProductService} from "../service/productservice";
+import {User} from "../entity/user";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {SignUpEmployeeService} from "../services/houssem/sign-up-employee.service";
 
+
+function GetAllUsers() {
+
+}
 
 @Component({
   selector: 'app-get-all-invitations',
@@ -31,6 +39,9 @@ import {ProductService} from "../service/productservice";
 export class GetAllInvitationsComponent implements OnInit {
   AllInvitations : Invitation[];
   invitation : Invitation;
+
+  AllUsers :User[] ;
+  user:User;
 
     customers1: Customer[];
 
@@ -60,13 +71,40 @@ export class GetAllInvitationsComponent implements OnInit {
 
     loading:boolean = true;
 
+    msg: any;
+
+    productDialog: boolean;
+
+    deleteProductDialog: boolean = false;
+
+    deleteProductsDialog: boolean = false;
+
+    product: Product;
+
+    selectedProducts: Product[];
+
+    submitted: boolean;
+
+    cols: any[];
+
+    rowsPerPageOptions = [5, 10, 20];
+    emailinput: any;
+
+    numberinput: any;
+    private invitationadd: Invitation;
+
     @ViewChild('dt') table: Table;
 
     @ViewChild('filter') filter: ElementRef;
+    private idddd: any;
 
-    constructor(private serviceInvitation:InvitationService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
+    constructor(private serviceuser:SignUpEmployeeService,private serviceInvitation:InvitationService,private customerService: CustomerService, private productService: ProductService, private messageService: MessageService, private confirmService: ConfirmationService, private cd: ChangeDetectorRef) {}
 
     ngOnInit() {
+        this.serviceuser.AllUsers().subscribe(res=>this.AllUsers=res);
+        this.serviceInvitation.GetAllInvitationsService().subscribe(res=>this.AllInvitations=res);
+
+
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;
@@ -151,8 +189,33 @@ export class GetAllInvitationsComponent implements OnInit {
 
 
     GetAllInvitations() {
-      this.serviceInvitation.GetAllInvitationsService().subscribe(res => {
-        console.log(res);
-      })
+        console.log(this.AllUsers);
+        console.log(this.AllInvitations);
+    }
+
+    deleleinvit(id :any) {
+        let resp= this.serviceInvitation.DeleteInvitationService(id);
+        resp.subscribe((data)=>this.msg=data);
+        window.location.reload();
+    }
+    openNew(id:any) {
+        this.product = {};
+        this.submitted = false;
+        this.productDialog = true;
+        this.idddd = id;
+    }
+    hideDialog() {
+        this.productDialog = false;
+        this.submitted = false;
+    }
+    addcode(id:any) {
+        // @ts-ignore
+        this.user={idUser:id};
+        // @ts-ignore
+        this.invitationadd={number: this.numberinput, mailEmployee: this.emailinput,userSender:this.user};
+        let resp= this.serviceInvitation.AddInvitationService(this.invitationadd);
+        resp.subscribe((data)=>this.msg=data);
+        console.log(this.AllInvitations);
+        window.location.reload();
     }
 }
