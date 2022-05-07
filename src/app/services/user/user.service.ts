@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Authenticate } from 'src/app/model/authenticate';
 import { Registration } from 'src/app/model/registration';
 import { UserAuthService } from '../user-auth/user-auth.service';
@@ -23,6 +24,21 @@ export class UserService {
     return this.httpClient.post(this.PATH_API+"/user/process_register", userRegistration, {headers:this.requestHeader,responseType:'text'});
   }
 
+  getAllUsers(){
+    return this.httpClient.get(this.PATH_API+"/user/retrieve-all-users");
+  }
+
+  findUsersByRole(role:string){
+    return this.httpClient.get(this.PATH_API+"/user/retrieve-users-with-role/"+role);
+  }
+
+  deleteUser(id:number){
+    return this.httpClient.delete(this.PATH_API+"/user/remove-user/"+id,{responseType:'text'});
+  }
+
+  searchEmployesByName(name:string){
+    return this.httpClient.get(this.PATH_API+"/user/retrieve-employes-by-name/"+name);
+  }
   /*roleMatch(allowedRoles):boolean{
     let isMatch=false;
     let role:string=this.userAuthService.getRole();

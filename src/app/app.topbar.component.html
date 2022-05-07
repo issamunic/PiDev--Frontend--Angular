@@ -66,6 +66,10 @@
             <i class="pi pi-sign-in"></i>
             <span>Login</span>
         </a>
+        <a *ngIf="! isLoggedIn()" routerLink="/register" class="p-link layout-topbar-button">
+            <i class="pi pi-user-plus"></i>
+            <span>Register</span>
+        </a>
         <a *ngIf="isLoggedIn()" class="p-link layout-topbar-button" (click)="logOut()">
             <i class="pi pi-sign-out"></i>
             <span>Logout</span>

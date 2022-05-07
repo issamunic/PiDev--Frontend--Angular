@@ -1,0 +1,131 @@
+<app-menu-admin></app-menu-admin>
+
+<p-toast></p-toast>
+
+<div class="card mt-2">
+
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            <!--<button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+                (click)="openNew()"></button>-->
+            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger"
+                (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+
+                <h5 class="p-m-0 ml-3" style="width: 80%;">Manage companys</h5>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <!--<p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
+                class="mr-2 inline-block"></p-fileUpload>
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>-->
+            <span class="p-input-icon-left" >
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                    placeholder="Search..." />
+            </span>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="users" [rows]="10" [paginator]="true"
+        [globalFilterFields]="['nameCompany','country.nameCompany','representative.nameCompany','status']"
+        [(selection)]="selectedProducts" [rowHover]="true" dataKey="login"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+
+        <!--
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between" style="display: flex; flex-direction: row; width: 100%;">
+
+                <h5 class="p-m-0" style="width: 80%;">Manage companys</h5>
+                <span class="p-input-icon-left" style="width: 20%;">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        -->
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="nameCompany">Name Company<p-sortIcon field="nameCompany"></p-sortIcon>
+                </th>
+                <th pSortableColumn="login">Email <p-sortIcon field="login"></p-sortIcon>
+                </th>
+                <th pSortableColumn="domain">Domain <p-sortIcon field="domain"></p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="user"></p-tableCheckbox>
+                </td>
+                <td>{{user.nameCompany}}</td>
+                <td>{{user.login}}</td>
+                <td>{{user.domain}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-success p-mr-2"
+                        (click)="viewProduct(user)"></button>&nbsp;
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="deleteProduct(user)"></button>
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{users ? users.length : 0 }} companys.
+            </div>
+        </ng-template>
+
+    </p-table>
+</div>
+
+
+
+
+<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="id">Id</label>
+                <input type="text" class="mt-2" pInputText id="id" [(ngModel)]="user.idUser" [readonly]="true" required
+                     />
+            </div>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="name">Name company</label>
+            <input type="text" class="mt-2" pInputText id="name" [(ngModel)]="user.nameCompany" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.nameCompany">Name is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="domain">Domain</label>
+            <input type="text" class="mt-2" pInputText id="domain" [(ngModel)]="user.domain" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.domain">Domain is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="login">Email</label>
+            <input type="text" class="mt-2" pInputText id="login" [(ngModel)]="user.login" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.login">Email is required.</small>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <!--<button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>-->
+    </ng-template>
+
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

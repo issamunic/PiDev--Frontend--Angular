@@ -41,6 +41,9 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { CompanyComponent } from './company/company.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { DomainCompanyComponent } from './domain-company/domain-company.component';
+import { UsersManagementAdminComponent } from './users-management-admin/users-management-admin.component';
+import { EmployesManagementAdminComponent } from './employes-management-admin/employes-management-admin.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -58,7 +61,9 @@ import { RegisterComponent } from './register/register.component';
             { path: 'forbidden', component: ForbiddenComponent},
             { path: 'header', component: HeaderComponent},
             { path: 'register', component: RegisterComponent},
-
+            { path: 'domain', component: DomainCompanyComponent, canActivate:[AuthGuard],data:{role:['admin']} },
+            { path: 'userManagementAdmin', component: UsersManagementAdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
+            { path: 'employeManagementAdmin', component: EmployesManagementAdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
             {
                 path: '', component: AppMainComponent,
                 children: [

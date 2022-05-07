@@ -156,6 +156,10 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './services/user/user.service';
 import { RegisterComponent } from './register/register.component';
+import { DomainCompanyComponent } from './domain-company/domain-company.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { UsersManagementAdminComponent } from './users-management-admin/users-management-admin.component';
+import { EmployesManagementAdminComponent } from './employes-management-admin/employes-management-admin.component';
 
 
 @NgModule({
@@ -305,13 +309,17 @@ import { RegisterComponent } from './register/register.component';
         HeaderComponent,
         AuthenticateComponent,
         CompanyComponent,
-        RegisterComponent
+        RegisterComponent,
+        DomainCompanyComponent,
+        MenuAdminComponent,
+        UsersManagementAdminComponent,
+        EmployesManagementAdminComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, ConfigService,AppMainComponent,
-
+        
         AuthGuard,
         {
             provide: HTTP_INTERCEPTORS,

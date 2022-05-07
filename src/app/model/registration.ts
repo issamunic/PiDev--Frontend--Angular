@@ -1,5 +1,5 @@
 export class Registration{
-    login!:string;
-    nameCompany!:string;
-    password!:string;
+    login?:string;
+    nameCompany?:string;
+    password?:string;
 }
