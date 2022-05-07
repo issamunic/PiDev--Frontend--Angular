@@ -39,6 +39,11 @@ export class UserService {
   searchEmployesByName(name:string){
     return this.httpClient.get(this.PATH_API+"/user/retrieve-employes-by-name/"+name);
   }
+
+  getImageUser(idUser){
+    return this.httpClient.get(this.PATH_API+"/user/image/get/"+idUser,{responseType: 'blob'});
+  }
+
   /*roleMatch(allowedRoles):boolean{
     let isMatch=false;
     let role:string=this.userAuthService.getRole();

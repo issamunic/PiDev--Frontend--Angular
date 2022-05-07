@@ -66,14 +66,14 @@ export class UsersManagementAdminComponent implements OnInit {
     this.submitted = false;
   }
 
-  viewProduct(user: User) {
+  viewUser(user: User) {
     this.user = { ...user };
     this.userDialog = true;
   }
 
-  deleteSelectedProducts() {
+  deleteSelectedUsers() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected products?',
+      message: 'Are you sure you want to delete the selected companys?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -90,7 +90,7 @@ export class UsersManagementAdminComponent implements OnInit {
     });
   }
 
-  deleteProduct(user: User) {
+  deleteUser(user: User) {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + user.nameCompany + '?',
       header: 'Confirm',

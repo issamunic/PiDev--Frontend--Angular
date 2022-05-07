@@ -1,6 +1,8 @@
 <app-menu-admin></app-menu-admin>
 
-<!--<p-toast></p-toast>-->
+<p-toast></p-toast>
+
+<p-chip label="mohamed ben rabah" [image]=image styleClass="mr-2"></p-chip>
 
 <div class="card mt-2">
 
@@ -9,26 +11,26 @@
             <!--<button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
                 (click)="openNew()"></button>-->
             <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger"
-                (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+                (click)="deleteSelectedUsers()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
 
-                <h5 class="p-m-0 ml-3" style="width: 80%;">Manage employes</h5>
+            <h5 class="p-m-0 ml-3" style="width: 80%;">Manage employes</h5>
         </ng-template>
 
         <ng-template pTemplate="right">
             <!--<p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
                 class="mr-2 inline-block"></p-fileUpload>
             <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>-->
-            <span class="p-input-icon-left" >
+            <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="search" [(ngModel)]="motCle"
-                    placeholder="Search..." (keyup)="onSearchCustomer($event)"/>
+                <input pInputText type="search" [(ngModel)]="motCle" placeholder="Search..."
+                    (keyup)="onSearchCustomer($event)" />
             </span>
         </ng-template>
     </p-toolbar>
 
     <p-table #dt [value]="users" [rows]="10" [paginator]="true"
-        [globalFilterFields]="['name','country.name','representative.name','status']"
-        [(selection)]="selectedProducts" [rowHover]="true" dataKey="login"
+        [globalFilterFields]="['name','country.name','representative.name','status']" [(selection)]="selectedProducts"
+        [rowHover]="true" dataKey="login"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
 
         <!--
@@ -50,9 +52,13 @@
                 <th style="width: 3rem">
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
-                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon>
+                <th pSortableColumn="firstNameEmploye">FirstName<p-sortIcon field="firstNameEmploye"></p-sortIcon>
+                </th>
+                <th pSortableColumn="lastNameEmploye">LastName<p-sortIcon field="lastNameEmploye"></p-sortIcon>
                 </th>
                 <th pSortableColumn="login">Email <p-sortIcon field="login"></p-sortIcon>
+                </th>
+                <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon>
                 </th>
                 <th pSortableColumn="birthDateEmploye">Birth date<p-sortIcon field="birthDateEmploye"></p-sortIcon>
                 </th>
@@ -67,15 +73,19 @@
                 <td>
                     <p-tableCheckbox [value]="user"></p-tableCheckbox>
                 </td>
-                <td>{{user.FirstNameEmploye+' '+user.LastNameEmploye}}</td>
+                <td>{{user.FirstNameEmploye}}</td>
+                <td>{{user.LastNameEmploye}}</td>
                 <td>{{user.login}}</td>
+                <td style="padding: 0;">
+                    <img [src]='user.imageUser' style="margin-left:15px; width:70px;clip-path: circle();"/> 
+                </td>
                 <td>{{user.birthDateEmploye}}</td>
                 <td>{{user.profession}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-success p-mr-2"
-                        (click)="viewProduct(user)"></button>&nbsp;
+                        (click)="viewUser(user)"></button>&nbsp;
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-                        (click)="deleteProduct(user)"></button>
+                        (click)="deleteUser(user)"></button>
                 </td>
             </tr>
         </ng-template>
@@ -89,5 +99,58 @@
     </p-table>
 </div>
 
+<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Employe Details" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
 
-<!--<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>-->
+        <div class="p-field" style="display: flex;justify-content: center;align-items: center;">
+            <img [src]='user.imageUser' width="150px" style="clip-path: circle();"/>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="id">Id</label>
+                <input type="text" class="mt-2" pInputText id="id" [(ngModel)]="user.idUser" [readonly]="true"
+                    required />
+            </div>
+        </div>
+        
+        <div class="p-field mt-3">
+            <label for="name">First name</label>
+            <input type="text" class="mt-2" pInputText id="name" [(ngModel)]="user.firstNameEmploye " [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.firstNameEmploye">First name is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="name">Last name</label>
+            <input type="text" class="mt-2" pInputText id="name" [(ngModel)]="user.lastNameEmploye " [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.lastNameEmploye">Last name is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="profession">Profession</label>
+            <input type="text" class="mt-2" pInputText id="profession" [(ngModel)]="user.profession" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.profession">Profession is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="login">Email</label>
+            <input type="text" class="mt-2" pInputText id="login" [(ngModel)]="user.login" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.login">Email is required.</small>
+        </div>
+
+        <div class="p-field mt-3">
+            <label for="birthDate">Birth date</label>
+            <input type="text" class="mt-2" pInputText id="birthDate" [(ngModel)]="user.birthDateEmploye" [readonly]="true" required />
+            <small class="p-invalid" *ngIf="submitted && !user.birthDateEmploye">Birth date is required.</small>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <!--<button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>-->
+    </ng-template>
+
+</p-dialog>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -9,7 +9,7 @@
             <!--<button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
                 (click)="openNew()"></button>-->
             <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger"
-                (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+                (click)="deleteSelectedUsers()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
 
                 <h5 class="p-m-0 ml-3" style="width: 80%;">Manage companys</h5>
         </ng-template>
@@ -70,9 +70,9 @@
                 <td>{{user.domain}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-success p-mr-2"
-                        (click)="viewProduct(user)"></button>&nbsp;
+                        (click)="viewUser(user)"></button>&nbsp;
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-                        (click)="deleteProduct(user)"></button>
+                        (click)="deleteUser(user)"></button>
                 </td>
             </tr>
         </ng-template>
@@ -89,7 +89,7 @@
 
 
 
-<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true"
+<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Company Details" [modal]="true"
     styleClass="p-fluid">
     <ng-template pTemplate="content">
 

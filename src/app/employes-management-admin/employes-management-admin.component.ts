@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { User } from '../model/user';
 import { UserService } from '../services/user/user.service';
@@ -6,7 +7,8 @@ import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'app-employes-management-admin',
   templateUrl: './employes-management-admin.component.html',
-  styleUrls: ['./employes-management-admin.component.scss']
+  styleUrls: ['./employes-management-admin.component.scss'],
+  providers: [MessageService, ConfirmationService]
 })
 export class EmployesManagementAdminComponent implements OnInit {
 
@@ -16,10 +18,29 @@ export class EmployesManagementAdminComponent implements OnInit {
   selectedProducts: User[];
   submitted: boolean;
 
-  constructor(private userService: UserService) { }
+  image: any;
+
+  constructor(private userService: UserService, private confirmationService: ConfirmationService,
+    private messageService: MessageService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.findUsersByRoleEmploye();
+    this.showImageUser(10);
+  }
+
+  showImageUser(id) {
+    this.userService.getImageUser(id)
+      .subscribe((blob: any) => {
+        if (blob != null) {
+          if (blob['size'] === 0) {
+            this.image = 'assets/public/user.png';
+          } else {
+            let objectURL = URL.createObjectURL(blob);
+            this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+            console.log(this.image);
+          }
+        }
+      });
   }
 
   findUsersByRoleEmploye() {
@@ -35,6 +56,19 @@ export class EmployesManagementAdminComponent implements OnInit {
         this.users[i]['BirthDateEmploye'] = response[i]['birthDateEmploye']
         this.users[i]['login'] = response[i]['login'];
         this.users[i]['idUser'] = response[i]['idUser'];
+
+
+        this.userService.getImageUser(response[i]['idUser']).subscribe((blob: any) => {
+          if (blob['size'] === 0) {
+            this.users[i]['imageUser'] = 'assets/public/user.png';
+          }
+          else {
+            let objectURL = URL.createObjectURL(blob);
+            this.users[i]['imageUser'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+          }
+        });
+
+
       }
     });
   }
@@ -57,10 +91,63 @@ export class EmployesManagementAdminComponent implements OnInit {
           this.users[i]['BirthDateEmploye'] = response[i]['birthDateEmploye']
           this.users[i]['login'] = response[i]['login'];
           this.users[i]['idUser'] = response[i]['idUser'];
+
+          this.userService.getImageUser(response[i]['idUser']).subscribe((blob: any) => {
+            if (blob['size'] === 0) {
+              this.users[i]['imageUser'] = 'assets/public/user.png';
+            }
+            else {
+              let objectURL = URL.createObjectURL(blob);
+              this.users[i]['imageUser'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+            }
+          });
+
         }
       });
     }
+  }
 
+  hideDialog() {
+    this.userDialog = false;
+    this.submitted = false;
+  }
+
+  viewUser(user: User) {
+    this.user = { ...user };
+    this.userDialog = true;
+  }
+
+  deleteSelectedUsers() {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected employes?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        for (let i = 0; i < this.selectedProducts.length; i++) {
+          //console.log(this.selectedProducts[i]['idUser']);
+          this.userService.deleteUser(this.selectedProducts[i]['idUser']).subscribe();
+        }
+        this.users = this.users.filter(val => !this.selectedProducts.includes(val));
+        this.selectedProducts = null;
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+      }
+    });
+  }
+
+  deleteUser(user: User) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + user.FirstNameEmploye + " " + user.LastNameEmploye + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.userService.deleteUser(user.idUser).subscribe(res => {
+          console.log(res);
+        });
+        this.users = this.users.filter(val => val.idUser !== user.idUser);
+        this.user = {};
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'User Deleted', life: 3000 });
+      }
+    });
   }
 
 }

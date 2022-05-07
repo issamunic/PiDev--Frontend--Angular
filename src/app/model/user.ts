@@ -9,4 +9,6 @@ export class User{
 	nameCompany?:string;
     domain?:string;
     profession?:string;
+    //name?:string;
+    imageUser?:any;
 }
