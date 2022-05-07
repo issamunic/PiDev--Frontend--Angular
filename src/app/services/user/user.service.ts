@@ -44,6 +44,10 @@ export class UserService {
     return this.httpClient.get(this.PATH_API+"/user/image/get/"+idUser,{responseType: 'blob'});
   }
 
+  getCurrentUserAuth(){
+    return this.httpClient.get(this.PATH_API+"/getCurrentUserAuth");
+  }
+
   /*roleMatch(allowedRoles):boolean{
     let isMatch=false;
     let role:string=this.userAuthService.getRole();

@@ -54,6 +54,8 @@
                 </th>
                 <th pSortableColumn="login">Email <p-sortIcon field="login"></p-sortIcon>
                 </th>
+                <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon>
+                </th>
                 <th pSortableColumn="domain">Domain <p-sortIcon field="domain"></p-sortIcon>
                 </th>
                 <th></th>
@@ -67,6 +69,9 @@
                 </td>
                 <td>{{user.nameCompany}}</td>
                 <td>{{user.login}}</td>
+                <td style="padding: 0;">
+                    <img [src]='user.imageUser' style="margin-left:15px; width:70px;clip-path: circle();"/> 
+                </td>
                 <td>{{user.domain}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-success p-mr-2"
@@ -92,6 +97,10 @@
 <p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Company Details" [modal]="true"
     styleClass="p-fluid">
     <ng-template pTemplate="content">
+
+        <div class="p-field" style="display: flex;justify-content: center;align-items: center;">
+            <img [src]='user.imageUser' width="150px" style="clip-path: circle();"/>
+        </div>
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">

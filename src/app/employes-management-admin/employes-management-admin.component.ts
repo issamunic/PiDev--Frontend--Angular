@@ -18,17 +18,17 @@ export class EmployesManagementAdminComponent implements OnInit {
   selectedProducts: User[];
   submitted: boolean;
 
-  image: any;
+  //image: any;
 
   constructor(private userService: UserService, private confirmationService: ConfirmationService,
     private messageService: MessageService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.findUsersByRoleEmploye();
-    this.showImageUser(10);
+    //this.showImageUser(10);
   }
 
-  showImageUser(id) {
+  /*showImageUser(id) {
     this.userService.getImageUser(id)
       .subscribe((blob: any) => {
         if (blob != null) {
@@ -41,7 +41,7 @@ export class EmployesManagementAdminComponent implements OnInit {
           }
         }
       });
-  }
+  }*/
 
   findUsersByRoleEmploye() {
     this.userService.findUsersByRole("employe").subscribe((response: any) => {

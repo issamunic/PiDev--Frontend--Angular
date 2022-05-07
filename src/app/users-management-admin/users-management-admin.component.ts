@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { User } from '../model/user';
 import { UserService } from '../services/user/user.service';
@@ -25,7 +26,7 @@ export class UsersManagementAdminComponent implements OnInit {
   submitted: boolean;
 
 
-  constructor(private userService: UserService, private confirmationService: ConfirmationService, private messageService: MessageService) {}
+  constructor(private userService: UserService, private confirmationService: ConfirmationService, private messageService: MessageService,private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     //this.listUsers();
@@ -51,6 +52,16 @@ export class UsersManagementAdminComponent implements OnInit {
         this.users[i]['nameCompany'] = response[i]['nameCompany'];
         this.users[i]['login'] = response[i]['login'];
         this.users[i]['idUser'] = response[i]['idUser'];
+
+        this.userService.getImageUser(response[i]['idUser']).subscribe((blob: any) => {
+          if (blob['size'] === 0) {
+            this.users[i]['imageUser'] = 'assets/public/user.png';
+          }
+          else {
+            let objectURL = URL.createObjectURL(blob);
+            this.users[i]['imageUser'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+          }
+        });
       }
     });
   }

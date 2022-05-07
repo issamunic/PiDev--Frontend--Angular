@@ -49,15 +49,12 @@
     <a aria-current="page" routerLink="/company" *ngIf="userService.roleMatch(['company'])">Company Dashboard</a>
     <a aria-current="page" routerLink="/employe" *ngIf="userService.roleMatch(['employe'])">Employe Dashboard</a>
 
-    <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active':appMain.topMenuActive}">
-         <a *ngIf="isLoggedIn()" href="#" class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
-        </a>
-        <a *ngIf="isLoggedIn()" href="#" class="p-link layout-topbar-button">
-            <i class="pi pi-cog"></i>
-            <span>Settings</span>
-        </a>
+    <div class="layout-topbar-menu d-flex justify-content-center align-items-center" [ngClass]="{'layout-topbar-menu-mobile-active':appMain.topMenuActive}">
+        
+        <div *ngIf="isLoggedIn()" class="d-flex justify-content-center align-items-center">
+            <p-chip label="{{nameUser}}" [image]=image styleClass="mr-2"></p-chip>
+        </div>
+        
         <a *ngIf="isLoggedIn()" href="#" class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
