@@ -160,6 +160,9 @@ import { DomainCompanyComponent } from './domain-company/domain-company.componen
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { UsersManagementAdminComponent } from './users-management-admin/users-management-admin.component';
 import { EmployesManagementAdminComponent } from './employes-management-admin/employes-management-admin.component';
+import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { ProfileEmployeComponent } from './profile-employe/profile-employe.component';
 
 
 @NgModule({
@@ -313,7 +316,10 @@ import { EmployesManagementAdminComponent } from './employes-management-admin/em
         DomainCompanyComponent,
         MenuAdminComponent,
         UsersManagementAdminComponent,
-        EmployesManagementAdminComponent
+        EmployesManagementAdminComponent,
+        ProfileAdminComponent,
+        ProfileCompanyComponent,
+        ProfileEmployeComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

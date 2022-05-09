@@ -44,6 +44,9 @@ import { RegisterComponent } from './register/register.component';
 import { DomainCompanyComponent } from './domain-company/domain-company.component';
 import { UsersManagementAdminComponent } from './users-management-admin/users-management-admin.component';
 import { EmployesManagementAdminComponent } from './employes-management-admin/employes-management-admin.component';
+import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { ProfileEmployeComponent } from './profile-employe/profile-employe.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -51,7 +54,7 @@ import { EmployesManagementAdminComponent } from './employes-management-admin/em
             {path: 'trip', component: TripComponent},
             {path: 'miniProfil', component: MiniProfilComponent},
             
-            {path: 'profile', component: ProfileComponent},
+            {path: 'profile', component: ProfileComponent },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
             { path: 'user', component: UserComponent},
@@ -64,6 +67,10 @@ import { EmployesManagementAdminComponent } from './employes-management-admin/em
             { path: 'domain', component: DomainCompanyComponent, canActivate:[AuthGuard],data:{role:['admin']} },
             { path: 'userManagementAdmin', component: UsersManagementAdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
             { path: 'employeManagementAdmin', component: EmployesManagementAdminComponent, canActivate:[AuthGuard],data:{role:['admin']} },
+            { path: 'profileAdmin',component:ProfileAdminComponent, canActivate:[AuthGuard],data:{role:['admin']}},
+            { path: 'profileCompany',component:ProfileCompanyComponent, canActivate:[AuthGuard],data:{role:['company']}},
+            { path: 'profileEmploye',component:ProfileEmployeComponent, canActivate:[AuthGuard],data:{role:['employe']}},
+
             {
                 path: '', component: AppMainComponent,
                 children: [

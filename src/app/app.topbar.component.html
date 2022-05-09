@@ -55,10 +55,21 @@
             <p-chip label="{{nameUser}}" [image]=image styleClass="mr-2"></p-chip>
         </div>
         
-        <a *ngIf="isLoggedIn()" href="#" class="p-link layout-topbar-button">
+        <a *ngIf="userService.roleMatch(['admin'])" routerLink="/profileAdmin" class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
-            <span>Profile</span>
+            <span>Profile Admin</span>
         </a>
+
+        <a *ngIf="userService.roleMatch(['company'])" routerLink="/profileCompany" class="p-link layout-topbar-button">
+            <i class="pi pi-user"></i>
+            <span>Profile Company</span>
+        </a>
+
+        <a *ngIf="userService.roleMatch(['employe'])" routerLink="/profileEmploye" class="p-link layout-topbar-button">
+            <i class="pi pi-user"></i>
+            <span>Profile Employe</span>
+        </a>
+
         <a *ngIf="! isLoggedIn()" routerLink="/authenticate" class="p-link layout-topbar-button">
             <i class="pi pi-sign-in"></i>
             <span>Login</span>
