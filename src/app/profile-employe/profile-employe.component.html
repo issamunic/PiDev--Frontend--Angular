@@ -1,1 +1,116 @@
-<p>profile-employe works!</p>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-2 w-75">
+
+        <h2 class="text-center">Profile management</h2>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <!--<p-chip [image]=image styleClass="mr-2"></p-chip>-->
+            <img width="200px" style="clip-path: circle();" [src]="dbImage" />
+        </div>
+
+        <div class="row mt-2">
+
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">First Name</span>
+                    </div>
+                    <div class="col-9">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.FirstNameEmploye">
+                            <label for="float-input">First Name</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Last Name</span>
+                    </div>
+                    <div class="col-9">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.LastNameEmploye">
+                            <label for="float-input">Last Name</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Role</span>
+                    </div>
+                    <div class="col-9">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.role" [readonly]="true"/>
+                            <label for="float-input">Role</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Email</span>
+                    </div>
+                    <div class="col-9">
+                        <span class="p-float-label">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.login" [readonly]="true"/>
+                            <label for="float-input">Email</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Birth date</span>
+                    </div>
+                    <div class="col-9">
+                        <span class="p-float-label">
+                            <p-calendar id="calendar" [(ngModel)]="user.BirthDateEmploye" [showIcon]="true" inputId="icon"></p-calendar>
+                            <label for="calendar">Birth date</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Image</span>
+                    </div>
+                    <div class="col-9">
+                        <input type="file" (change)="onImageUpload($event)">
+                        <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <div>
+                    <div >
+                        <button pButton type="button" label="Save changes" (click)="imageUploadAction()"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

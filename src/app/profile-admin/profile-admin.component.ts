@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { UserAuthService } from '../services/user-auth/user-auth.service';
 import { UserService } from '../services/user/user.service';
@@ -14,17 +13,9 @@ import { formatDate } from '@angular/common';
 })
 export class ProfileAdminComponent implements OnInit {
 
-  constructor(private router: Router, private httpClient: HttpClient, private userService: UserService, private sanitizer: DomSanitizer, private userAuthService: UserAuthService) { }
+  constructor(private httpClient: HttpClient, private userService: UserService, private sanitizer: DomSanitizer, private userAuthService: UserAuthService) { }
 
-  value: string;
-
-  birthDate: Date;
   dateString: string;
-
-  value3: string;
-
-
-
   uploadedImage: File;
   dbImage: any;//image de l'utilisateur
   postResponse: any;
