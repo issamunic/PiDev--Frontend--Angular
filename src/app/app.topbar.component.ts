@@ -1,4 +1,4 @@
-import { Component, OnDestroy,OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
@@ -15,7 +15,8 @@ export class AppTopBarComponent implements OnInit {
 
     items: MenuItem[];
     image: any;
-    nameUser:string='';
+    nameUser: string = '';
+    postResponse: any;
 
     constructor(public appMain: AppMainComponent, private userAuthService: UserAuthService,
         private router: Router,
@@ -25,14 +26,14 @@ export class AppTopBarComponent implements OnInit {
         this.setCurrentUserImageAndName();
     }
 
-    setCurrentUserImageAndName(){
-        this.userService.getCurrentUserAuth().subscribe(res=>{
+    setCurrentUserImageAndName() {
+        this.userService.getCurrentUserAuth().subscribe(res => {
             this.showImageUser(res['idUser']);
-            if(res['role']==='admin'|| res['role']==='employe'){
-                this.nameUser=res['firstNameEmploye']+" "+res['lastNameEmploye'];
+            if (res['role'] === 'admin' || res['role'] === 'employe') {
+                this.nameUser = res['firstNameEmploye'] + " " + res['lastNameEmploye'];
             }
-            else{
-                this.nameUser=res['nameCompany'];
+            else {
+                this.nameUser = res['nameCompany'];
             }
         });
     }
@@ -46,7 +47,7 @@ export class AppTopBarComponent implements OnInit {
         this.router.navigate(['/home']);
     }
 
-    showImageUser(id) {
+    /*showImageUser(id) {
         this.userService.getImageUser(id)
             .subscribe((blob: any) => {
                 if (blob != null) {
@@ -59,6 +60,21 @@ export class AppTopBarComponent implements OnInit {
                     }
                 }
             });
+    }*/
+
+    showImageUser(id) {
+        this.userService.getObjectImageForUser(id)
+            .subscribe(
+                res => {
+                    if (res != null) {
+                        this.postResponse = res;
+                        this.image = 'data:image/jpeg;base64,' + this.postResponse.image;
+                    } else {
+                        this.image = 'assets/public/user.png';
+                    }
+
+                }
+            );
     }
 
 }

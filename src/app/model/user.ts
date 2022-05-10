@@ -11,4 +11,5 @@ export class User{
     profession?:string;
     //name?:string;
     imageUser?:any;
+    role?:string;
 }

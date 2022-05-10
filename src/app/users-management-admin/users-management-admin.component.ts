@@ -25,6 +25,7 @@ export class UsersManagementAdminComponent implements OnInit {
   selectedProducts: User[];
   submitted: boolean;
 
+  postResponse: any;
 
   constructor(private userService: UserService, private confirmationService: ConfirmationService, private messageService: MessageService,private sanitizer: DomSanitizer) {}
 
@@ -53,15 +54,16 @@ export class UsersManagementAdminComponent implements OnInit {
         this.users[i]['login'] = response[i]['login'];
         this.users[i]['idUser'] = response[i]['idUser'];
 
-        this.userService.getImageUser(response[i]['idUser']).subscribe((blob: any) => {
-          if (blob['size'] === 0) {
+        //show image
+        this.userService.getObjectImageForUser(response[i]['idUser']).subscribe(res => {
+          if (res != null) {
+            this.postResponse = res;
+            this.users[i]['imageUser'] = 'data:image/jpeg;base64,' + this.postResponse.image;
+          } else {
             this.users[i]['imageUser'] = 'assets/public/user.png';
           }
-          else {
-            let objectURL = URL.createObjectURL(blob);
-            this.users[i]['imageUser'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-          }
         });
+        //end image
       }
     });
   }

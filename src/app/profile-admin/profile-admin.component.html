@@ -9,7 +9,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
             <!--<p-chip [image]=image styleClass="mr-2"></p-chip>-->
-            <img width="200px" style="clip-path: circle();" [src]="img" />
+            <img width="200px" style="clip-path: circle();" [src]="dbImage" />
         </div>
 
         <div class="row mt-2">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-9">
                         <span class="p-float-label">
-                            <input id="float-input" type="text" pInputText [(ngModel)]="value">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.FirstNameEmploye">
                             <label for="float-input">First Name</label>
                         </span>
                     </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-9">
                         <span class="p-float-label">
-                            <input id="float-input" type="text" pInputText [(ngModel)]="value">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.LastNameEmploye">
                             <label for="float-input">Last Name</label>
                         </span>
                     </div>
@@ -48,12 +48,12 @@
             <div class="col-6">
                 <div class="row align-items-center">
                     <div class="col-3">
-                        <span class="align-middle">Password</span>
+                        <span class="align-middle">Role</span>
                     </div>
                     <div class="col-9">
                         <span class="p-float-label">
-                            <p-password id="float-input" [(ngModel)]="value3" [toggleMask]="true"></p-password>
-                            <label for="float-input">Password</label>
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.role" [readonly]="true"/>
+                            <label for="float-input">Role</label>
                         </span>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-9">
                         <span class="p-float-label">
-                            <input id="float-input" type="text" pInputText [(ngModel)]="value">
+                            <input id="float-input" type="text" pInputText [(ngModel)]="user.login" [readonly]="true"/>
                             <label for="float-input">Email</label>
                         </span>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-9">
                         <span class="p-float-label">
-                            <p-calendar id="calendar" [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+                            <p-calendar id="calendar" [(ngModel)]="user.BirthDateEmploye" [showIcon]="true" inputId="icon"></p-calendar>
                             <label for="calendar">Birth date</label>
                         </span>
                     </div>
@@ -118,7 +118,7 @@
 
 
 
-
+<!--
 <div class="container">
     <h1>Set image</h1>
     <br>
@@ -128,14 +128,10 @@
             <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1">
         </div>
 
-        <!--
         <div>
             <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
         </div>
-        -->
-
-
-        <!--
+   
         <div class="form-group">
             <input type="text" id="image" placeholder="Search Image" [(ngModel)]="image" name="image" />
             <input type="button" (click)="viewImage()" value="View Image" class="btn1">
@@ -145,7 +141,8 @@
         <div *ngIf=dbImage>
             <img [src]="dbImage">
         </div>
-        -->
+        
 
     </form>
 </div>
+-->

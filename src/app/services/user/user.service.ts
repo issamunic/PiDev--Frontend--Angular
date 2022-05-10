@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Authenticate } from 'src/app/model/authenticate';
 import { Registration } from 'src/app/model/registration';
+import { User } from 'src/app/model/user';
 import { UserAuthService } from '../user-auth/user-auth.service';
 
 @Injectable({
@@ -44,8 +45,16 @@ export class UserService {
     return this.httpClient.get(this.PATH_API+"/user/image/get/"+idUser,{responseType: 'blob'});
   }
 
+  getObjectImageForUser(idUser){
+    return this.httpClient.get(this.PATH_API+"/user/image/getObject/" + idUser);
+  }
+
   getCurrentUserAuth(){
     return this.httpClient.get(this.PATH_API+"/getCurrentUserAuth");
+  }
+
+  modifyUser(user:User){
+    return this.httpClient.put(this.PATH_API+"/user/modifyCurrentUser",user);
   }
 
   /*roleMatch(allowedRoles):boolean{
