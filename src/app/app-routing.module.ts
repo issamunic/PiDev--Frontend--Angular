@@ -48,6 +48,7 @@ import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { ProfileEmployeComponent } from './profile-employe/profile-employe.component';
 import { DomainComponent } from './domain/domain.component';
+import { ProfessionComponent } from './profession/profession.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -72,6 +73,7 @@ import { DomainComponent } from './domain/domain.component';
             { path: 'profileCompany',component:ProfileCompanyComponent, canActivate:[AuthGuard],data:{role:['company']}},
             { path: 'profileEmploye',component:ProfileEmployeComponent, canActivate:[AuthGuard],data:{role:['employe']}},
             { path: 'domain',component:DomainComponent, canActivate:[AuthGuard],data:{role:['company']}},
+            { path: 'profession',component:ProfessionComponent, canActivate:[AuthGuard],data:{role:['employe']}},
 
             {
                 path: '', component: AppMainComponent,

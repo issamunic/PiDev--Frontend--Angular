@@ -164,6 +164,7 @@ import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { ProfileEmployeComponent } from './profile-employe/profile-employe.component';
 import { DomainComponent } from './domain/domain.component';
+import { ProfessionComponent } from './profession/profession.component';
 
 
 @NgModule({
@@ -321,7 +322,8 @@ import { DomainComponent } from './domain/domain.component';
         ProfileAdminComponent,
         ProfileCompanyComponent,
         ProfileEmployeComponent,
-        DomainComponent
+        DomainComponent,
+        ProfessionComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

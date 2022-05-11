@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div class="d-flex justify-content-center">
+    <div class="card mt-2 w-75">
+
+        <h2 class="text-center">Profession</h2>
+
+        <div class="row mt-2">
+
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">UserName</span>
+                    </div>
+                    <div class="col-9">
+                        <input id="float-input" type="text" pInputText [(ngModel)]="user.FirstNameEmploye" [readonly]="true">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <span class="align-middle">Your profession</span>
+                    </div>
+                    <div class="col-9">
+                        <input id="float-input" style="width: 70%;" type="text" pInputText [(ngModel)]="user.profession"
+                            [readonly]="true" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="row mt-4">
+            <div class="col-12 pb-0">
+                <h5>Search profession</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pt-0 d-flex">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="text" pInputText placeholder="Search a profession" [(ngModel)]="valueSearch"
+                        (keyup)="onSearchCustomer()" />
+                </span>
+                <button class="ml-4 btn btn-secondary" (click)="addThisProfession()" [hidden]="hiddenBtnAddProfession" style="background: #6366F1; border: 1px solid #6366F1;">
+                    Add this profession
+                </button>
+                <div class="d-flex justify-content-center align-items-center ml-4">
+                    <h5 class="text-danger">{{messageAddProfession}}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 pb-0">
+                <h5>Profession :</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 pt-0 d-flex">
+                <p-dropdown [options]="professions" [(ngModel)]="selectedProfession" (onClick)="getSynonymes()"
+                    optionLabel="name">
+                </p-dropdown>
+                <button class="ml-4 btn btn-secondary" (click)="professionChoosed()" [hidden]="hiddenBtn">Choose this
+                    profession</button>
+            </div>
+            <!--
+            <div class="col-9 pt-0 d-flex align-items-center">
+                <button class="btn btn-danger" (click)="professionChoosed()" [hidden]="hiddenBtn">Choose this profession</button>
+            </div>
+            -->
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 pb-0">
+                <h5>Synonyme of profession :</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pt-0">
+                <p-dropdown [options]="synonyms" [(ngModel)]="synonymSelectedProfession" optionLabel="name"></p-dropdown>
+            </div>
+        </div>
+
+    </div>
+</div>
