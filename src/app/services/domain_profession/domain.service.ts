@@ -22,6 +22,8 @@ export class DomainService {
     return this.httpClient.get(this.PATH_API+"/DomainSynonym/search?keyword="+searchedDomain);
   }
 
-  
+  addDomain(domain:string){
+    return this.httpClient.post(this.PATH_API+"/DomainSynonym/addDomainAndAssignToUser?word="+domain,null,{responseType:'text'});
+  }
 
 }

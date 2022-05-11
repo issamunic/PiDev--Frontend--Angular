@@ -25,15 +25,13 @@
                         <span class="align-middle">Your domain</span>
                     </div>
                     <div class="col-9">
-                        <input id="float-input" style="width: 70%;" type="text" pInputText [(ngModel)]="user.domain"/>
+                        <input id="float-input" style="width: 70%;" type="text" pInputText [(ngModel)]="user.domain"
+                            [readonly]="true" />
                     </div>
                 </div>
             </div>
 
         </div>
-        
-
-
 
 
 
@@ -43,12 +41,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 pt-0">
+            <div class="col-12 pt-0 d-flex">
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input type="text" pInputText placeholder="Search a domain" [(ngModel)]="valueSearch"
                         (keyup)="onSearchCustomer()" />
                 </span>
+                <button class="ml-4 btn btn-secondary" (click)="addThisDomain()" [hidden]="hiddenBtnAddDomain" style="background: #6366F1; border: 1px solid #6366F1;">
+                    Add this domain
+                </button>
+                <div class="d-flex justify-content-center align-items-center ml-4">
+                    <h5 class="text-danger">{{messageAddDomain}}</h5>
+                </div>
             </div>
         </div>
 
@@ -62,7 +66,8 @@
                 <p-dropdown [options]="domains" [(ngModel)]="selectedDomain" (onClick)="getSynonymes()"
                     optionLabel="name">
                 </p-dropdown>
-                <button class="ml-4 btn btn-danger" (click)="domainChoosed()" [hidden]="hiddenBtn">Choose this domain</button>
+                <button class="ml-4 btn btn-secondary" (click)="domainChoosed()" [hidden]="hiddenBtn">Choose this
+                    domain</button>
             </div>
             <!--
             <div class="col-9 pt-0 d-flex align-items-center">
@@ -78,8 +83,7 @@
         </div>
         <div class="row">
             <div class="col-12 pt-0">
-                <p-dropdown [options]="synonyms" [(ngModel)]="synonymSelectedDomain"
-                    optionLabel="name"></p-dropdown>
+                <p-dropdown [options]="synonyms" [(ngModel)]="synonymSelectedDomain" optionLabel="name"></p-dropdown>
             </div>
         </div>
 

@@ -21,6 +21,9 @@ export class DomainComponent implements OnInit {
 
   valueSearch:string;
   hiddenBtn:boolean=true;
+  hiddenBtnAddDomain:boolean=true;
+
+  messageAddDomain:string="";
 
   user: User;
 
@@ -68,12 +71,15 @@ export class DomainComponent implements OnInit {
   }
 
   onSearchCustomer(){
+    this.hiddenBtnAddDomain=false;
+    this.messageAddDomain="";
     //console.log(this.valueSearch);
     this.domainService.searchDomain(this.valueSearch).subscribe((res:any)=>{
       //this.listSearchDomainResult=res;
       if(res!=null){
         if(this.valueSearch!="" && res['length']!=0){
           this.hiddenBtn=false;
+          this.hiddenBtnAddDomain=false;
           //console.log("length : "+res['length']);
           this.domains=res
           this.getSynonymes();
@@ -82,9 +88,11 @@ export class DomainComponent implements OnInit {
           this.domains=[];
           this.synonyms=[];
           this.hiddenBtn=true;
+          this.hiddenBtnAddDomain=false;
         }
         else{
           this.hiddenBtn=true;
+          this.hiddenBtnAddDomain=true;
           console.log("mot vide");
           this.setDomainsToSelectedList();
         }
@@ -101,9 +109,22 @@ export class DomainComponent implements OnInit {
     this.user.domain=this.selectedDomain.name;
     this.userService.assignCurrentUserToDomain(this.selectedDomain.idDomain).subscribe(res=>{
       console.log(res);
+    });
+  }
+
+  addThisDomain(){
+    //alert("domain added : "+this.valueSearch);
+    this.domainService.addDomain(this.valueSearch).subscribe((res:string)=>{
+      console.log("value add domain : "+res);
+      this.messageAddDomain=res;
+
+      if(res!=='already exist !!'){
+        this.user.domain=this.valueSearch;
+        this.setDomainsToSelectedList();
+        this.valueSearch="";
+      }
       
     });
-
   }
 
 }
