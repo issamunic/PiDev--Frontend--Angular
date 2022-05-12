@@ -59,7 +59,7 @@ export class SidebarchatComponent implements OnInit {
   ngOnInit(): void {
     this.auth.auth().subscribe(res =>{
          console.log(res);
-         localStorage.setItem('token', res['jwtToken']);
+         localStorage.setItem('token', res['jwtToken'] );
 
           
         });
