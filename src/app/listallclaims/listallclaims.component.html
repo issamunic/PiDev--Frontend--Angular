@@ -1,25 +1,25 @@
-
-
 <div class="card">
     <h5>Claims List</h5>
     <p-table [value]="rcvData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
         <ng-template pTemplate="header">
             <tr>
-                <th>Other</th>
-                <th>staus</th>
-                <th>severity</th>
-                <th>type</th>
-                <th>response</th>
+            <th>Id</th>
+            <th>type</th>
+            <th>severity</th>
+            <th>Other</th>
+            <th>staus</th>
+            <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-claim>
             <tr>
+                <td>{{claim.reclamId }}</td>
+                <td>{{claim.type}}</td>
+                <td><p-rating [ngModel]="claim.severity" [readonly]="true" [cancel]="false"></p-rating></td>
                 <td>{{claim.other}}</td>
                 <td>{{claim.staus}}</td>
-                <td><p-rating [ngModel]="claim.severity" [readonly]="true" [cancel]="false"></p-rating></td>
-                <td>{{claim.type}}</td>
-                <td>{{claim.response}}</td>
+                <button pButton type="button" label="Click" (click)="action(claim.reclamId)" ></button>
 
             </tr>
         </ng-template>

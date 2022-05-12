@@ -120,9 +120,12 @@
 
 
 
-<full-calendar [options]="calendarOptions"></full-calendar>
+<full-calendar deepChangeDetection="true"   [options]="calendarOptions"> 
+</full-calendar>
+
+<p *ngIf="updatedialog==true">anas</p>
 
 
 
 
-
+<button type="button" (click)="show()" pButton icon="pi pi-info-circle" label="Show"></button>

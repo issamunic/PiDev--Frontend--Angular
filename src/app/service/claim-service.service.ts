@@ -4,9 +4,12 @@ import { catchError, Observable, Subscriber } from 'rxjs';
 import { Claim } from '../api/claim';
 import { Activity } from '../api/Activity';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ClaimServiceService {
   [x: string]: any;
 
@@ -105,7 +108,42 @@ export class ClaimServiceService {
 
 }
 
+public action(id:number) {
+  return this.http.get("http://localhost:8087/SpringMVC/Report/update/"+id)
 
+  .subscribe(response =>{
+
+
+  });
+
+}
+
+public activitytripPlan(tripId:number,activityId:number) {
+    this.http.get("http://localhost:8087/SpringMVC/Activity/asgTPAC/"+tripId+"/"+activityId).subscribe(response =>{
+    console.log(response);
+
+  }); 
+}
+
+
+
+public activitybyId(id:number){
+  return this.http.get("http://localhost:8087/SpringMVC/Activity/getById/"+id); 
+
+}
+
+public UpdateActivity(activity: Activity,tripId:number,activityId:number) {
+  return this.http.put<any>("http://localhost:8087/SpringMVC/Activity/up", activity).subscribe(response =>{
+    console.log("******"+response.staus);
+    this.activitytripPlan(tripId,activityId);
+
+
+  });
+  
+
+
+
+}
  
 
   

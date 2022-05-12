@@ -20,7 +20,7 @@ export class ClaimComponent implements OnInit {
     tabyweek : Array<string> = [];
     tabxmounth : Array<string> = [];
     tabymounth : Array<string> = [];
-    tabxyear : Array<string> = [];
+    tabxyear : Array<any> = [];
     tabyyear : Array<string> = [];
     data11: any;
     data22: any;
@@ -88,10 +88,12 @@ export class ClaimComponent implements OnInit {
     
             for(let i =0; i<Object.keys(this.data1).length;i++){
               this.tabxweek.push(Object.keys(this.data1)[i]);
+
               this.tabyweek.push(this.data1[Object.keys(this.data1).sort()[i]]);
               this.numberClaimbyweek = this.data1[Object.keys(this.data1)[i]]+this.numberClaimbyweek;
               
             }
+            
             console.log("**** : "+this.tabxweek+ " /// : "+ this.tabyweek);
 
             this.lineData = {
@@ -122,13 +124,21 @@ export class ClaimComponent implements OnInit {
             this.data2 = data;
             console.log(data);
             console.log(Object.keys(this.data2));
+            console.log("objet*****************"+this.data2);
 
-    
+
             for(let i =0; i<Object.keys(this.data2).length;i++){
               this.tabxmounth.push(Object.keys(this.data2)[i]);
-              this.tabymounth.push(this.data2[Object.keys(this.data2).sort()[i]]);
+              //this.tabymounth.push(this.data2[Object.keys(this.data2)[i]]);
               this.numberClaimbyMounth = this.data2[Object.keys(this.data2)[i]]+this.numberClaimbyMounth;
             }
+            this.tabxmounth.sort();
+            for(let i =0; i<Object.keys(this.data2).length;i++){
+                this.tabymounth.push(this.data2[this.tabxmounth[i]]);
+              }
+
+            console.log("test1 : "+ this.tabxmounth);
+            console.log("test2 : "+ this.tabymounth);
 
             this.lineData1 = {
             
@@ -160,10 +170,21 @@ export class ClaimComponent implements OnInit {
     
             for(let i =0; i<Object.keys(this.data3).length;i++){
               this.tabxyear.push(Object.keys(this.data3)[i]);
-              this.tabyyear.push(this.data3[Object.keys(this.data3).sort()[i]]);
+              //this.tabyyear.push(this.data3[Object.keys(this.data3).sort()[i]]);
               this.numberClaimbyYear = this.data3[Object.keys(this.data3)[i]]+this.numberClaimbyYear;
-
             }
+            
+            
+            this.tabxyear.sort();
+            console.log("tri : " +this.tabxyear.sort())
+
+            for(let i =0; i<Object.keys(this.data3).length;i++){
+                this.tabyyear.push(this.data3[this.tabxyear[i]]);
+              }
+
+              
+              
+            
             
             this.lineData2 = {
             

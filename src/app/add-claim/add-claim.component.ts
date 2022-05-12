@@ -42,11 +42,20 @@ export class AddClaimComponent implements OnInit {
     //this.msgs = "Claim added";
     console.log(this.claim);
 
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Claim was added with successful'});
+
+
   }
 
   showDialog() {
     this.display = true;
 }
+
+
+onReject() {
+  this.messageService.clear('c');
+}
+
 
 
 

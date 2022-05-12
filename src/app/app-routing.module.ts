@@ -32,6 +32,7 @@ import { AccessComponent } from './components/access/access.component';
 import { ClaimComponent } from './claim/claim.component';
 import { AddClaimComponent } from './add-claim/add-claim.component';
 import { AddActivitiesComponent } from './add-activities/add-activities.component';
+import { UpdateActivityComponent } from './update-activity/update-activity.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -51,6 +52,7 @@ import { AddActivitiesComponent } from './add-activities/add-activities.componen
                     {path: 'uikit/table', component: TableComponent},
                     {path: 'uikit/list', component: ListComponent},
                     {path: 'uikit/tree', component: TreeComponent},
+                    {path: 'uikit/updateActivity/:id', component: UpdateActivityComponent},
                     {path: 'uikit/panel', component: PanelsComponent},
                     {path: 'uikit/overlay', component: OverlaysComponent},
                     {path: 'uikit/media', component: MediaComponent},

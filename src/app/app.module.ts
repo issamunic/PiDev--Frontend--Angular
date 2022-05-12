@@ -149,6 +149,10 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import { MessageService} from 'primeng/api';
 
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { ListallclaimsComponent } from './listallclaims/listallclaims.component';
+import { UpdateActivityComponent } from './update-activity/update-activity.component';
+
 
 
 
@@ -162,6 +166,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 @NgModule({
     imports: [
+        DynamicDialogModule,
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -302,6 +307,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         AddClaimComponent,
         ListClaimComponent,
         AddActivitiesComponent,
+        ListallclaimsComponent,
+        UpdateActivityComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

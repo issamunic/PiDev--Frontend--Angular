@@ -3,5 +3,6 @@ export class Activity {
     acivity: string
     period: number;
     progress: string;
+    
 }
 
