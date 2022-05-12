@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Product } from '../api/product';
+import { MessageService } from 'primeng/api';
 
 @Injectable()
 export class ProductService {

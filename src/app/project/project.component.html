@@ -1,5 +1,7 @@
+
+
+
 <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
-<h3>Your Trips</h3>
 
 <p-tabView>
     <p-tabPanel header="Custom View">
@@ -24,14 +26,14 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="trips" [rows]="10" [paginator]="true"
+            <p-table #dt [value]="projects" [rows]="10" [paginator]="true"
                 [globalFilterFields]="['name','country.name','representative.name','status']"
                 [(selection)]="selectedProjects" [rowHover]="true" dataKey="id"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                 [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        <h5 class="p-m-0">Manage trips</h5>
+                        <h5 class="p-m-0">Manage Projects</h5>
                         <span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
                             <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
@@ -48,89 +50,88 @@
                         </th>
                         <th pSortableColumn="price">Associates <p-sortIcon field="price"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="category">Purpose <p-sortIcon field="category"></p-sortIcon>
+                        <th pSortableColumn="category">Description <p-sortIcon field="category"></p-sortIcon>
                         </th>
                         <th pSortableColumn="rating">Start date <p-sortIcon field="rating"></p-sortIcon>
                         </th>
                         <th pSortableColumn="rating">End date <p-sortIcon field="rating"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="inventoryStatus">Destination <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                        <th pSortableColumn="inventoryStatus">Progress <p-sortIcon field="inventoryStatus"></p-sortIcon>
                         </th>
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-trip>
+                <ng-template pTemplate="body" let-project>
                     <tr>
                         <td>
-                            <p-tableCheckbox [value]="trip"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="project"></p-tableCheckbox>
                         </td>
-                        <td>{{trip.name}}</td>
+                        <td>{{project.name}}</td>
                         <td>
 
 
-                            <app-avatars [lol]=5 [associates]=trip.associates></app-avatars>
+                            <app-avatars [lol]=5 [associates]=project.associates></app-avatars>
 
                         </td>
-                        <td>{{trip.purpose}}</td>
-                        <td>{{trip.startDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{trip.endDate | date: 'dd/MM/yyyy'}}</td>
-                        <td>{{trip.destination }}</td>
+                        <td>{{project.description}}</td>
+                        <td>{{project.startDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{project.endDate | date: 'dd/MM/yyyy'}}</td>
+                        <td><p-knob [disabled]="true" [(ngModel)]="project.progress"></p-knob></td>
                         <!--  <td><span [class]="'product-badge status-' + project.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td> -->
                         <td>
                             <button pButton pRipple class="" icon="pi pi-pencil"
                                 class="p-button-rounded p-button-success p-mr-2"
-                                (click)="editProduct(trip)"></button>
+                                (click)="editProduct(project)"></button>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-                                (click)="deleteProduct(trip)"></button>
+                                (click)="deleteProduct(project)"></button>
                         </td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{trips ? trips.length : 0 }} trips.
+                        In total there are {{projects ? projects.length : 0 }} projects.
                     </div>
                 </ng-template>
             </p-table>
         </div>
 
-        <p-dialog [(visible)]="projectDialog" [style]="{width: '450px'}" [maximizable]="true" header="trip Details" [modal]="true"
+        <p-dialog [(visible)]="projectDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true"
             styleClass="p-fluid">
             <ng-template pTemplate="content">
-               <!-- <div *ngIf="!create">
-                    <app-mini-profil [id]=trip.user.idUser></app-mini-profil>
-                </div>-->
-                <div class="p-field">
-                    <label for="name">trip id:</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="trip.tripId" [disabled]="true" required  />
+                <div *ngIf="!create">
+                    <app-mini-profil [id]=project.user.idUser></app-mini-profil>
                 </div>
                 <div class="p-field">
-                    <label for="startDate">Destination:</label>
-                    <p-cascadeSelect [(ngModel)]="selectedCity1" p-label="hello" [options]="countries" optionLabel="cname" optionGroupLabel="name" 
-    [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '14rem'}" [(ngModel)]="trip.destination"></p-cascadeSelect>
-                </div>
-                
-                <div class="p-field">
-                    <label for="name">trip Name:</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="trip.name" required  />
-                    <small class="p-invalid" *ngIf="submitted && !trip.name">Name is required.</small>
+                    <label for="name">Project ID:</label>
+                    <input [disabled]=true type="text" pInputText id="id" [(ngModel)]="project.projectId" required
+                        autofocus />
                 </div>
                 <div class="p-field">
-                    <label for="description">trip Purpose:</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="trip.purpose" required  />
+                    <label for="name">Project Name:</label>
+                    <input type="text" pInputText id="name" [(ngModel)]="project.name" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !project.name">Name is required.</small>
+                </div>
+                <div class="p-field">
+                    <label for="description">Project Description:</label>
+                    <textarea id="description" pInputTextarea [(ngModel)]="project.description" required rows="3"
+                        cols="20"></textarea>
                 </div>
                 <div class="p-field">
                     <label for="startDate">Start date:</label>
-                    <p-calendar id="startDate" [(ngModel)]="trip.startDate" required ></p-calendar>
+                    <p-calendar id="startDate" [(ngModel)]="project.startDate" required autofocus></p-calendar>
                 </div>
                 <div class="p-field">
                     <label for="startDate">End date:</label>
-                    <p-calendar id="startDate" [(ngModel)]="trip.endDate" required ></p-calendar>
+                    <p-calendar id="startDate" [(ngModel)]="project.endDate" required autofocus></p-calendar>
+                </div>
+                <div class="p-field">
+                    <label for="startDate">Progress:</label>
+                    <td><p-knob  [(ngModel)]="project.progress"></p-knob></td>
                 </div>
                 <div class="p-field">
                     <label for="startDate">Associates:</label>
-                    <p-multiSelect [options]="cities" [(ngModel)]="trip.associates" defaultLabel="Select associates" optionLabel="firstNameEmploye" selectedItemsLabel="{0} associates selected"></p-multiSelect>
+                    <p-multiSelect [options]="cities" [(ngModel)]="project.associates" defaultLabel="Select associates" optionLabel="firstNameEmploye" selectedItemsLabel="{0} associates selected"></p-multiSelect>
                 </div>
-              
               
 
 

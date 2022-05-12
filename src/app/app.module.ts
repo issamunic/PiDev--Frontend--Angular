@@ -143,9 +143,18 @@ import { AccessComponent } from './components/access/access.component';
 import { TripComponent } from './trip/trip.component';
 import { MiniProfilComponent } from './mini-profil/mini-profil.component';
 
+import {GMapModule} from 'primeng/gmap';
+import { ProjectComponent } from './project/project.component';
+import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { AvatarsComponent } from './avatars/avatars.component';
+import { TaskComponent } from './task/task.component';
+
+
 
 @NgModule({
     imports: [
+        GMapModule,
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -282,11 +291,14 @@ import { MiniProfilComponent } from './mini-profil/mini-profil.component';
         AccessComponent,
         TripComponent,
         MiniProfilComponent,
+        ProjectComponent,
+        AvatarsComponent,
+        TaskComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent
+        PhotoService, ProductService, MenuService, ConfigService,AppMainComponent,MessageService,ConfirmationService
     ],
     bootstrap: [AppComponent]
 })

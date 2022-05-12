@@ -1,0 +1,24 @@
+
+<div *ngIf="this.associates.length>0; else elseBlock">
+  <p-avatar [image]=associates[0].image1 styleClass="mr-2" size="xlarge"
+        shape="circle"></p-avatar>
+
+        <p-avatar  *ngIf=" associates.length>1" [image]=associates[1].image1 styleClass="mr-2" size="xlarge"
+        shape="circle"></p-avatar>
+
+        <p-avatar  *ngIf=" associates.length>2" image="../../assets/public/dots.webp" styleClass="mr-2" size="xlarge"
+        shape="circle" (click)="showDialog()"></p-avatar>
+ 
+</div>
+
+<ng-template #elseBlock>
+    <p-chip label="assign"></p-chip>
+</ng-template>
+<p-dialog header="All Associates" [(visible)]="display">
+   
+    <div *ngFor="let associate of associates;">
+        <app-mini-profil class="mt-1" [id]=associate.idUser></app-mini-profil>
+</div>
+    
+</p-dialog>
+

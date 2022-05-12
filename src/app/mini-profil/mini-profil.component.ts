@@ -16,6 +16,7 @@ export class MiniProfilComponent implements OnInit {
   name : string;
   image : any;
   ngOnInit(): void {
+    if (this.id!=null) {
       this.profileService.getUserInfo(this.id).subscribe( res => 
         {
           this.user = res;
@@ -24,24 +25,28 @@ export class MiniProfilComponent implements OnInit {
 
 
 
-          console.log("user ba3ed ma stanna: "+this.name);
-          
-          console.log(this.user['image']['name']);
           
           
-
-          this.profileService.getImageByName(this.user['image']['name'])
+          
+            if (this.user['image']!=null) {
+              this.profileService.getImageByName(this.user['image']['name'])
           .subscribe((blob : any) => {
             let objectURL = URL.createObjectURL(blob);       
             this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-
+            
+            
           });
           
+            }else { 
+              
+              this.image="assets/public/user.png"
+            }
         })
 
         
 
-        console.log("user "+this.user);
+    }
+     
         
   }
 

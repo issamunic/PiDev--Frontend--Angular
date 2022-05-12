@@ -1,3 +1,5 @@
+import { TaskComponent } from './task/task.component';
+import { ProjectComponent } from './project/project.component';
 import { MiniProfilComponent } from './mini-profil/mini-profil.component';
 import { TripComponent } from './trip/trip.component';
 import { RouterModule } from '@angular/router';
@@ -30,11 +32,16 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
             {path: 'profil', component: MiniProfilComponent},
+            {path: 'project', component: ProjectComponent},
+            {path: 'task', component: TaskComponent},
+
+
 
             {
                 path: '', component: AppMainComponent,

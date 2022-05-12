@@ -1,0 +1,90 @@
+<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+<h3>Your Tasks</h3>
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 mr-5"
+            (click)="openNew()"></button>
+       
+    </ng-template>
+
+    <ng-template pTemplate="right">
+        <app-mini-profil [id]="1" ></app-mini-profil>
+    </ng-template>
+</p-toolbar>
+<p-treeTable [value]="data">
+   
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Associates</th>
+            <th>description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>progress</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+        <tr [ttRow]="rowNode">
+            <td>
+                <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                {{rowData.name}}
+            </td>
+            <td><app-avatars [lol]=5 [associates]=rowData.associates></app-avatars></td>
+            <td>{{rowData.description}}</td>
+            <td>{{rowData.startDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{rowData.endDate | date: 'dd/MM/yyyy'}}</td>
+            <td><p-knob [disabled]="true" [(ngModel)]="rowData.progress"></p-knob></td>
+        </tr>
+    </ng-template>
+</p-treeTable>
+<p-dialog [(visible)]="taskDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true"
+styleClass="p-fluid">
+<ng-template pTemplate="content">
+    <div *ngIf="!create">
+        <app-mini-profil [id]=project.user.idUser></app-mini-profil>
+    </div>
+    <div class="p-field">
+        <label for="name">Project ID:</label>
+        <input [disabled]=true type="text" pInputText id="id" [(ngModel)]="task.taskId" 
+            autofocus />
+    </div>
+    <div class="p-field">
+        <label for="name">task Name:</label>
+        <input type="text" pInputText id="name" [(ngModel)]="task.name" required autofocus />
+        <small class="p-invalid" *ngIf="submitted && !project.name">Name is required.</small>
+    </div>
+    <div class="p-field">
+        <label for="description">task Description:</label>
+        <textarea id="description" pInputTextarea [(ngModel)]="task.description" required rows="3"
+            cols="20"></textarea>
+    </div>
+    <div class="p-field">
+        <label for="startDate">Start date:</label>
+        <p-calendar id="startDate" [(ngModel)]="task.startDate" required autofocus></p-calendar>
+    </div>
+    <div class="p-field">
+        <label for="startDate">End date:</label>
+        <p-calendar id="startDate" [(ngModel)]="task.endDate" required autofocus></p-calendar>
+    </div>
+    <div class="p-field">
+        <label for="startDate">Progress:</label>
+        <td><p-knob  [(ngModel)]="task.progress"></p-knob></td>
+    </div>
+    <div class="p-field">
+        <label for="startDate">Associates:</label>
+        <p-multiSelect [options]="cities" [(ngModel)]="task.associates" defaultLabel="Select associates" optionLabel="firstNameEmploye" selectedItemsLabel="{0} associates selected"></p-multiSelect>
+    </div>
+  
+
+
+
+</ng-template>
+
+<ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+        (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
+        (click)="saveProduct()"></button>
+</ng-template>
+</p-dialog>
