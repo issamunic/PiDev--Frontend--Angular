@@ -32,9 +32,13 @@
     background-color: #141318;
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
     padding: 20px 20px; 
+    position: relative;
+
+    overflow: auto;
+    height: 70vh;
+
     
     .message{
         
@@ -107,50 +111,82 @@
 }
 
 #footer{
-    .img-fluid{
-        border: 2px solid white;
-        width: 40px;
-        border-radius: 50px;
-        position: relative;
-        top: -47px;
-        left: 10px;
+    form{
+        .img-fluid{
+            border: 2px solid white;
+            width: 40px;
+            border-radius: 50px;
+            position: relative;
+            top: -47px;
+            left: 10px;
+        }
+    
+        .bi-mic-fill{
+            color:#5a5a6a;
+            position: relative;
+            float: right;
+            top: -35px;
+            color: #5a5a6a;
+            right: 96px;
+        
+        }
+    
+        .bi-paperclip{
+            color:#5a5a6a;
+            position: relative;
+            float: right;
+            top: -35px;
+            right: 15px;
+            width: 80px;
+            cursor: pointer;
+        
+        }
+    
+        button{
+            .bi-send-fill{
+                color:#2295ff;
+                position: relative;
+                float: right;
+                top: -35px;
+                left: 20px;
+                transform: rotate(45deg);
+            
+            }
+        }
+        
+        .bi-dash-lg{
+            color: #5a5a6a;
+            position: relative;
+            float: right;
+            top: -35px;
+            left: 81px;
+            transform: rotate(90deg);
+        }
     }
+}
+.like{
+    background: #212529;
+    color: #2295ff;
+    width: 35px;
+    border-radius: 66px;
+    padding: 2px;
+    border: none;
+}
+.dislike{
+    background: #212529;
+    color: brown;
+    width: 35px;
+    border-radius: 66px;
+    padding: 2px;
+    border: none;
 
-    .bi-mic-fill{
-        color:#5a5a6a;
-        position: relative;
-        float: right;
-        top: -35px;
-        color: #5a5a6a;
-        right: 85px;
-    
-    }
+}
+.heart{
+    background: #212529;
+    color:palevioletred ;
+    width: 35px;
+    border-radius: 66px;
+    padding: 2px;
+    border: none;
 
-    .bi-paperclip{
-        color:#5a5a6a;
-        position: relative;
-        float: right;
-        top: -35px;
-        right: 40px;
-    
-    }
-
-    .bi-send-fill{
-        color:#2295ff;
-        position: relative;
-        float: right;
-        top: -35px;
-        left: 20px;
-        transform: rotate(45deg);
-    
-    }
-    
-    .bi-dash-lg{
-        color: #5a5a6a;
-        position: relative;
-        float: right;
-        top: -35px;
-        left: 20px;
-        transform: rotate(90deg);
-    }
 }

@@ -9,3 +9,15 @@
 @import "assets/sass/layout/_variables";
 @import "assets/sass/layout/_layout";
 @import "assets/sass/overrides/_overrides";
+.p-speeddial-button.p-button.p-button-icon-only {
+    width: 25px !important;
+    height: 25px !important;
+    background-color: #2196f3 !important;
+    border: none !important;
+    position:relative;
+    top:-18px;
+    right:20px;
+}
+.p-speeddial-button.p-button.p-button-icon-only .p-button-icon {
+    font-size: 10px !important;
+}

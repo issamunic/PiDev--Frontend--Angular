@@ -1,0 +1,15 @@
+<div *ngIf="images && images.length>0" class="carousel-container">
+    <div *ngFor="let storie of detailStorie; let i=index" >
+        <img  src="../../assets/public/userpdp/{{storie.media}}" [ngClass]="{'image-active':selectedIndex===i}" style="height: 600px;">
+    </div>
+    <input [(ngModel)]="chat.message" name="message" (keyup.enter)="submitMessage(chat.message)"  class="col-md-12 inputStorie" placeholder="Repeat to this post">
+    
+    <div *ngIf="indicators" class="carousel-numberStorie-container">
+        <span *ngFor="let storie of detailStorie; let i=index"
+            class ="numberStorie" 
+            [ngClass]="{'active':selectedIndex===i}"
+            (click)="selectImage(i)">
+
+        </span>
+    </div>
+</div>

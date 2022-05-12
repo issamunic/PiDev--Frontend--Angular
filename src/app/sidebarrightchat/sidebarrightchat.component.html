@@ -1,8 +1,8 @@
-<div class="container overflow-auto" style="height:100% ">
+<div class="container overflow-auto" style="height:90% ">
     <div class="row">
         <div class="col-md-12 DetailRightGroup d-flex flex-column ">
-            <div class="imageChat col-md-12">
-                <img src="assets/public/Capture.PNG"   >
+            <div class="imageChat col-md-12 d-flex justify-content-center ">
+                <img src="assets/public/groupspdp/{{conversation[2]}}"  style="height: 75px;" >
             </div>
 
             <div class="col-md-12 nameGroup">
@@ -87,19 +87,58 @@
                     <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                   </svg>
                 <h6 class="members">MEMBERS</h6>
-                <h6>{{Users.length}}</h6>
+                <h6>{{detailsChat.length}}</h6>
+                <button style="width: 10px;height: 20px;background-color: #282d33;border: none;" 
+                type="button"class="btn btn-primary"(click)="openPopup()">+
+                </button>
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add new person</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div *ngFor="let user of users" >
+                                    <div class="col-md-12 d-flex " style="margin-bottom:10px" >
+                                        <div class="col-md-2 userDetailGroups d-flex justify-content-between align-self-center" >
+                                            <img class="img-fluid" src="assets/public/userpdp/{{user[3]}}" style="width:30px ; height:30px;border-radius: 100px;">
+                                        </div>
+                                        <div class="col-md-8 align-self-center">
+                                            <h6 style="text-transform: capitalize; font-family:roboto medium;position: relative;top:2px;">{{user[2]}} {{user[1]}}</h6>
+                                        </div>
+                                        <div class="col-md-2 trashMembers align-self-center">
+                                            <button (click)="addUserToGroup(user,conversation[0])">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                                  </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" 
+                                (click)="closePopup()">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div *ngFor="let user of Users;">
+
+            <div *ngFor="let detGroup of detailsChat" >
             <div class="col-md-12 d-flex " style="margin-bottom:10px" >
-                <div class="col-md-2 userDetailGroups d-flex justify-content-between align-self-center">
-                    <img class="img-fluid" src="../../assets/public/{{user.image}}" style="width:30px ; height:30px;border-radius: 100px;">
+                <div class="col-md-2 userDetailGroups d-flex justify-content-between align-self-center" >
+                    <img class="img-fluid" src="assets/public/userpdp/{{detGroup[3]}}" style="width:30px ; height:30px;border-radius: 100px;">
                 </div>
                 <div class="col-md-8 align-self-center">
-                    <h6 style="text-transform: capitalize; font-family:roboto medium;position: relative;top:2px;">{{user.prenom}} {{user.nom}}</h6>
+                    <h6 style="text-transform: capitalize; font-family:roboto medium;position: relative;top:2px;">{{detGroup[1]}} {{detGroup[2]}}</h6>
                 </div>
                 <div class="col-md-2 trashMembers align-self-center">
-                    <button (click)="deleteMember(user.id)">
+                    <button (click)="deleteMember(detGroup[0],conversation[0])">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                       </svg>
@@ -118,9 +157,14 @@
                 <h6 class="members">MEDIA</h6>
                 <h6>62</h6>
             </div>
-            <div class="col-md-4 imageChat">
-                <p-image  class="img-fluid"  src="../../assets/public/Capture.PNG" alt="Image" width="100%" [preview]="true"></p-image>
+            
+            <div clas="col-md-12 imageChat">
+                <div class="img-fluid col-md-4">
+                    <p-image  class="col-md-12" width="100%" src="assets/public/userpdp/mongi.jpg" alt="Image"  [preview]="true"></p-image>
+                </div>
+                
             </div>
+
 
         </div>
 
@@ -138,13 +182,28 @@
                   <h6>Change Chat Name</h6> 
             </div>
             <input type="text" class="col-md-12 form-control" (keyup.enter)="updateGroupName($event)"  [(ngModel)]="groupNameUpdaet"  placeholder="Modifier le nom du group"> 
-            <div class="col-md-12 editEtatGroups d-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-shield-fill-exclamation" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm-.55 8.502L7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0zM8.002 12a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            
+            <div class="col-md-12 editGroupsName d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                   </svg>
-                  <h6>Edit Etat Group</h6>         
+                  <h6>Edit Etat Group</h6>        
             </div>
-
+            <form #updateSecurity = "ngForm" (ngSubmit) = "updateGroupSecurity(updateSecurity.value)">
+                <div class="form-check form-switch col-md-12">
+                <input class="form-check-input" type="checkbox" id="saveUserNameCheckBox" 
+                #saveUserNameCheckBox
+                type="checkbox" 
+                [checked]="isCollapsed" 
+                (change)="onSaveGroupTypeChanged(saveUserNameCheckBox.checked)" style="background-color: #313640;">
+                Click to update
+              </div>
+              <div *ngIf="isCollapsed">
+                  <input ngModel name="typeSec" type="number" class="col-md-12 form-control" placeholder="Add number of second">
+                <button  type="submit" class="btn btn-primary" style="margin-top: 5px;float:right;border-radius: 5px;">Update</button>
+              </div>
+              
+            </form>
         </div>
 
 

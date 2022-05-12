@@ -1,13 +1,13 @@
 <div class="col-md-12 d-flex justify-content-between">
     <div class="imageUserSession col-md-2">
-        <p-avatar image="assets/public/Capture.PNG"  size="large" shape="circle"></p-avatar>
+        <p-avatar image="assets/public/userpdp/mongi.jpg"  size="large" shape="circle"></p-avatar>
     </div>
     <div class="userSessionChat col-md-7">                
         <h5>Hammami Mongi</h5>
         <h6>Software engineer</h6>
     </div>
     <div class=" icon col-md-4 d-flex justify-content-between" style="padding-right: 30px;"> 
-        <i class="pi pi-circle" style="font-size: 25px"></i>               
+        <a routerLink="/stories"><i class="pi pi-circle" style="font-size: 25px"></i>  </a>             
         <i class="pi pi-video" style="font-size: 25px"></i>
         <i class="pi pi-comment" style="font-size: 25px"></i>
 
@@ -24,11 +24,12 @@
 </div>
 
 <div class=" sidebarConversation">  
-        <div class="col-md-12 convesations d-flex justify-content-between"  
+        <div class="col-md-12 convesations"  
         *ngFor="let conversation of conversations " >
-        <a [routerLink]="['/chatbox',conversation[0]]"  (click)="getLinksClicket"  (click)="conversationClicket.emit(conversation)">
-        <div class="imageChat col-md-2 align-self-center">
-            <p-avatar image="assets/public/Capture.PNG"  size="large" shape="circle"></p-avatar>
+        <a   (click)="getLinksClicket"  (click)="conversationClicket.emit(conversation)">
+            
+            <div class="imageChat col-md-2 align-self-center">
+            <p-avatar image="assets/public/groupspdp/{{conversation[2]}}"  size="large" shape="circle"></p-avatar>
         </div>
         <div class="LastMessage col-md-7  align-self-center">                
             <h5>{{conversation[1]}}</h5>
@@ -37,7 +38,7 @@
                 
                 {{conversation.message}}</h6>
                 --> 
-                <h6>{{conversation[2]}}</h6>
+                <h6>{{conversation[3]}}</h6>
         </div>
 
         <div class="TimeMessage col-md-3 ">    
@@ -48,7 +49,7 @@
                   </svg>
             </i> 
 
-             <h6>{{conversation[5]}}</h6>
+             <h6>{{conversation[6]}}</h6>
             
         </div>
     </a>

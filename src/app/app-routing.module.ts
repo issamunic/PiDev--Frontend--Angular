@@ -31,6 +31,9 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { ChatComponent } from './chat/chat.component';
 import { SidebarchatComponent } from './sidebarchat/sidebarchat.component';
+import { StoriesComponent } from './stories/stories.component';
+import { ListStoriesComponent } from './list-stories/list-stories.component';
+
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import { SidebarrightchatComponent } from './sidebarrightchat/sidebarrightchat.component';
 @NgModule({
@@ -72,8 +75,9 @@ import { SidebarrightchatComponent } from './sidebarrightchat/sidebarrightchat.c
             {path:'pages/access', component: AccessComponent},
             {path: "chat", component: ChatComponent},
             {path: "chatbox/:id", component: ChatboxComponent},
+            {path: "stories",component: StoriesComponent},
+            {path: "list-stories/:id",component: ListStoriesComponent},
             {path: "sidebarrightchat", component: SidebarrightchatComponent},
-
             {path: '**', redirectTo: 'pages/notfound'},
         ], {scrollPositionRestoration: 'enabled', anchorScrolling:'enabled'})
     ],

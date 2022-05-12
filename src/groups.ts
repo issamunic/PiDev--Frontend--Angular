@@ -1,4 +1,4 @@
-export interface groups {
+export class groups {
     
 	 idGroup:number; 
 	 groupeName: string; 
@@ -7,7 +7,7 @@ export interface groups {
 	 dateGroupe:string ;
 	
 	 imageGroup : string ;	
-	 string; groupeSecuritytype;
+	 groupeSecuritytype :string;
 	 dureeExpiration:number ;
 	
 	

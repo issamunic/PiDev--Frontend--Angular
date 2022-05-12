@@ -1,19 +1,23 @@
-export interface chat {
+import { user } from "./user";
+
+export class chat {
     
 	idMessage :number  ;
 	message: String ;
 	ChatGroup:any ;
 	
-	 MessageUser:any; 
+	MessageUser:user; 
 	
-	 etat:any;
-	 react:any;
+	etat:any;
+	react:any;
 	
-	 Date :string;
+	Date :string;
 	
-	 dureeExpiration : number;
+	dureeExpiration : number;
 	
-	 messageType : string;
+	messageType : string;
+
+	me : boolean;
 	
 	
 }

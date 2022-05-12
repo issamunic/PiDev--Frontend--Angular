@@ -8,7 +8,7 @@
             <img class="col-md-8 imgChatBoxBg img-fluid"  src="../../assets/public/Texting-bro.png">
         </div>
 
-        <div class="col-md-6 chatBox">
+        <div class="col-md-6 chatBox" *ngIf="conversation">
             <app-chatbox [conversation]="conversation"></app-chatbox>
         </div>
         <div class="col-md-3 sidebarRight vh-100" *ngIf="conversation">

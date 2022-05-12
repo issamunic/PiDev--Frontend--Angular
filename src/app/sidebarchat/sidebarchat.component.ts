@@ -55,21 +55,19 @@ export class SidebarchatComponent implements OnInit {
 
  conversations:any;
   constructor( private chatServices:ChatService ,  private groupsService : GroupsService ,private auth : AuthService) { }
-  
+
   ngOnInit(): void {
     this.auth.auth().subscribe(res =>{
          console.log(res);
          localStorage.setItem('token', res['jwtToken']);
-         console.log(localStorage.getItem('token'));
 
-         console.log("--------------------------------");
-
-         this.groupsService.getGroups().subscribe(
-          resltat=>{console.log(resltat); this.conversations=resltat});
           
         });
+        
+
+        this.groupsService.getGroups().subscribe(
+          resltat=>{console.log(resltat); this.conversations=resltat});
         console.info(this.conversations);
-        console.error("sssssssssssss"+this.conversation[0]);
 
         
            

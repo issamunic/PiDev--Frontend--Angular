@@ -7,11 +7,7 @@
 .DetailRightGroup{
     align-items: center;
 
-    .imageChat{
-        width:380px;
-        display: flex;
-        justify-content: center;
-    }
+   
     img{
         border-radius: 100%;
         width: 75px;
@@ -152,4 +148,19 @@
 .btnFileDownload{
     border:none;
     background-color: transparent;
+}
+.modal-content{
+    position: relative !important;
+    top: 60px !important;
+    left: 100px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 50% !important;
+    background-color: #23232b !important;
+    border-radius: 10px !important;
+}
+.btn-danger{
+    color: #fff !important;
+    background-color: #313640 !important;
+    border: none !important;
 }

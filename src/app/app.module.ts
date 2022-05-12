@@ -146,13 +146,15 @@ import { ChatboxComponent } from './chatbox/chatbox.component';
 import { SidebarchatComponent } from './sidebarchat/sidebarchat.component';
 import { SidebarrightchatComponent } from './sidebarrightchat/sidebarrightchat.component';
 import {SpeedDialModule} from 'primeng/speeddial';
-
+import { StoriesComponent } from './stories/stories.component';
+import { ListStoriesComponent } from './list-stories/list-stories.component';
 
 
 
 
 @NgModule({
     imports: [
+        CarouselModule,
         SpeedDialModule,
         BrowserModule,
         FormsModule,
@@ -294,6 +296,8 @@ import {SpeedDialModule} from 'primeng/speeddial';
         ChatboxComponent,
         SidebarchatComponent,
         SidebarrightchatComponent,
+        StoriesComponent,
+        ListStoriesComponent,
         
         
     ],
