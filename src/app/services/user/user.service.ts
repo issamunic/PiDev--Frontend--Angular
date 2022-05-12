@@ -69,6 +69,10 @@ export class UserService {
     return this.httpClient.get(this.PATH_API+"/user/numberOfUsersWithRole");
   }
 
+  numberOfUsersWithDomain(){
+    return this.httpClient.get(this.PATH_API+"/user/numberOfUsersWithDomain");
+  }
+
   /*roleMatch(allowedRoles):boolean{
     let isMatch=false;
     let role:string=this.userAuthService.getRole();

@@ -5,30 +5,35 @@
 
 <app-menu-admin></app-menu-admin>
 
-<div class="container mt-5">
-    <div class="card text-center" style="color: green; padding: 20px;">
-        <h1>You are Admin</h1>
-    </div>
+<div class="container mt-2">
 
-    <div class="w-75">
-        <h3>Statistic number users by role</h3>
-        <div class="w-50">
-            <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '20%'}"></p-chart>
+    <div class="card">
+        <div class="d-flex justify-content-center align-items-center">
+
+            <div class="w-50 d-flex justify-content-center align-items-center flex-column">
+                <h3>Statistic number users by role</h3>
+                <div class="w-75">
+                    <p-chart type="pie" [data]="data" [options]="chartOptions" [style]="{'width': '20%'}"></p-chart>
+                </div>
+            </div>
+
+
+            <div class="w-50 d-flex justify-content-center align-items-center flex-column">
+                <h3>Statistic number user by domain</h3>
+                <div class="w-75">
+                    <p-chart type="polarArea" [data]="data2" [options]="chartOptions" [style]="{'width': '40%'}">
+                    </p-chart>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+            <h3>Statistic for radar</h3>
+            <div class="w-50">
+                <p-chart type="radar" [data]="data3" [options]="chartOptions_radar" [style]="{'width': '40%'}"></p-chart>
+            </div>
         </div>
     </div>
-    
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
