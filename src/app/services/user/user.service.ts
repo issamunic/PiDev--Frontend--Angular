@@ -65,6 +65,10 @@ export class UserService {
     return this.httpClient.put(this.PATH_API+"/user/assign-current-user-to-profession/"+idProfession,{responseType:'text'});
   }
 
+  numberOfUsersWithRole(){
+    return this.httpClient.get(this.PATH_API+"/user/numberOfUsersWithRole");
+  }
+
   /*roleMatch(allowedRoles):boolean{
     let isMatch=false;
     let role:string=this.userAuthService.getRole();
