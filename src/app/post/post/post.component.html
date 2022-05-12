@@ -1,12 +1,71 @@
-<p-card header="Simple Card" [style]="{'width': '50rem'}" >
+<p-messages [value]="msgs"></p-messages>
+<p-card styleClass="post-card" [style]="{'width': '50rem'}" >
     <ng-template pTemplate="header">
-    <p-avatar label="P" styleClass="p-mr-2" size="large"></p-avatar> username
-    <span>12/12/12</span> ago.
+        <p-avatar icon="pi pi-user" styleClass="mr-2" size="large" [style]="{'background-color':'#273d79', 'color': '#ffffff', 'margin': '10px'}" shape="circle"></p-avatar><span>{{post.user.login}}</span>.
+    <span>{{post.url}}</span> 
+    <button #btn type="button" class="  p-button-text-outlined p-button-outlined p-button-secondary" pButton icon="pi pi-ellipsis-v" [style]="{'margin': '.5em', 'float' : 'right'}" label="" (click)="menu.toggle($event)"></button>
+            <p-slideMenu #menu [model]="items" [popup]="true" [viewportHeight]="100"></p-slideMenu>
     </ng-template>   
             <div [innerHTML]="post.description"></div>
+            <span *ngIf="post.postFiles != null">
+            <div *ngIf="post.postFiles.length > 0">
+                <div class="slideshow-container">
+
+                    <div *ngFor="let file of post.postFiles; let i = index" class="mySlides fade">
+                     <span *ngIf="slideIndex==i">
+                          <div class="numbertext">{{i+1}} / {{post.postFiles.length}}</div>
+                      <img  src="{{file.image}}" style="width:50%">
+                    </span>
+                    </div>
+                    
+                    <a class="prev" (click)="plusSlides()">❮</a>
+                    <a class="next" (click)="MinusSlides()">❯</a>
+                    
+                    </div>
+                    <br>
+                    
+                    <div  style="text-align:center">
+                        <span *ngFor="let file of post.postFiles; let i = index">
+                      <span  class="dot" (click)="slideIndex=i"></span> </span>
+                    </div>
+            </div>
+        </span>
                 <ng-template pTemplate="footer">
-                
-                <button pButton type="button" icon="pi pi-arrow-up"class=" p-button-rounded p-button-text-outlined p-button-outlined"></button>
-                <button pButton type="button" icon="pi pi-arrow-down"class=" p-button-rounded p-button-text-outlined p-button-outlined p-button-secondary" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></button>
-            </ng-template>
-        </p-card>
+                    {{post.reactCount}}
+                    <button pButton type="button" icon="pi pi-arrow-up"class=" p-button-rounded p-button-text-outlined p-button-outlined" [style]="{'color': '#273d79'}"></button>
+                    <button pButton type="button" icon="pi pi-arrow-down"class=" p-button-rounded p-button-text-outlined p-button-outlined p-button-secondary" styleClass="p-button-secondary" [style]="{'margin-left': '.5em' , 'color': '#a23141'}"></button>
+                    <button pButton type="button" (click)="loadComments(post.idPost)" label="show the {{ post.numbercomments }} comments" class="  p-button-text-outlined p-button-outlined p-button-secondary" styleClass="p-button-secondary" [style]="{'margin-left': '.5em' , 'color': '#a23141', 'float':'right'}"></button>
+                    <br>
+                    <br>
+                    <p-card >
+                        <button pButton type="button" label="comment"  class="p-button-rounded" (click)="postComment(post.idPost)" [style]="{'float': 'right','color': '#273d79'}" ></button>  
+                        <br> 
+                        
+                        <span class="p-float-label">
+                    <textarea [style]="{'margin-top': '5px' }" [(ngModel)]="commentPayload.text" id="float-input" rows="2" cols="70" pInputTextarea></textarea>
+                    <label for="float-input">
+                        <div class="flex align-items-center">
+                        <p-chip
+                          label="Amy Elsner"
+                          image="assets/demo/images/avatar/amyelsner.png"
+                          styleClass="mr-2"
+                        ></p-chip>
+                        Comment
+                        </div>
+                    </label>
+                    </span>
+                    
+                    <p-card *ngFor="let comment of comments" [style] = "{'margin': '3px'}">
+                        <ng-template pTemplate="header">
+                            <p-avatar icon="pi pi-user" styleClass="mr-2" [style]="{'background-color':'#273d79', 'color': '#ffffff', 'margin': '10px'}" shape="circle"></p-avatar><span>{{comment.user.login}}</span>
+                        </ng-template>
+                        {{comment.text}}
+                    </p-card>
+                    </p-card>
+            </ng-template>  
+             
+</p-card>
+
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-messages [value]="msgs"></p-messages>

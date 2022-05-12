@@ -36,4 +36,12 @@ export class CommentService {
     console.log('pourcentages');
     return this.httpClient.get<[]>(this.url+"/SpringMVC/comment/retrieve-pourcentages",{headers:headers});
   }
+  getCommentsCount(id:number)  {
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    
+    return this.httpClient.get<number>(this.url+"/SpringMVC/comment/retrieve-number-comments/"+ id,{headers:headers});
+  }
 }

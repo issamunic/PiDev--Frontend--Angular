@@ -144,9 +144,12 @@ import { TripComponent } from './trip/trip.component';
 import { PostComponent } from './post/post/post.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { ForumSideBarComponent } from './forumSideBar/forum-side-bar/forum-side-bar.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
+
 import { CommentComponent } from './comment/comment/comment.component';
 import {EditorModule} from 'primeng/editor';
 import { QuillModule } from 'ngx-quill';
+import { CommunityComponent } from './community/community/community.component';
 
 
 
@@ -246,6 +249,7 @@ import { QuillModule } from 'ngx-quill';
         
         
         
+        
 
     ],
     declarations: [
@@ -296,6 +300,8 @@ import { QuillModule } from 'ngx-quill';
         ForumComponent,
         ForumSideBarComponent,
         CommentComponent,
+        UploadfileComponent,
+        CommunityComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

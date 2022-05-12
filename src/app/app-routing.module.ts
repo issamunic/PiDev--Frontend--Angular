@@ -1,3 +1,4 @@
+import { CommunityComponent } from './community/community/community.component';
 import { PostComponent } from './post/post/post.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { TripComponent } from './trip/trip.component';
@@ -31,12 +32,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {path: 'trip', component: TripComponent},
             {path: 'forum', component: ForumComponent},
-            {path : 'post/:id', component : PostComponent},
+            {path : 'forum/community/:id', component : CommunityComponent },
+            {path : 'forum/uploadfile', component: UploadfileComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -70,7 +73,7 @@ import { AccessComponent } from './components/access/access.component';
             {path:'pages/error', component: ErrorComponent},
             {path:'pages/notfound', component: NotfoundComponent},
             {path:'pages/access', component: AccessComponent},
-            {path: '**', redirectTo: 'pages/notfound'},
+            //{path: '**', redirectTo: 'pages/notfound'},
         ], {scrollPositionRestoration: 'enabled', anchorScrolling:'enabled'})
     ],
     exports: [RouterModule]

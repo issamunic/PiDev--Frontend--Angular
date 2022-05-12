@@ -1,0 +1,90 @@
+<div class="grid">
+    <div class="col-12 xl:col-3">
+<div>
+<p-card header="{{community.name}}">
+    <img src="assets/demo/images/galleria/forms.png"  [style]="{'width': '100%'}" >
+    <p>{{community.description}}</p>
+    <h3>Members</h3>
+    <p-avatarGroup styleClass="mb-3">
+      <p-avatar image="assets/demo/images/avatar/amyelsner.png" size="large" shape="circle"></p-avatar>
+      <p-avatar image="assets/demo/images/avatar/asiyajavayant.png" size="large" shape="circle"></p-avatar>
+      <p-avatar image="assets/demo/images/avatar/onyamalimba.png" size="large" shape="circle"></p-avatar>
+      <p-avatar image="assets/demo/images/avatar/ionibowcher.png" size="large" shape="circle"></p-avatar>
+      <p-avatar image="assets/demo/images/avatar/xuxuefeng.png" size="large"shape="circle"></p-avatar>
+      <p-avatar label="+2" shape="circle" size="large" [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
+  </p-avatarGroup>
+  <p-dialog header="Add User" [(visible)]="display" [responsive]="true" [style]="{width: '50vw', height : '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="col-12 md:col-8">
+      <h6> email  </h6>
+      <p-multiSelect [style]="{width : '400px'}" [options]="users" [(ngModel)]="selectedCountries1" defaultLabel="Select a User" optionLabel="login" class="multiselect-custom">
+        <ng-template let-value pTemplate="selectedItems">
+            <div class="user-item user-item-value" *ngFor="let option of selectedCountries1">
+                <img src="{{option.image}}"  />
+                <div>{{option.login}}</div>
+            </div>
+            <div *ngIf="!selectedCountries1 || selectedCountries1.length === 0" class="country-placeholder">
+                Select Users
+            </div>
+        </ng-template>
+        <ng-template let-user pTemplate="item">
+            <div class="user-item">
+                <img src="" />
+                <div>{{user.login}}</div>
+            </div>
+        </ng-template>
+    </p-multiSelect>
+      
+  </div>
+        <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)=" addUserstoCom()" label="Add" styleClass="p-button-text"></p-button>
+        </ng-template>
+</p-dialog>
+  <button  pButton type="button" label="Add User" class="p-button-outlined"  [style]="{'width': '100%','color':'#523965'}" icon="pi pi-plus" iconPos="left" (click)="showDialog()"></button>
+</p-card>
+</div >
+</div>
+<p-card  header="Post something">
+    <span class="p-float-label">
+      <textarea [(ngModel)]="newPost.description" id="float-input" rows="5" cols="110" pInputTextarea></textarea>
+      <label for="float-input">
+        <div class="flex align-items-center">
+        <p-chip
+          label="Nada labidi"
+          image="assets/demo/images/avatar/amyelsner.png"
+          styleClass="mr-2"
+        ></p-chip>
+        Type what you're thinking
+      </div>
+    </label>
+    </span>
+    <p-fileUpload
+    *ngIf="uploadImgageVisible" 
+      (name)="files"
+      url="./upload.php"
+      multiple="multiple"
+      accept="image/*"
+      maxFileSize="1000000"
+      [showUploadButton]="false"
+    (onSelect)="uploadFile($event)" 
+    (onRemove)="removeFile($event)"></p-fileUpload>
+    <button [disabled]="newPost.description==''" pButton [style]="{'float' : 'right', 'margin': '5px'}" type="button" label="Submit" (click)="createPost()" class="btnCreatePost"></button>
+    <button pButton [style]="{'background': 'linear-gradient(to right, #273d79, #a23141)','color' : 'white'}"  pRipple  type="button"  class="p-button-raised p-button-text" style="float: right; margin : 5px;" label="{{uploadImgageVisible?'Cancel':'upload image(s)'}}" (click)="showhideUtility()"></button>
+    <br> 
+    <br>
+    <br>
+    <span *ngIf="postlist.length > 0 && loading == false">
+    <div *ngFor="let post of postlist"  [style]="{'margin-top' :'20px'}"> 
+
+        <app-post (someEvent)="loadPosts()" [numberComments] = "numberComments" [post] = "post"></app-post>
+        </div>
+    </span>
+</p-card>
+
+</div>
+
+
+
+
+
+

@@ -1,24 +1,72 @@
-<p-messages></p-messages>
-
 <div class="grid">
-    <div class="col-12 xl:col-4">
+    <div class="col-12 xl:col-3">
 <div>
-<p-card >
+<p-card header="Navigation Menu">
+  
+  <img src="assets/demo/images/galleria/forum.png"  [style]="{'width': '100%'}" >
+<p-dialog header="Add Community" [(visible)]="display" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="col-12 ">
+      <div class="p-inputgroup">
+        <h6>Community name : </h6>
+          <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
+          <input id="username" [(ngModel)]="newCommunity.name" type="text" pInputText placeholder="Group Name">       
+      </div>
+      <div>
+        <h6>Description</h6>
+        <textarea [(ngModel)]="newCommunity.description" rows="5" cols="80" pInputTextarea  placeholder="description"></textarea>
+      </div>
+  </div>
+        <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="createCommunity()" label="Add" styleClass="p-button-text"></p-button>
+        </ng-template>
+</p-dialog>
+  
+  <button  pButton type="button" label="Add Group" class="p-button-outlined"  [style]="{'width': '100%','color':'#523965'}" icon="pi pi-plus" iconPos="left" (click)="showDialog()"></button>
+  <br>
 <p-panelMenu [model]="items" ></p-panelMenu>
 <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '40%'}"></p-chart>
 </p-card>
 </div >
 </div>
-<p-card>
-    <p-editor [(ngModel)]="text2" (contentChanged)="showText()" [style]="{'height':'150px'}" ></p-editor>
-    <button pButton [style]="{'float' : 'right', 'margin': '5px'}" type="button" label="Submit" (click)="createPost()" class="btnCreatePost"></button>
+<p-card  header="Post something">
+    <span class="p-float-label">
+      <textarea [(ngModel)]="newPost.description" id="float-input" rows="5" cols="110" pInputTextarea></textarea>
+      <label for="float-input">
+        <div class="flex align-items-center">
+        <p-chip
+          label="{{authobj.user.login}}"
+          image="assets/demo/images/avatar/amyelsner.png"
+          styleClass="mr-2"
+        ></p-chip>
+        Type what you're thinking
+      </div>
+    </label>
+    </span>
+    <p-fileUpload
+    *ngIf="uploadImgageVisible" 
+      (name)="files"
+      url="./upload.php"
+      multiple="multiple"
+      accept="image/*"
+      [showUploadButton]="false"
+    (onSelect)="uploadFile($event)" 
+    (onRemove)="removeFile($event)"></p-fileUpload>
+    <button [disabled]="newPost.description==''" pButton [style]="{'float' : 'right', 'margin': '5px'}" type="button" label="Submit" (click)="createPost()" class="btnCreatePost"></button>
+    <button pButton [style]="{'color': '#a23141','float': 'right', 'margin' : '5px'}"    type="button"  class="p-button-raised p-button-text"  label="{{uploadImgageVisible?'Cancel':'upload image(s)'}}" icon="{{uploadImgageVisible?'':'pi pi-images'}}" (click)="showhideUtility()"></button>
     <br> 
     <br>
     <br>
-    <span *ngIf="postlist.length> 0">
-    <div *ngFor="let post of postlist" [style]="{'margin-top' :'20px'}"> 
-
-        <app-post [post] = "post"></app-post>
+    <span *ngIf="postlist.length > 0 && loading == false">
+    <div *ngFor="let post of smallerpostList"  [style]="{'margin-top' :'20px'}"> 
+        
+        <app-post (someEvent)="loadPosts()" [numberComments] = "numberComments" [post] = "post" ></app-post>
+        </div>
+        <div *ngIf="loadingspinner" [style]="{'width':'100%','display':'flex', 'justify-content':'center', 'margin-top' : '20px'}">
+          <i  class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+        </div>
+        <div *ngIf="noMorePosts" [style]="{'width':'100%','display':'flex', 'justify-content':'center', 'margin-top' : '20px'}">
+         <h4>  No More posts.</h4> 
         </div>
     </span>
 </p-card>

@@ -21,6 +21,7 @@ export class PostService {
       
     return this.http.get(this.url+"/SpringMVC/post/retrieve-posts", { headers:headers });
   }
+  
   getPost(id: number): Observable<Post> {
     const headers = new HttpHeaders({ 
       'Content-Type': 'application/json',
@@ -29,13 +30,44 @@ export class PostService {
     console.log('salaam');
     return this.http.get<Post>(this.url+"/SpringMVC/post/retrieve-post/" + id, { headers:headers });
   }
+  uploadImage(uploadImageData: FormData, postId: any){
+    const headers = new HttpHeaders({ 
+      
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    return this.http.post(this.url + '/SpringMVC/post/uploadPostFile/'+postId, uploadImageData, {responseType:"text", headers:headers });
+  }
+  loadImage(fileName:any) {
+    const headers = new HttpHeaders({ 
+      
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    return this.http.get(this.url + '/SpringMVC/post/getPostFile/' + fileName, {responseType:"text", headers:headers });
+
+  }
   
-  createPost(postPayload: CreatePostPayload): Observable<any> {
+  createPost(postPayload: Post): Observable<any> {
     const headers = new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': "Bearer "+localStorage.getItem('token')
     })
     console.log('kbal el requete');
     return this.http.post(this.url+'/SpringMVC/post/add-post/', postPayload , {headers : headers});
+  }
+  createPostCommunity(postPayload: Post, comid : number): Observable<any> {
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    console.log('kbal el requete');
+    return this.http.post(this.url+'/SpringMVC/post/add-post-com/'+comid, postPayload , {headers : headers});
+  }
+  deletePost(id: number) {
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+localStorage.getItem('token')
+    })
+    console.log('delete');
+    return this.http.delete(this.url+"/SpringMVC/post/remove-post/" + id, { headers:headers });
   }
 }

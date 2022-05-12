@@ -38,7 +38,7 @@
                         "scripts": [
                             "node_modules/prismjs/prism.js",
                             "node_modules/prismjs/components/prism-typescript.js",
-                            "node_modules/quill/dist/quill.js"
+                            "node_modules/quill/dist/quill.js", "node_modules/jquery/dist/jquery.js"
                         ],
                         "allowedCommonJsDependencies": ["chart.js"]
                     },

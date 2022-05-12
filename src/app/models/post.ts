@@ -1,10 +1,16 @@
+import { Community } from 'src/app/models/community/community';
+import { PostFile } from "./postfile";
+
 export class Post {
-    idPost: number;
-    description: string;
-    createdOn: string;
-    url: string;
-    reactCount: number;
-    userName: string;
-    upVote: boolean;
-    downVote: boolean;
+    idPost?: number;
+    description?: string;
+    createdOn?: string;
+    url?: string;
+    reactCount?: number;
+    userName?: string;
+    upVote?: boolean;
+    downVote?: boolean;
+    postFiles?: PostFile[];
+    numbercomments ?: number;
+    community ?: Community;
 }
